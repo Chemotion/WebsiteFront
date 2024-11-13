@@ -14,7 +14,10 @@ const geistMono = localFont({
 
 export const metadata = {
   title: 'Chemotion',
-  description: 'Chemotion.net new webpage'
+  description: 'Chemotion.net new webpage',
+  icons: {
+    icon: '/icon.png'
+  }
 };
 
 export default function RootLayout({ children }) {
