@@ -1,0 +1,24 @@
+{
+  "kind": "collectionType",
+  "collectionName": "intro_sections",
+  "info": {
+    "name": "IntroSection"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "description": {
+      "type": "text"
+    },
+    "youtubeurl": {
+      "type": "string"
+    }
+  }
+}
