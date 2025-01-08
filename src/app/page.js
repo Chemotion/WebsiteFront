@@ -1,27 +1,35 @@
 import NavBar from './components/NavBar';
-import Intro from './sections/Intro';
-import Dummy from './sections/Dummy';
+import Hero from './components/sections/Hero';
+import Diagram from './components/sections/Diagram';
+import CardContainer from './components/sections/FourCardsSection';
+import FeatureSection from './components/sections/FeatureSection';
+import ELNHero from './components/sections/ELNHero';
+import DemoSection from './components/sections/DemoSection';
+import DeviceSection from './components/sections/DeviceSection';
+import GetStartedSection from './components/sections/GetStartedSection';
+import GenericElementHero from './components/sections/LabimotionHero';
+import GenericElementSection from './components/sections/LabimotionSection';
+import RepositoryHero from './components/sections/RepositoryHero';
+import RepositorySection from './components/sections/RepositorySection';
 import Footer from './components/Footer';
 
-import { fetchIntro } from './lib/api';
-
-export default async function Home() {
-  const introData = await fetchIntro();
-
+export default function Home() {
   return (
-    <div className="font-sans scroll-smooth">
+    <div className="font-geist text-gray-800 scroll-smooth bg-[#F6F6F6]">
       <NavBar />
-      <main className="pt-20 bg-[#7EB9D7] min-h-screen flex flex-col items-center justify-center">
-        <div className="mt-20 mb-20">
-          <Intro title={introData[0].title} description={introData[0].description} />
-        </div>
-        <Dummy imagePosition="right" />
-        <Dummy imagePosition="left" />
-        <Dummy imagePosition="right" />
-        <Dummy imagePosition="left" />
-        <div className="mb-20">
-          <Dummy imagePosition="right" />
-        </div>
+      <main className="pt-20 min-h-screen flex flex-col items-center justify-center">
+        <Hero />
+        <Diagram />
+        <ELNHero />
+        <CardContainer />
+        <DeviceSection />
+        <FeatureSection />
+        <DemoSection />
+        <GetStartedSection />
+        <GenericElementHero />
+        <GenericElementSection />
+        <RepositoryHero />
+        <RepositorySection />
       </main>
       <Footer />
     </div>

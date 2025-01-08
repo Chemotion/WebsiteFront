@@ -13,6 +13,10 @@ module.exports = {
       },
       screens: {
         'custom-lg': '1080px'
+      },
+      fontFamily: {
+        geist: ['var(--font-geist-sans)', 'sans-serif'],
+        geistmono: ['var(--font-geist-mono)', 'monospace']
       }
     }
   },
