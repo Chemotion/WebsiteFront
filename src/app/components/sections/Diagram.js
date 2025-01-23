@@ -6,14 +6,14 @@ const Diagram = () => {
   const [isImageLoaded, setIsImageLoaded] = useState(false);
 
   return (
-    <div className="relative flex flex-col max-w-7xl items-center text-[#4D5357]">
+    <div id="diagram" className="relative flex flex-col mb-16 mt-4 max-w-6xl items-center">
       <div className="relative w-full custom-lg:px-0 px-4">
         <Image
           src="/Hauptgrafik.png"
           alt="Main Diagram"
-          width={1300}
-          height={1300}
-          className="w-full h-full object-contain filter grayscale-[50%]"
+          width={1130}
+          height={1130}
+          className="w-full h-full object-contain filter grayscale-[10%]"
           priority
           onLoad={() => setIsImageLoaded(true)}
         />

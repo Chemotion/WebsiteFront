@@ -60,14 +60,14 @@ const GetStartedSection = () => {
         {features.map((feature, index) => (
           <div
             key={index}
-            className="border-2 text-gray-800 border-[#008ab8] p-12 bg-[#F6F6F6] rounded-lg flex flex-col justify-between flex-1">
+            className="border-2 text-gray-800 border-[#008ab8] p-12 bg-[#F6F6F6] rounded-md flex flex-col justify-between flex-1">
             <div>
               <h2 className="text-2xl font-bold">{feature.columnTitle}</h2>
               <div className="space-y-2 mt-8">
                 {feature.groups.map((group, groupIndex) => (
                   <div key={groupIndex}>
-                    <h3 className="text-base text-gray-700 font-semibold mb-2">{group.title}</h3>
-                    <ul className="list-disc text-gray-600 pl-5 space-y-1">
+                    <h3 className="text-base font-semibold mb-2">{group.title}</h3>
+                    <ul className="list-disc pl-5 space-y-1">
                       {group.items.map((item, itemIndex) => (
                         <li key={itemIndex}>{item}</li>
                       ))}
@@ -81,7 +81,7 @@ const GetStartedSection = () => {
                 href={feature.button.link}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-block px-8 py-3 text-center text-xl text-[#F6F6F6] bg-[#008ab8] rounded-lg font-semibold border-2
+                className="inline-block px-8 py-3 text-center text-xl text-[#F6F6F6] bg-[#008ab8] rounded-md font-semibold border-2
                 border-[#008ab8] shadow-sm transition-all duration-300 hover:bg-gray-800 hover:border-gray-800
                 hover:shadow-lg ">
                 {feature.button.text}

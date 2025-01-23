@@ -43,7 +43,7 @@ const Hero = () => {
 
   return (
     <motion.div
-      className="flex flex-col items-center px-[100px] py-20 relative"
+      className="flex flex-col items-center px-6 sm:px-[100px] py-10 sm:py-20 relative"
       style={{
         backgroundImage: `
           radial-gradient(ellipse at center 60%, rgba(246, 246, 246, 0) 20%, rgba(246, 246, 246, 1) 50%),
@@ -56,13 +56,13 @@ const Hero = () => {
       variants={containerVariants}
       initial="hidden"
       animate="visible">
-      <motion.div variants={itemVariants} className="text-5xl font-bold text-center mb-2">
+      <motion.div variants={itemVariants} className="text-4xl sm:text-5xl font-bold text-center mb-2">
         Designed for chemists.
       </motion.div>
-      <motion.div variants={itemVariants} className="text-[36px] font-medium text-center mb-8 tracking-widest">
-        Extended for life sciences.
+      <motion.div variants={itemVariants} className="text-3xl sm:text-[40px] font-medium text-center mb-8">
+        <span className="tracking-[0.15em]">Extended</span> for life sciences.
       </motion.div>
-      <motion.div variants={itemVariants} className="text-5xl font-medium text-center max-w-4xl mb-8">
+      <motion.div variants={itemVariants} className="text-4xl sm:text-5xl font-medium text-center max-w-4xl mb-8">
         <span className="block mb-2">
           From <span className="font-bold text-primary">design</span> to&nbsp;
           <span className="font-bold text-secondary">publication</span> –
@@ -72,32 +72,23 @@ const Hero = () => {
 
       <motion.div
         variants={itemVariants}
-        className="flex flex-wrap justify-center gap-6 mt-12 text-xl custom-lg:justify-start">
+        className="flex flex-wrap justify-center mt-12 text-xl custom-lg:justify-start">
         <button
           type="button"
           onClick={() => scrollToSection('eln')}
-          className="inline-block px-8 py-3 text-center text-gray-700 bg-[#F6F6F6] rounded-lg font-semibold border-2
-          border-[#008ab8] shadow-sm transition-all duration-300 hover:bg-[#008ab8] hover:border-[#008ab8] hover:text-white
-          hover:shadow-lg">
-          Start with ELN
-        </button>
-
-        <button
-          type="button"
-          onClick={() => scrollToSection('labimotion')}
-          className="inline-block px-8 py-3 text-center text-gray-700 bg-[#F6F6F6] rounded-lg font-semibold border-2
-          border-[#e63946] shadow-sm transition-all duration-300 hover:bg-[#e63946] hover:border-[#e63946] hover:text-white
-          hover:shadow-lg">
-          Extend with LabIMotion
-        </button>
-
-        <button
-          type="button"
-          onClick={() => scrollToSection('repository')}
-          className="inline-block px-8 py-3 text-center text-gray-700 bg-[#F6F6F6] rounded-lg font-semibold border-2
-          border-[#4d5559] shadow-sm transition-all duration-300 hover:bg-[#4d5559] hover:border-[#4d5559] hover:text-white
-          hover:shadow-lg">
-          Publish on Repo
+          className="inline-flex items-center px-10 py-4 text-center text-gray-700 bg-[#F6F6F6] rounded-md font-semibold border-2
+          border-[#008ab8] shadow-sm transition-all duration-300 ease-in-out 
+          hover:bg-[#008ab8] hover:text-white">
+          Explore
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            strokeWidth={1.5}
+            stroke="currentColor"
+            className="w-6 h-6 ml-2">
+            <path strokeLinecap="round" strokeLinejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
+          </svg>
         </button>
       </motion.div>
     </motion.div>

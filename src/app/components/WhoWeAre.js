@@ -1,9 +1,8 @@
 import Image from 'next/image';
-import Link from 'next/link';
 
 export default function WhoWeArePage() {
   return (
-    <main className="max-w-4xl mx-auto px-4 py-4 mt-10 mb-20">
+    <main className="max-w-4xl mx-auto px-4 py-4 mt-8 mb-20">
       <section className="mb-12">
         <h1 className="text-5xl font-extrabold text-gray-900 leading-normal">
           Who We Are —<br />

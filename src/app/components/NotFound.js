@@ -22,10 +22,10 @@ export default function NotFoundPage() {
       </section>
       <Link
         href="/"
-        className="inline-block px-8 py-3 text-center text-gray-700 bg-[#F6F6F6] rounded-lg font-semibold border-2
-          border-[#4d5559] shadow-sm transition-all duration-300 hover:bg-[#4d5559] hover:border-[#4d5559] hover:text-white
-          hover:shadow-lg">
-        Go to Homepage
+        className="inline-flex items-center px-10 py-4 text-xl text-center text-gray-700 bg-[#F6F6F6] rounded-md font-semibold border-2
+          border-[#008ab8] shadow-sm transition-all duration-300 ease-in-out 
+          hover:bg-[#008ab8] hover:text-white">
+        Back to home
       </Link>
     </div>
   );

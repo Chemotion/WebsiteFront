@@ -2,7 +2,7 @@
 
 import { motion } from 'framer-motion';
 
-const GenericElementHero = () => {
+const LabimotionHero = () => {
   const hoverEffect = {
     y: -5,
     cursor: 'default'
@@ -37,4 +37,4 @@ const GenericElementHero = () => {
   );
 };
 
-export default GenericElementHero;
+export default LabimotionHero;

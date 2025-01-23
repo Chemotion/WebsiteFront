@@ -7,8 +7,8 @@ import ELNHero from './components/sections/ELNHero';
 import DemoSection from './components/sections/DemoSection';
 import DeviceSection from './components/sections/DeviceSection';
 import GetStartedSection from './components/sections/GetStartedSection';
-import GenericElementHero from './components/sections/LabimotionHero';
-import GenericElementSection from './components/sections/LabimotionSection';
+import LabimotionHero from './components/sections/LabimotionHero';
+import LabimotionSection from './components/sections/LabimotionSection';
 import RepositoryHero from './components/sections/RepositoryHero';
 import RepositorySection from './components/sections/RepositorySection';
 import Footer from './components/Footer';
@@ -26,8 +26,8 @@ export default function Home() {
         <FeatureSection />
         <DemoSection />
         <GetStartedSection />
-        <GenericElementHero />
-        <GenericElementSection />
+        <LabimotionHero />
+        <LabimotionSection />
         <RepositoryHero />
         <RepositorySection />
       </main>

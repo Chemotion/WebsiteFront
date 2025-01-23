@@ -3,33 +3,43 @@ import Image from 'next/image';
 
 const DemoSection = () => {
   return (
-    <section id="demo" className="px-4 mb-16 max-w-6xl w-full">
-      <div className="flex flex-col lg:flex-row items-center lg:items-center justify-between px-6 lg:px-16 py-12 border-2 border-[#008ab8] bg-[#F6F6F6] text-gray-800 rounded-lg overflow-hidden">
-        <div className="lg:w-2/5 text-center lg:text-left">
-          <h1 className="text-[26px] text-gray-800 font-bold">Chemotion ELN Demo</h1>
-          <p className="text-base text-gray-700 mt-6 lg:mt-12 mb-6 lg:mb-12">
-            Sounds good? Then go a little deeper. Check it out and see how it works, what functions it has, and how easy
-            it is to use. Because nothing is as convincing as trying it out for yourself.
-          </p>
-          <div className="flex flex-col sm:flex-row sm:gap-4">
+    <section id="democontent" className="px-4 mb-14 max-w-6xl w-full">
+      <div
+        className="flex flex-col lg:flex-row items-center lg:items-stretch justify-between p-6 lg:p-6 border-2 border-[#008ab8] bg-[#F6F6F6] rounded-md overflow-hidden"
+        role="region"
+        aria-labelledby="eln-demo-heading">
+        <div className="lg:w-[45%] lg:flex flex-col lg:py-10 text-center lg:text-left justify-between space-y-6 lg:p-4 lg:ml-4 lg:mr-4">
+          <h1 id="eln-demo-heading" className="text-[26px]  text-gray-800 font-bold">
+            Chemotion ELN Demo
+          </h1>
+          <div
+            className="hover:text-gray-900 list-none text-base text-gray-700 space-y-4 transition-all duration-200"
+            role="discription">
+            <span className="font-medium text-gray-800">Sounds good?</span> Then go a little deeper. Check it out and
+            see how it works, what functions it has, and how easy it is to use. Because nothing is as convincing as
+            trying it out for yourself.
+          </div>
+          <div className="flex justify-center lg:justify-start">
             <a
               href="https://demo.chemotion.ibcs.kit.edu/home"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-block px-8 py-3 text-center text-xl text-[#F6F6F6] bg-[#008ab8] rounded-lg font-semibold border-2
+              className="inline-block px-8 py-3 text-center text-xl text-[#F6F6F6] bg-[#008ab8] rounded-md font-semibold border-2
               border-[#008ab8] shadow-sm transition-all duration-300 hover:bg-gray-800 hover:border-gray-800
-              hover:shadow-lg ">
+              hover:shadow-lg"
+              aria-label="Explore Chemotion eln-demo">
               Try a Demo
             </a>
           </div>
         </div>
-        <div className="lg:w-1/2 mt-8 px-4 lg:px-2 lg:mt-0 flex justify-center lg:justify-end">
+        <div
+          className="lg:w-[50%] border-2 border-[#008ab8] mt-8 px-2 lg:mr-2 lg:px-0 lg:mt-2 lg:mb-2 lg:mt-0 flex justify-center lg:justify-end relative w-full aspect-[3/2] rounded-md overflow-hidden"
+          aria-hidden="true">
           <Image
-            src="/demo.jpg"
-            alt="Demo Image"
-            width={600}
-            height={350}
-            className="w-auto h-auto object-contain rounded-lg scale-110 transition-transform duration-300"
+            src="/demo2.jpg"
+            alt="Visual representation of the Chemotion ELN Demo"
+            fill
+            className="object-cover transition-transform duration-300"
           />
         </div>
       </div>

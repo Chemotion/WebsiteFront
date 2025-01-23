@@ -1,50 +1,58 @@
 'use client';
 import Image from 'next/image';
 
-const GenericElementSection = () => {
+const LabimotionSection = () => {
   return (
-    <section id="demo" className="px-4 mb-20 max-w-6xl w-full">
-      <div className="flex flex-col lg:flex-row items-center lg:items-center justify-between px-6 lg:px-16 py-12 border-2 border-[#e63946] bg-[#F6F6F6] text-[#4D5357] rounded-lg overflow-hidden">
-        <div className="lg:w-[45%] text-center lg:text-left">
-          <div className="flex justify-start">
+    <section id="labimotioncontent" className="px-4 mb-16 max-w-6xl w-full">
+      <div
+        className="flex flex-col lg:flex-row items-center lg:items-stretch justify-between p-6 lg:p-6 border-2 border-[#e63946] bg-[#F6F6F6] rounded-md overflow-hidden"
+        role="region"
+        aria-labelledby="labimotion-heading">
+        <div className="lg:w-[45%] lg:flex flex-col text-center lg:text-left justify-between space-y-6 lg:p-4 lg:ml-4 lg:mr-4">
+          <h1 id="labimotion-heading" className="text-[26px] text-gray-800 font-bold">
             <Image
               src="/LabIMotion-logo.png"
               alt="LabIMotion Logo"
               width={300}
               height={46}
-              className="object-contain w-[300px] h-[46px]"
+              className="object-contain w-[300px] h-[46px] mx-auto lg:mx-0"
             />
-          </div>
-          <p className="text-base text-gray-700 mt-12 mb-12 mr-8">
-            LabIMotion ELN systematically extends the Chemotion ELN software in terms of functions and available
-            modules. The extension makes it possible to use the ELN software with or without chemistry functionality.
-            The most important feature of LabIMotion ELN is the possibility to design new modules that can be customised
-            to the needs of the scientists. Modules can be linked together, allowing materials and samples to be clearly
-            assigned to processes and workflows. A template hub makes it easy to share and synchronise templates between
-            different applications. In addition, LabIMotion ELN supports scientists in accessing Digital Object
-            Identifiers (DOIs) and streamlines the process of publishing research online. This support simplifies the
-            process of publishing research results and ensures that scientists from different disciplines can
-            efficiently share their research results with the world.
-          </p>
-          <div className="flex flex-col sm:flex-row sm:gap-4">
+          </h1>
+          <ul className="list-none text-base text-gray-700 space-y-4">
+            <li className="hover:text-gray-900 transition-all duration-200" role="listitem">
+              <span className="font-medium text-gray-800">Extended Functionality: </span> LabIMotion enhances Chemotion
+              ELN, making it versatile for use beyond chemistry.
+            </li>
+            <li className="hover:text-gray-900 transition-all duration-200" role="listitem">
+              <span className="font-medium text-gray-800">Customizable Modules: </span>
+              Scientists can design and link modules, with a hub for sharing templates.
+            </li>
+            <li className="hover:text-gray-900 transition-all duration-200" role="listitem">
+              <span className="font-medium text-gray-800">Streamlined Research Sharing: </span>Supports Digital Object
+              Identifiers (DOIs) and streamlines research publishing.
+            </li>
+          </ul>
+          <div className="flex justify-center lg:justify-start">
             <a
-              href="https://www.chemotion-repository.net/welcome"
+              href="https://chemotion.net/docs/labimotion"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-block px-8 py-3 text-center text-xl text-[#F6F6F6] bg-[#e63946] rounded-lg font-semibold border-2
+              className="inline-block px-8 py-3 text-center text-xl text-[#F6F6F6] bg-[#e63946] rounded-md font-semibold border-2
               border-[#e63946] shadow-sm transition-all duration-300 hover:bg-gray-800 hover:border-gray-800
-              hover:shadow-lg ">
+              hover:shadow-lg "
+              aria-label="Explore LabIMotion">
               Explore
             </a>
           </div>
         </div>
-        <div className="lg:w-[45%] mt-8 px-4 lg:px-2 lg:mt-0 flex justify-center lg:justify-end">
+        <div
+          className="lg:w-[50%] border-2 border-[#e63946] mt-8 px-2 lg:mr-2 lg:px-0 lg:mt-2 lg:mb-2 lg:mt-0 flex justify-center lg:justify-end relative w-full aspect-[3/2] rounded-md overflow-hidden"
+          aria-hidden="true">
           <Image
-            src="/demo.jpg"
-            alt="Demo Image"
-            width={600}
-            height={350}
-            className="w-auto h-auto object-contain rounded-lg scale-110 transition-transform duration-300"
+            src="/demo2.jpg"
+            alt="Visual representation of the LabIMotion"
+            fill
+            className="object-cover transition-transform duration-300"
           />
         </div>
       </div>
@@ -52,4 +60,4 @@ const GenericElementSection = () => {
   );
 };
 
-export default GenericElementSection;
+export default LabimotionSection;

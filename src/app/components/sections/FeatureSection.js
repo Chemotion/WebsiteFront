@@ -8,73 +8,6 @@ const FeatureSection = () => {
       column: 1,
       groups: [
         {
-          title: 'Lab Specials',
-          items: [
-            'Scanning/generating of BarCode & QR-Code',
-            'Image Editing & Annotation of .png, .bmp, .tif, .svg and .jpeg.',
-            'Manufacturer-independent scale integration via image processing per app'
-          ]
-        },
-        {
-          title: 'Search Functions',
-          items: [
-            'Extensive search functions for all entities',
-            'Structure search as similarity and substructure search',
-            'Text-based search'
-          ]
-        },
-        {
-          title: 'Analytics',
-          items: [
-            'Device import integration from many vendors (Advion, Agilent, Bruker, Gamry, Horiba, Leica, Netzsch, Shimadzu, TA Instruments, Thermo Fisher)',
-            'ChemConverter converts text readable files to common data type: jcamp .jdx,  .json',
-            'ChemSpectra serves for the visualization and analysis of spectroscopic data and allows the analysis of data attached to a sample or reaction',
-            'Integration of NMRium for 1D and 2D analysis'
-          ]
-        }
-      ]
-    },
-    {
-      column: 2,
-      groups: [
-        {
-          title: 'Chemistry Specific Functions',
-          items: [
-            'Structure editors: Ketcher v1/v2, Chemdraw JS, Marvin [License may be required]',
-            'Easy creation of samples, reactions, wellplates, screens, and research plans',
-            'Calculation functions for chemicals',
-            'Easy molecule import via CAS/SMILES',
-            'Easy documentation of reaction variations',
-            'Inventory feature',
-            'ChemScanner to extract information from ChemDraw objects to machine readable format'
-          ]
-        },
-        {
-          title: 'Multiple APIs',
-          items: [
-            'SciFinder: Search CAS for samples and reactions',
-            'Easy export into Chemotion repository and RADAR4Chem',
-            'PubChem: link information automatically to PubChem entries'
-          ]
-        },
-        {
-          title: 'LabIMotion Extension',
-          items: [
-            'LabIMotion for generic elements',
-            'Diverse templates included',
-            'Metadata extraction from measurement data into dataset descriptions'
-          ]
-        }
-      ]
-    },
-    {
-      column: 3,
-      groups: [
-        {
-          title: 'Import/Export Options',
-          items: ['Easy import/export of samples & collections', 'Structure import from sdf and xls']
-        },
-        {
           title: 'Installation Benefits',
           items: ['Open-Source', 'Installation via Docker', 'Helpdesk and online documentation']
         },
@@ -88,8 +21,75 @@ const FeatureSection = () => {
           ]
         },
         {
+          title: 'Chemistry Specific Functions',
+          items: [
+            'Structure editors: Ketcher v1/v2, Chemdraw JS, Marvin [License may be required]',
+            'Easy creation of samples, reactions, wellplates, screens, and research plans',
+            'Calculation functions for chemicals',
+            'Easy molecule import via CAS/SMILES',
+            'Easy documentation of reaction variations',
+            'Inventory feature',
+            'ChemScanner to extract information from ChemDraw objects to machine readable format'
+          ]
+        }
+      ]
+    },
+    {
+      column: 2,
+      groups: [
+        {
+          title: 'Multiple APIs',
+          items: [
+            'SciFinder: Search CAS for samples and reactions',
+            'Easy export into Chemotion repository and RADAR4Chem',
+            'PubChem: link information automatically to PubChem entries'
+          ]
+        },
+        {
           title: 'Collaboration Features',
           items: ['Shareable/common workspaces', 'Comment functions', 'Calendar functions']
+        },
+        {
+          title: 'Analytics',
+          items: [
+            'Device import integration from many vendors (Advion, Agilent, Bruker, Gamry, Horiba, Leica, Netzsch, Shimadzu, TA Instruments, Thermo Fisher)',
+            'ChemConverter converts text readable files to common data type: jcamp .jdx,  .json',
+            'ChemSpectra serves for the visualization and analysis of spectroscopic data and allows the analysis of data attached to a sample or reaction',
+            'Integration of NMRium for 1D and 2D analysis'
+          ]
+        }
+      ]
+    },
+    {
+      column: 3,
+      groups: [
+        {
+          title: 'Import/Export Options',
+          items: ['Easy import/export of samples & collections', 'Structure import from sdf and xls']
+        },
+        {
+          title: 'Search Functions',
+          items: [
+            'Extensive search functions for all entities',
+            'Structure search as similarity and substructure search',
+            'Text-based search'
+          ]
+        },
+        {
+          title: 'Lab Specials',
+          items: [
+            'Scanning/generating of BarCode & QR-Code',
+            'Image Editing & Annotation of .png, .bmp, .tif, .svg and .jpeg.',
+            'Manufacturer-independent scale integration via image processing per app'
+          ]
+        },
+        {
+          title: 'LabIMotion Extension',
+          items: [
+            'LabIMotion for generic elements',
+            'Diverse templates included',
+            'Metadata extraction from measurement data into dataset descriptions'
+          ]
         }
       ]
     }
@@ -100,60 +100,101 @@ const FeatureSection = () => {
 
     const pageWidth = doc.internal.pageSize.getWidth();
     const pageHeight = doc.internal.pageSize.getHeight();
-    const marginLeft = 40;
-    const marginRight = 40;
-    const maxLineWidth = pageWidth - marginLeft - marginRight;
-    let yPosition = 80;
+    const marginLeft = 60;
+    const marginRight = 60;
+    const contentWidth = pageWidth - marginLeft - marginRight;
+    const logoWidth = 90;
+    const logoHeight = 54;
+    let yPosition = 50;
 
-    const addHeaderFooter = (pageNum) => {
-      doc.setFontSize(10);
-      doc.setFont(undefined, 'italic');
-      const pageWidth = doc.internal.pageSize.getWidth();
-      const pageHeight = doc.internal.pageSize.getHeight();
-      const marginRight = 40;
-      doc.text(`Page ${pageNum}`, pageWidth - marginRight, pageHeight - 30, { align: 'right' });
-    };
+    // title
+    doc.setFont('helvetica', 'bold');
+    doc.setFontSize(24);
+    doc.setTextColor(31, 41, 55);
+    doc.text('Chemotion ELN', marginLeft + 5, yPosition + 17, { align: 'left' });
 
-    let pageNum = 1;
-    addHeaderFooter(pageNum);
+    // right logo
+    const logoPath = 'chemotion-lg.png';
+    doc.addImage(logoPath, 'PNG', pageWidth - marginRight - logoWidth - 20, yPosition - 28, logoWidth, logoHeight);
+    yPosition += 35;
 
+    // description
+    const description =
+      'With the Chemotion laboratory notebook you structure and digitalize your entire workflow in the laboratory. This starts with the planning and description of chemical experiments including the generation of samples with different functions and continues with the recording of all observations, and the analysis of especially analytical measurement data. Chemotion ELN provides the platform where you can collect, track and exchange all data in one place. Extensive import and export functions support you from the first step to publication.';
     doc.setFont('helvetica', 'normal');
+    doc.setFontSize(10);
 
-    doc.setFontSize(22);
-    doc.setFont(undefined, 'bold');
-    doc.text('Chemotion ELN Features', pageWidth / 2, yPosition, { align: 'center' });
-    yPosition += 40;
+    // line-height factor
+    const lineHeightFactor = 1.3;
+    const fontSize = doc.getFontSize();
+    const actualLineHeight = fontSize * lineHeightFactor;
+    var padding = 5;
 
-    features.forEach((column) => {
-      column.groups.forEach((group) => {
-        doc.setFontSize(16);
-        doc.setFont(undefined, 'bold');
-        doc.text(group.title, marginLeft, yPosition);
-        yPosition += 20;
+    const textLines = doc.splitTextToSize(description, contentWidth - 20);
 
-        group.items.forEach((item) => {
-          doc.setFontSize(12);
-          doc.setFont(undefined, 'normal');
+    const boxHeight = textLines.length * actualLineHeight + 1.5 * padding;
 
-          const textLines = doc.splitTextToSize(`• ${item}`, maxLineWidth);
-          doc.text(textLines, marginLeft + 10, yPosition);
-          yPosition += textLines.length * 15;
+    doc.setFillColor(221, 230, 242);
+    doc.rect(marginLeft, yPosition, contentWidth, boxHeight, 'F');
 
-          if (yPosition > pageHeight - 80) {
-            doc.addPage();
-            yPosition = 80;
-            pageNum += 1;
-            addHeaderFooter(pageNum);
-          }
+    doc.text(textLines, marginLeft + padding, yPosition + padding + actualLineHeight / 2, {
+      lineHeightFactor
+    });
+
+    yPosition += boxHeight + 15;
+
+    const columnGap = 10;
+    const columnWidth = (contentWidth - columnGap) / 2;
+    const columnSpacing = columnGap;
+    let colX = marginLeft;
+    let colY = yPosition;
+
+    const allGroups = features.flatMap((column) => column.groups);
+    const midIndex = Math.ceil(allGroups.length / 2);
+
+    // two columns
+    padding = 10;
+    const leftColumnGroups = allGroups.slice(0, midIndex);
+    const rightColumnGroups = allGroups.slice(midIndex);
+
+    [leftColumnGroups, rightColumnGroups].forEach((columnGroups, columnIndex) => {
+      colX = marginLeft + columnIndex * (columnWidth + columnSpacing);
+      colY = yPosition;
+
+      columnGroups.forEach((group) => {
+        const titleLines = doc.splitTextToSize(group.title, columnWidth - 2.5 * padding);
+        const itemLines = doc.splitTextToSize(
+          group.items.map((item) => `\u2022  ${item}`).join('\n'),
+          columnWidth - 2 * padding
+        );
+
+        const groupHeight = (titleLines.length + itemLines.length) * actualLineHeight + 2 * padding;
+
+        doc.setFillColor(200, 217, 240);
+        doc.rect(colX, colY, columnWidth, groupHeight, 'F');
+
+        // title
+        doc.setFont('helvetica', 'bold');
+        doc.setFontSize(12);
+        doc.setTextColor(36, 149, 207);
+        doc.text(titleLines, colX + padding, colY + padding + actualLineHeight / 2, {
+          lineHeightFactor
         });
 
-        yPosition += 15;
+        // items
+        doc.setFont('helvetica', 'normal');
+        doc.setFontSize(10);
+        doc.setTextColor(31, 41, 55);
+        doc.text(itemLines, colX + padding, colY + padding + (titleLines.length + 1) * actualLineHeight, {
+          lineHeightFactor
+        });
 
-        if (yPosition > pageHeight - 80) {
+        // update column position
+        colY += groupHeight + 10;
+
+        if (colY > pageHeight - 80) {
           doc.addPage();
-          yPosition = 80;
-          pageNum += 1;
-          addHeaderFooter(pageNum);
+          colY = yPosition;
         }
       });
     });
@@ -162,16 +203,16 @@ const FeatureSection = () => {
   };
 
   return (
-    <div className="px-4 mb-16 max-w-6xl w-full">
-      <div className="border-2 border-[#008ab8] p-12 bg-[#F6F6F6] rounded-lg">
-        <h1 className="text-3xl text-gray-800 font-bold text-center mb-8">Full Feature List</h1>
-        <div className="grid grid-cols-1 custom-lg:grid-cols-3 gap-20 px-2 mt-12">
+    <div className="px-4 text-gray-800 mb-14 max-w-6xl w-full">
+      <div className="border-2 border-[#008ab8] p-12 bg-[#F6F6F6] rounded-md">
+        <h1 className="text-3xl font-bold text-center mb-8">Full Feature List</h1>
+        <div className="grid grid-cols-1 custom-lg:grid-cols-3 custom-lg:gap-14 px-2 mt-12">
           {features.map((column, index) => (
             <div key={index} className="space-y-6">
               {column.groups.map((group, groupIndex) => (
                 <div key={groupIndex}>
-                  <h2 className="text-base text-gray-700 font-semibold mb-2">{group.title}</h2>
-                  <ul className="list-disc text-sm pl-5 space-y-2 text-gray-600">
+                  <h2 className="text-base font-semibold mb-2">{group.title}</h2>
+                  <ul className="list-disc text-sm pl-5 space-y-2">
                     {group.items.map((item, itemIndex) => (
                       <li key={itemIndex}>{item}</li>
                     ))}
@@ -182,7 +223,7 @@ const FeatureSection = () => {
                 {index === features.length - 1 && (
                   <button
                     onClick={generatePDF}
-                    className="mt-8 inline-block px-8 py-3 text-center text-xl text-[#F6F6F6] bg-[#008ab8] rounded-lg font-semibold border-2
+                    className="mt-2 inline-block px-8 py-3 text-center text-xl text-[#F6F6F6] bg-[#008ab8] rounded-md font-semibold border-2
                     border-[#008ab8] shadow-sm transition-all duration-300 hover:bg-gray-800 hover:border-gray-800
                     hover:shadow-lg ">
                     Download as PDF
