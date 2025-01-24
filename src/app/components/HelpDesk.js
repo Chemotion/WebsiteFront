@@ -114,21 +114,29 @@ export default function HelpPage() {
   return (
     <main className="max-w-4xl mx-auto px-4 py-4 mt-8 mb-20">
       <section className="mb-12">
-        <h1 className="text-6xl font-extrabold text-gray-900 leading-normal">Helpdesk</h1>
+        <h1 className="text-6xl font-extrabold text-gray-900 leading-normal" tabIndex="0" aria-label="Helpdesk">
+          Helpdesk
+        </h1>
         <p className="text-lg text-gray-600 mt-4">
           Comprehensive guidance and support for every step of using Chemotion.
         </p>
       </section>
 
       <div className="w-full">
-        <section className="space-y-8 text-gray-800">
+        <section className="space-y-8 text-gray-800" aria-labelledby="help-description">
           <div>
-            <h2 className="text-2xl font-semibold text-gray-900 mb-2">How We Can Help</h2>
+            <h2
+              id="help-description"
+              className="text-2xl font-semibold text-gray-900 mb-2"
+              tabIndex="0"
+              aria-label="How We Can Help">
+              How We Can Help
+            </h2>
             <p className="leading-relaxed mb-2 text-gray-700">
               Our team is dedicated to providing you with the support you need, whether you are new to Chemotion or
               require advanced assistance.
             </p>
-            <ul className="list-disc pl-6 space-y-4 text-gray-700">
+            <ul className="list-disc pl-6 space-y-4 text-gray-700" aria-label="Support Areas">
               <li>
                 <strong>Learn About Chemotion ELN</strong>
                 <br />
@@ -153,7 +161,8 @@ export default function HelpPage() {
               For assistance with Chemotion Repository, please reach out to our&nbsp;
               <a
                 href="mailto:chemotion-repository@lists.kit.edu"
-                className="text-[#008ab8] font-semibold hover:underline">
+                className="text-[#008ab8] font-semibold hover:underline"
+                aria-label="Send email to Chemotion Repository Team">
                 Chemotion Repository Team
               </a>
             </p>
@@ -162,13 +171,16 @@ export default function HelpPage() {
             <h2 className="text-2xl font-semibold text-gray-900">Contact Us</h2>
             <p className="leading-relaxed text-gray-700">
               If you have any questions or require further assistance, feel free to contact the helpdesk via&nbsp;
-              <a href="mailto:helpdesk@nfdi4chem.de" className="text-[#008ab8] font-semibold hover:underline">
+              <a
+                href="mailto:helpdesk@nfdi4chem.de"
+                className="text-[#008ab8] font-semibold hover:underline"
+                aria-label="Send email to Helpdesk">
                 E-Mail
               </a>
               &nbsp;or through our contact form:
             </p>
 
-            <div id="feedback-form"></div>
+            <div id="feedback-form" aria-labelledby="Contact Form"></div>
           </div>
         </section>
       </div>

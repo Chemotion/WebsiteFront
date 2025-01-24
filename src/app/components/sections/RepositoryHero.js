@@ -12,8 +12,14 @@ const RepositoryHero = () => {
     <motion.div
       id="repository"
       className="flex flex-col items-center mb-10 mt-10 text-gray-800 relative cursor-default scroll-mt-[110px]"
-      whileHover="hover">
-      <h1 className="text-4xl text-center">
+      whileHover="hover"
+      role="region"
+      aria-labelledby="repository-hero-heading">
+      <h1
+        id="repository-hero-heading"
+        className="text-4xl text-center"
+        tabIndex="0"
+        aria-label="Mission Completed. Streamlined process from Lab to Publication.">
         Mission Completed.&nbsp;
         <motion.span
           className="font-bold inline-block"

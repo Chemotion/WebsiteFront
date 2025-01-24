@@ -78,7 +78,12 @@ const Card = ({ title, description, image, longdescription }) => {
       initial="initial"
       animate={isClicked ? 'clicked' : 'initial'}
       whileHover={{ scale: 1.02 }}
-      whileTap={{ scale: 1.0 }}>
+      whileTap={{ scale: 1.0 }}
+      role="button"
+      aria-pressed={isClicked}
+      tabIndex="0"
+      aria-labelledby={`${title}-heading`}
+      aria-describedby={`${title}-description`}>
       <AnimatePresence mode="wait">
         {isClicked ? (
           <motion.ul
@@ -86,7 +91,8 @@ const Card = ({ title, description, image, longdescription }) => {
             initial="hidden"
             animate="visible"
             exit="hidden"
-            className="text-gray-700 text-md font-semibold text-left list-disc pl-5 space-y-2 overflow-hidden mt-2 mr-6">
+            className="text-gray-700 text-md font-semibold text-left list-disc pl-5 space-y-2 overflow-hidden mt-2 mr-6"
+            aria-labelledby={`${title}-details`}>
             {longdescription.split('\n').map((point, index) => (
               <motion.li key={index} custom={index} variants={listItemVariants}>
                 {point.trim()}
@@ -101,17 +107,22 @@ const Card = ({ title, description, image, longdescription }) => {
             exit={{ opacity: 0, y: 20 }}
             transition={{ duration: 0.5, ease: 'easeOut' }}>
             <motion.h2
+              id={`${title}-heading`}
               className="text-2xl text-gray-800 font-semibold"
               initial={{ opacity: 0, y: -10 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.4, ease: 'easeOut' }}>
+              transition={{ duration: 0.4, ease: 'easeOut' }}
+              tabIndex="0"
+              aria-label={title}>
               {title}
             </motion.h2>
             <motion.p
+              id={`${title}-description`}
               className="text-gray-700 text-[16px] font-semibold mb-8 mt-4"
               initial={{ opacity: 0, y: -10 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.4, ease: 'easeOut', delay: 0.1 }}>
+              transition={{ duration: 0.4, ease: 'easeOut', delay: 0.1 }}
+              tabIndex="0">
               {description}
             </motion.p>
             <motion.div
@@ -120,7 +131,7 @@ const Card = ({ title, description, image, longdescription }) => {
               transition={{ duration: 0.4, ease: 'easeOut', delay: 0.2 }}>
               <div
                 aria-hidden="true"
-                className=" w-full aspect-[2/1] flex items-end justify-center rounded-md overflow-hidden border-2 border-[#008ab8] mx-auto">
+                className="w-full aspect-[2/1] flex items-end justify-center rounded-md overflow-hidden border-2 border-[#008ab8] mx-auto">
                 <Image
                   src={image}
                   alt={`Visual representation of ${title}`}
@@ -200,10 +211,14 @@ const CardContainer = () => {
   ];
 
   return (
-    <div className="w-full max-w-6xl px-4 mb-14">
+    <div className="w-full max-w-6xl px-4 mb-14" role="region" aria-labelledby="card-container-heading">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-x-14 gap-y-14">
         {cards.map((card, index) => (
-          <section id={card.title.toLowerCase()} key={index} className="w-full">
+          <section
+            id={card.title.toLowerCase()}
+            key={index}
+            className="w-full"
+            aria-labelledby={`${card.title}-heading`}>
             <Card
               title={card.title}
               description={card.description}

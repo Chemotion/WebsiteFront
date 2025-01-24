@@ -55,14 +55,29 @@ const Hero = () => {
       }}
       variants={containerVariants}
       initial="hidden"
-      animate="visible">
-      <motion.div variants={itemVariants} className="text-4xl sm:text-5xl font-bold text-center mb-2">
+      animate="visible"
+      role="region"
+      aria-labelledby="hero-section-title">
+      <motion.div
+        variants={itemVariants}
+        id="hero-section-title"
+        className="text-4xl sm:text-5xl font-bold text-center mb-3 "
+        tabIndex="0"
+        aria-label="Designed for chemists">
         Designed for chemists.
       </motion.div>
-      <motion.div variants={itemVariants} className="text-3xl sm:text-[40px] font-medium text-center mb-8">
-        <span className="tracking-[0.15em]">Extended</span> for life sciences.
+      <motion.div
+        variants={itemVariants}
+        className="text-3xl sm:text-[40px] font-medium text-center mb-8"
+        tabIndex="0"
+        aria-label="Extended for life sciences">
+        <span className="tracking-[0.1em] font-bold">Extended</span> for life sciences.
       </motion.div>
-      <motion.div variants={itemVariants} className="text-4xl sm:text-5xl font-medium text-center max-w-4xl mb-8">
+      <motion.div
+        variants={itemVariants}
+        className="text-4xl sm:text-5xl font-medium text-center max-w-4xl mb-8 sm:tracking-tight"
+        tabIndex="0"
+        aria-label="Support for all your laboratory data from design to publication">
         <span className="block mb-2">
           From <span className="font-bold text-primary">design</span> to&nbsp;
           <span className="font-bold text-secondary">publication</span> –
@@ -78,7 +93,8 @@ const Hero = () => {
           onClick={() => scrollToSection('eln')}
           className="inline-flex items-center px-10 py-4 text-center text-gray-700 bg-[#F6F6F6] rounded-md font-semibold border-2
           border-[#008ab8] shadow-sm transition-all duration-300 ease-in-out 
-          hover:bg-[#008ab8] hover:text-white">
+          hover:bg-[#008ab8] hover:text-white"
+          aria-label="Scroll to ELN section">
           Explore
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -86,7 +102,8 @@ const Hero = () => {
             viewBox="0 0 24 24"
             strokeWidth={1.5}
             stroke="currentColor"
-            className="w-6 h-6 ml-2">
+            className="w-6 h-6 ml-2"
+            aria-hidden="true">
             <path strokeLinecap="round" strokeLinejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
           </svg>
         </button>

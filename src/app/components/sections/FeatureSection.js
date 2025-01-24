@@ -203,18 +203,38 @@ const FeatureSection = () => {
   };
 
   return (
-    <div className="px-4 text-gray-800 mb-14 max-w-6xl w-full">
-      <div className="border-2 border-[#008ab8] p-12 bg-[#F6F6F6] rounded-md">
-        <h1 className="text-3xl font-bold text-center mb-8">Full Feature List</h1>
-        <div className="grid grid-cols-1 custom-lg:grid-cols-3 custom-lg:gap-14 px-2 mt-12">
+    <div className="px-4 text-gray-800 mb-14 max-w-6xl w-full" role="region" aria-labelledby="feature-list-heading">
+      <div
+        className="border-2 border-[#008ab8] p-12 bg-[#F6F6F6] rounded-md"
+        role="group"
+        aria-labelledby="feature-list-heading">
+        <h1
+          id="feature-list-heading"
+          className="text-3xl font-bold text-center mb-8"
+          tabIndex="0"
+          aria-label="Full Feature List">
+          Full Feature List
+        </h1>
+        <div
+          className="grid grid-cols-1 custom-lg:grid-cols-3 custom-lg:gap-14 px-2 mt-12"
+          role="list"
+          aria-label="Feature columns">
           {features.map((column, index) => (
-            <div key={index} className="space-y-6">
+            <div key={index} className="space-y-6" role="listitem" aria-labelledby={`feature-column-${index}`}>
               {column.groups.map((group, groupIndex) => (
-                <div key={groupIndex}>
-                  <h2 className="text-base font-semibold mb-2">{group.title}</h2>
-                  <ul className="list-disc text-sm pl-5 space-y-2">
+                <div key={groupIndex} aria-labelledby={`feature-group-${index}-${groupIndex}`}>
+                  <h2
+                    id={`feature-group-${index}-${groupIndex}`}
+                    className="text-base font-semibold mb-2"
+                    tabIndex="0"
+                    aria-label={group.title}>
+                    {group.title}
+                  </h2>
+                  <ul className="list-disc text-sm pl-5 space-y-2" role="list" aria-label={`${group.title} items`}>
                     {group.items.map((item, itemIndex) => (
-                      <li key={itemIndex}>{item}</li>
+                      <li key={itemIndex} role="listitem" tabIndex="0" aria-label={item}>
+                        {item}
+                      </li>
                     ))}
                   </ul>
                 </div>
@@ -223,9 +243,10 @@ const FeatureSection = () => {
                 {index === features.length - 1 && (
                   <button
                     onClick={generatePDF}
-                    className="mt-2 inline-block px-8 py-3 text-center text-xl text-[#F6F6F6] bg-[#008ab8] rounded-md font-semibold border-2
+                    className="mt-2 inline-block px-8 py-3 text-center text-xl text-white bg-[#008ab8] rounded-md font-semibold border-2
                     border-[#008ab8] shadow-sm transition-all duration-300 hover:bg-gray-800 hover:border-gray-800
-                    hover:shadow-lg ">
+                    hover:shadow-lg"
+                    aria-label="Download feature list as PDF">
                     Download as PDF
                   </button>
                 )}

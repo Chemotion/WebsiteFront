@@ -3,26 +3,43 @@ import Image from 'next/image';
 
 const DeviceSection = () => {
   return (
-    <section id="deviceintegrationcontent" className="px-4 mb-14 max-w-6xl w-full">
-      <div
-        className="flex flex-col lg:flex-row items-center lg:items-stretch justify-between p-6 lg:p-6 border-2 border-[#008ab8] bg-[#F6F6F6] rounded-md overflow-hidden"
-        role="region"
-        aria-labelledby="deviceintegration-heading">
+    <section
+      id="deviceintegrationcontent"
+      className="px-4 mb-14 max-w-6xl w-full"
+      role="region"
+      aria-labelledby="deviceintegration-heading">
+      <div className="flex flex-col lg:flex-row items-center lg:items-stretch justify-between p-6 lg:p-6 border-2 border-[#008ab8] bg-[#F6F6F6] rounded-md overflow-hidden">
         <div className="lg:w-[45%] lg:flex flex-col text-center lg:text-left justify-between space-y-6 lg:p-4 lg:ml-4 lg:mr-4">
-          <h1 id="deviceintegration-heading" className="text-[26px] text-gray-800 font-bold">
+          <h1
+            id="deviceintegration-heading"
+            className="text-[26px] text-gray-800 font-bold"
+            tabIndex="0"
+            aria-label="Device Integration Heading">
             Device Integration
           </h1>
-          <ul className="list-none text-base text-gray-700 space-y-4">
-            <li className="hover:text-gray-900 transition-all duration-200" role="listitem">
-              <span className="font-medium text-gray-800">Seamless Data Transfer: </span> Designed to integrate diverse
+          <ul className="list-none text-base text-gray-700 space-y-4" aria-label="Device integration features">
+            <li
+              className="hover:text-gray-900 transition-all duration-200"
+              role="listitem"
+              tabIndex="0"
+              aria-label="Seamless Data Transfer: Designed to integrate diverse lab data sources with the Chemotion ELN server">
+              <span className="font-medium text-gray-800">Seamless Data Transfer:</span> Designed to integrate diverse
               lab data sources with the Chemotion ELN server.
             </li>
-            <li className="hover:text-gray-900 transition-all duration-200" role="listitem">
-              <span className="font-medium text-gray-800">Flexible Methods: </span> Supports email, network connections,
+            <li
+              className="hover:text-gray-900 transition-all duration-200"
+              role="listitem"
+              tabIndex="0"
+              aria-label="Flexible Methods: Supports email, network connections, and manual uploads for non-networked devices">
+              <span className="font-medium text-gray-800">Flexible Methods:</span> Supports email, network connections,
               and manual uploads for non-networked devices.
             </li>
-            <li className="hover:text-gray-900 transition-all duration-200" role="listitem">
-              <span className="font-medium text-gray-800">Reliable & Versatile: </span>Ensures compatibility with
+            <li
+              className="hover:text-gray-900 transition-all duration-200"
+              role="listitem"
+              tabIndex="0"
+              aria-label="Reliable & Versatile: Ensures compatibility with varying lab setups and connectivity">
+              <span className="font-medium text-gray-800">Reliable & Versatile:</span> Ensures compatibility with
               varying lab setups and connectivity.
             </li>
           </ul>
@@ -31,10 +48,10 @@ const DeviceSection = () => {
               href="https://chemotion.net/docs/eln/devices"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-block px-8 py-3 text-center text-xl text-[#F6F6F6] bg-[#008ab8] rounded-md font-semibold border-2
+              className="inline-block px-8 py-3 text-center text-xl text-white bg-[#008ab8] rounded-md font-semibold border-2
               border-[#008ab8] shadow-sm transition-all duration-300 hover:bg-gray-800 hover:border-gray-800
               hover:shadow-lg"
-              aria-label="Explore ELN Device Integration">
+              aria-label="Visit the Chemotion ELN Device Integration documentation page">
               Explore
             </a>
           </div>

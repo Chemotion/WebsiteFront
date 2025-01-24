@@ -3,18 +3,20 @@ import Image from 'next/image';
 
 const DemoSection = () => {
   return (
-    <section id="democontent" className="px-4 mb-14 max-w-6xl w-full">
-      <div
-        className="flex flex-col lg:flex-row items-center lg:items-stretch justify-between p-6 lg:p-6 border-2 border-[#008ab8] bg-[#F6F6F6] rounded-md overflow-hidden"
-        role="region"
-        aria-labelledby="eln-demo-heading">
+    <section id="democontent" className="px-4 mb-14 max-w-6xl w-full" role="region" aria-labelledby="eln-demo-heading">
+      <div className="flex flex-col lg:flex-row items-center lg:items-stretch justify-between p-6 lg:p-6 border-2 border-[#008ab8] bg-[#F6F6F6] rounded-md overflow-hidden">
         <div className="lg:w-[45%] lg:flex flex-col lg:py-10 text-center lg:text-left justify-between space-y-6 lg:p-4 lg:ml-4 lg:mr-4">
-          <h1 id="eln-demo-heading" className="text-[26px]  text-gray-800 font-bold">
+          <h1
+            id="eln-demo-heading"
+            className="text-[26px] text-gray-800 font-bold"
+            tabIndex="0"
+            aria-label="Chemotion ELN Demo Heading">
             Chemotion ELN Demo
           </h1>
           <div
             className="hover:text-gray-900 list-none text-base text-gray-700 space-y-4 transition-all duration-200"
-            role="discription">
+            tabIndex="0"
+            aria-label="Chemotion ELN Demo description">
             <span className="font-medium text-gray-800">Sounds good?</span> Then go a little deeper. Check it out and
             see how it works, what functions it has, and how easy it is to use. Because nothing is as convincing as
             trying it out for yourself.
@@ -24,10 +26,10 @@ const DemoSection = () => {
               href="https://demo.chemotion.ibcs.kit.edu/home"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-block px-8 py-3 text-center text-xl text-[#F6F6F6] bg-[#008ab8] rounded-md font-semibold border-2
+              className="inline-block px-8 py-3 text-center text-xl text-white bg-[#008ab8] rounded-md font-semibold border-2
               border-[#008ab8] shadow-sm transition-all duration-300 hover:bg-gray-800 hover:border-gray-800
               hover:shadow-lg"
-              aria-label="Explore Chemotion eln-demo">
+              aria-label="Visit the Chemotion ELN demo page">
               Try a Demo
             </a>
           </div>
