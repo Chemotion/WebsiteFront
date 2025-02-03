@@ -1,3 +1,7 @@
+import { FlatCompat } from '@eslint/eslintrc';
+import path from 'path';
+import { fileURLToPath } from 'url';
+
 import js from '@eslint/js';
 import babelParser from '@babel/eslint-parser';
 import react from 'eslint-plugin-react';
@@ -7,13 +11,21 @@ import tailwindcss from 'eslint-plugin-tailwindcss';
 import next from '@next/eslint-plugin-next';
 import prettier from 'eslint-plugin-prettier';
 
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+const compat = new FlatCompat({ baseDirectory: __dirname });
+
 export default [
+  ...compat.extends('next/core-web-vitals'),
+  ...compat.extends('next'),
+
   {
     ignores: ['**/node_modules/**', '**/.next/**', '**/dist/**', '**/out/**']
   },
 
   {
-    files: ['**/*.js', '**/*.jsx', '**/*.ts', '**/*.tsx'],
+    files: ['**/*.{js,jsx,ts,tsx}'],
 
     languageOptions: {
       parser: babelParser,
@@ -66,17 +78,16 @@ export default [
 
       'jsx-a11y/no-noninteractive-tabindex': 'warn',
       'jsx-a11y/click-events-have-key-events': 'off',
-      'jsx-a11y/no-autofocus': 'warn',
+      'jsx-a11y/no-autofocus': 'off',
       'jsx-a11y/no-static-element-interactions': 'warn',
       'jsx-a11y/no-redundant-roles': 'warn',
 
       'prettier/prettier': 'warn',
       'no-unused-vars': ['warn', { argsIgnorePattern: '^_' }],
-      'no-console': 'warn',
+      'no-console': 'off',
       curly: ['warn', 'multi-line'],
       eqeqeq: ['warn', 'always']
     },
-
     settings: {
       react: {
         version: 'detect'

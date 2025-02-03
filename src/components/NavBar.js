@@ -56,7 +56,6 @@ const NavBar = () => {
           ]
         });
       })
-      // eslint-disable-next-line no-console
       .catch((err) => console.error('Error fetching search data:', err));
   }, []);
 
@@ -213,6 +212,13 @@ const NavBar = () => {
           <div className="relative hidden custom-lg:block">
             <div
               onClick={!isSearchVisible ? toggleSearch : undefined}
+              onKeyDown={(e) => {
+                if (e.key === 'Enter' && !isSearchVisible) {
+                  toggleSearch();
+                }
+              }}
+              role="button"
+              tabIndex="0"
               className={`ml-4 flex items-center justify-center rounded-full px-4 py-2 text-base duration-300 ease-in-out custom-lg:mr-4  
                 ${isSearchVisible ? 'h-10 w-72 border-2 border-gray-500 bg-white font-light text-gray-800' : 'h-10 w-52 cursor-pointer border-2 border-neutral-50 bg-neutral-50 hover:text-gray-700'}
               `}>
@@ -251,6 +257,8 @@ const NavBar = () => {
             {isSearchVisible && (searchResults.length > 0 || searchTerm.trim().length > 0) && (
               <div
                 className="absolute right-4 z-50 mt-3 max-h-[500px] w-[60vw] overflow-y-auto rounded-lg border border-gray-200 bg-white shadow-lg md:w-[600px]"
+                role="menu"
+                tabIndex="0"
                 onMouseEnter={() => setIsDropdownHovered(true)}
                 onMouseLeave={() => setIsDropdownHovered(false)}>
                 {searchResults.length > 0 ? (
@@ -279,6 +287,13 @@ const NavBar = () => {
           <div className="relative w-full custom-lg:hidden">
             <div
               onClick={toggleSearch}
+              onKeyDown={(e) => {
+                if (e.key === 'Enter' && !isSearchVisible) {
+                  toggleSearch();
+                }
+              }}
+              role="button"
+              tabIndex="0"
               className="ml-4 flex h-10 w-32 cursor-pointer items-center justify-center rounded-full border-2 border-neutral-50 bg-neutral-50 px-4 py-2 text-base text-gray-600 duration-300 ease-in-out hover:text-gray-700 custom-lg:mr-4">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -313,7 +328,9 @@ const NavBar = () => {
               <div
                 className="fixed left-1/2 top-32 z-50 max-h-[500px] w-[95vw] -translate-x-1/2 overflow-y-auto rounded-lg border border-gray-200 bg-white shadow-lg md:w-[600px]"
                 onMouseEnter={() => setIsDropdownHovered(true)}
-                onMouseLeave={() => setIsDropdownHovered(false)}>
+                onMouseLeave={() => setIsDropdownHovered(false)}
+                role="menu"
+                tabIndex="0">
                 {searchResults.length > 0 ? (
                   <ul className="divide-y divide-neutral-200">
                     {searchResults.map((doc) => (
