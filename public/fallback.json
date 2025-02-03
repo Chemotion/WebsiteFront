@@ -1,0 +1,113 @@
+{
+  "deviceSection": {
+    "title": "Device Integration",
+    "features": [
+      {
+        "children": [
+          { "text": "Seamless Data Transfer:", "bold": true },
+          { "text": " Designed to integrate diverse lab data sources with the Chemotion ELN server." }
+        ]
+      },
+      {
+        "children": [
+          { "text": "Flexible Methods:", "bold": true },
+          { "text": " Supports email, network connections, and manual uploads for non-networked devices." }
+        ]
+      },
+      {
+        "children": [
+          { "text": "Reliable & Versatile:", "bold": true },
+          { "text": " Ensures compatibility with varying lab setups and connectivity." }
+        ]
+      }
+    ],
+    "buttonUrl": "https://chemotion.net/docs/eln/devices",
+    "buttonText": "Explore",
+    "image": []
+  },
+  "demoSection": {
+    "title": "Chemotion ELN Demo",
+    "features": [
+      {
+        "children": [
+          { "text": "Sounds good?", "bold": true },
+          { "text": " Then go a little deeper. Check it out and see how it works, what functions it has, and how easy it is to use. Because nothing is as convincing as trying it out for yourself." }
+        ]
+      }
+    ],
+    "buttonUrl": "https://demo.chemotion.ibcs.kit.edu/home",
+    "buttonText": "Try a Demo",
+    "image": []
+  },
+  "repositorySection": {
+    "heroTitle": [
+      {
+        "children": [
+          { "text": "Mission Completed. " },
+          { "text": "Streamlined", "bold": true },
+          { "text": " process from " },
+          { "text": "Lab", "bold": true },
+          { "text": " to " },
+          { "text": "Publication", "bold": true },
+          { "text": "." }
+        ]
+      }
+    ],
+    "title": "Chemotion Repository",
+    "features": [
+      {
+        "children": [
+          { "text": "Publish:", "bold": true },
+          { "text": " Share your dataset for free with the Chemotion repository, supporting the scientific community." }
+        ]
+      },
+      {
+        "children": [
+          { "text": "Transfer:", "bold": true },
+          { "text": " Move research data directly from the ELN to the repository for seamless publication." }
+        ]
+      },
+      {
+        "children": [
+          { "text": "Save Time:", "bold": true },
+          { "text": " Use interoperable systems with a shared software foundation, improving efficiency." }
+        ]
+      }
+    ],
+    "buttonUrl": "https://demo.chemotion.ibcs.kit.edu/home",
+    "buttonText": "Try a Demo",
+    "image": []
+  },
+  "elnFourStepsSection": [
+    {
+      "title": "Plan",
+      "subtitle": "Plan, collaborate and streamline your data.",
+      "features": [
+        {
+          "type": "list",
+          "format": "unordered",
+          "children": [
+            {
+              "type": "list-item",
+              "children": [
+                { "type": "text", "text": "Organize your projects and share with colleagues." }
+              ]
+            },
+            {
+              "type": "list-item",
+              "children": [
+                { "type": "text", "text": "Manage your workflows efficiently." }
+              ]
+            },
+            {
+              "type": "list-item",
+              "children": [
+                { "type": "text", "text": "Collaborate seamlessly with team members." }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

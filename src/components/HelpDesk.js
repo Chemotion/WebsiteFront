@@ -52,7 +52,7 @@ export default function HelpPage() {
             $form
               .find('button')
               .addClass(
-                'inline-block px-8 py-3 text-center text-xl text-[#F6F6F6] ' +
+                'inline-block px-8 py-3 text-center text-xl text-white ' +
                   'bg-[#008ab8] rounded-md font-semibold border-2 border-[#008ab8] ' +
                   'shadow-sm transition-all duration-300 hover:bg-gray-800 ' +
                   'hover:border-gray-800 hover:shadow-lg text-center w-36 ml-auto'
@@ -104,7 +104,10 @@ export default function HelpPage() {
                 $form.find('#zammad-error-alert').remove();
               }
             });
-            observer.observe($form[0], { childList: true, subtree: true });
+            observer.observe($form[0], {
+              childList: true,
+              subtree: true
+            });
           }, 300);
         }
       };
@@ -112,12 +115,12 @@ export default function HelpPage() {
   }, []);
 
   return (
-    <main className="max-w-4xl mx-auto px-4 py-4 mt-8 mb-20">
+    <main className="mx-auto mb-20 mt-8 max-w-4xl p-4">
       <section className="mb-12">
-        <h1 className="text-6xl font-extrabold text-gray-900 leading-normal" tabIndex="0" aria-label="Helpdesk">
+        <h1 className="text-6xl font-extrabold leading-normal text-gray-900" aria-label="Helpdesk">
           Helpdesk
         </h1>
-        <p className="text-lg text-gray-600 mt-4">
+        <p className="mt-4 text-lg text-gray-600">
           Comprehensive guidance and support for every step of using Chemotion.
         </p>
       </section>
@@ -127,16 +130,15 @@ export default function HelpPage() {
           <div>
             <h2
               id="help-description"
-              className="text-2xl font-semibold text-gray-900 mb-2"
-              tabIndex="0"
+              className="mb-2 text-2xl font-semibold text-gray-900"
               aria-label="How We Can Help">
               How We Can Help
             </h2>
-            <p className="leading-relaxed mb-2 text-gray-700">
+            <p className="mb-2 leading-relaxed text-gray-700">
               Our team is dedicated to providing you with the support you need, whether you are new to Chemotion or
               require advanced assistance.
             </p>
-            <ul className="list-disc pl-6 space-y-4 text-gray-700" aria-label="Support Areas">
+            <ul className="list-disc space-y-4 pl-6 text-gray-700" aria-label="Support Areas">
               <li>
                 <strong>Learn About Chemotion ELN</strong>
                 <br />
@@ -161,7 +163,7 @@ export default function HelpPage() {
               For assistance with Chemotion Repository, please reach out to our&nbsp;
               <a
                 href="mailto:chemotion-repository@lists.kit.edu"
-                className="text-[#008ab8] font-semibold hover:underline"
+                className="font-semibold text-[#008ab8] hover:underline"
                 aria-label="Send email to Chemotion Repository Team">
                 Chemotion Repository Team
               </a>
@@ -173,7 +175,7 @@ export default function HelpPage() {
               If you have any questions or require further assistance, feel free to contact the helpdesk via&nbsp;
               <a
                 href="mailto:helpdesk@nfdi4chem.de"
-                className="text-[#008ab8] font-semibold hover:underline"
+                className="font-semibold text-[#008ab8] hover:underline"
                 aria-label="Send email to Helpdesk">
                 E-Mail
               </a>

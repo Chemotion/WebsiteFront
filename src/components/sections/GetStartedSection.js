@@ -55,31 +55,27 @@ const GetStartedSection = () => {
   ];
 
   return (
-    <div id="explore" className="px-4 mb-16 max-w-6xl w-full" role="region" aria-labelledby="explore-section-heading">
-      <div className="flex flex-col sm:flex-row gap-14 items-stretch">
+    <div id="explore" className="mb-16 w-full max-w-6xl px-4" role="region" aria-labelledby="explore-section-heading">
+      <div className="flex flex-col items-stretch gap-14 sm:flex-row">
         {features.map((feature, index) => (
           <div
             key={index}
-            className="border-2 text-gray-800 border-[#008ab8] p-12 bg-[#F6F6F6] rounded-md flex flex-col justify-between flex-1"
+            className="flex flex-1 flex-col justify-between rounded-md border-2 border-[#008ab8] p-12 text-gray-800"
             role="group"
             aria-labelledby={`feature-column-${index}-title`}>
             <div>
-              <h2
-                id={`feature-column-${index}-title`}
-                className="text-2xl font-bold"
-                tabIndex="0"
-                aria-label={feature.columnTitle}>
+              <h2 id={`feature-column-${index}-title`} className="text-2xl font-bold" aria-label={feature.columnTitle}>
                 {feature.columnTitle}
               </h2>
-              <div className="space-y-2 mt-8">
+              <div className="mt-8 space-y-2">
                 {feature.groups.map((group, groupIndex) => (
                   <div key={groupIndex}>
-                    <h3 className="text-base font-semibold mb-2" tabIndex="0" aria-label={group.title}>
+                    <h3 className="mb-2 text-base font-semibold" aria-label={group.title}>
                       {group.title}
                     </h3>
-                    <ul className="list-disc pl-5 space-y-1" role="list" aria-label={`${group.title} items`}>
+                    <ul className="list-disc space-y-1 pl-5" aria-label={`${group.title} items`}>
                       {group.items.map((item, itemIndex) => (
-                        <li key={itemIndex} role="listitem" tabIndex="0" aria-label={item}>
+                        <li key={itemIndex} aria-label={item}>
                           {item}
                         </li>
                       ))}
@@ -93,8 +89,8 @@ const GetStartedSection = () => {
                 href={feature.button.link}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-block px-8 py-3 text-center text-xl text-white bg-[#008ab8] rounded-md font-semibold border-2
-                border-[#008ab8] shadow-sm transition-all duration-300 hover:bg-gray-800 hover:border-gray-800
+                className="inline-block rounded-md border-2 border-[#008ab8] bg-[#008ab8] px-8 py-3 text-center text-xl font-semibold
+                text-white shadow-sm transition-all duration-300 hover:border-gray-800 hover:bg-gray-800
                 hover:shadow-lg"
                 aria-label={`Learn more about ${feature.columnTitle}`}>
                 {feature.button.text}

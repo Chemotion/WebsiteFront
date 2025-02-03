@@ -56,6 +56,7 @@ const NavBar = () => {
           ]
         });
       })
+      // eslint-disable-next-line no-console
       .catch((err) => console.error('Error fetching search data:', err));
   }, []);
 
@@ -94,13 +95,19 @@ const NavBar = () => {
     const isRootPath = window.location.pathname === '/';
     if (isRootPath && window.location.hash) {
       e.preventDefault();
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
       setTimeout(() => {
         history.replaceState({}, '', '/');
       }, 300);
     } else if (isRootPath) {
       e.preventDefault();
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
     }
   };
 
@@ -123,81 +130,81 @@ const NavBar = () => {
 
   return (
     <header
-      className="fixed top-0 left-0 right-0 flex items-center py-[3px] h-16 z-50 text-base font-medium bg-[#eaeaea] shadow-md text-gray-700"
+      className="fixed inset-x-0 top-0 z-50 flex h-16 items-center bg-[#F0F0F0] py-[3px] text-base font-medium text-gray-700 shadow-md"
       role="banner">
-      <div className="container mx-auto max-w-7xl flex items-center justify-between">
+      <div className="container mx-auto flex max-w-7xl items-center justify-between">
         <div className="flex items-center">
           <div className="transition-opacity duration-300 ease-in-out hover:opacity-80">
             <Link
               href="/"
               onClick={scrollToTop}
-              className="group relative flex items-center font-semibold text-gray-600 mr-12 ml-4"
+              className="width-auto height-auto group relative ml-4 mr-12 flex items-center font-semibold text-gray-600"
               aria-label="Navigate to Chemotion homepage">
-              <Image src="/open-c.png" alt="Chemotion Logo" className="mr-4" width={35} height={35} priority />
+              <Image src="/images/open-c.png" alt="Chemotion Logo" className="mr-4" width={35} height={42} />
               Chemotion
             </Link>
           </div>
-          <nav className="hidden custom-lg:flex space-x-10" aria-label="Main navigation">
+          <nav className="hidden space-x-10 custom-lg:flex" aria-label="Main navigation">
             <Link
               href="/#eln"
-              className="relative group hover:text-gray-600 transition-colors duration-300"
+              className="group relative transition-colors duration-300 hover:text-gray-600"
               aria-label="Navigate to ELN section">
               ELN
-              <span className="absolute left-1/2 bottom-[-5px] h-[3px] w-0 transition-all duration-300 ease-in-out group-hover:left-0 group-hover:w-full">
-                <span className="block w-full h-full bg-gray-500"></span>
+              <span className="absolute bottom-[-5px] left-1/2 h-[3px] w-0 transition-all duration-300 ease-in-out group-hover:left-0 group-hover:w-full">
+                <span className="block size-full bg-gray-500"></span>
               </span>
             </Link>
 
             <Link
               href="/#labimotion"
-              className="relative group hover:text-gray-600 transition-colors duration-300"
+              className="group relative transition-colors duration-300 hover:text-gray-600"
               aria-label="Navigate to LabIMotion section">
               LabIMotion
-              <span className="absolute left-1/2 bottom-[-5px] h-[3px] w-0 transition-all duration-300 ease-in-out group-hover:left-0 group-hover:w-full">
-                <span className="block w-full h-full bg-gray-500"></span>
+              <span className="absolute bottom-[-5px] left-1/2 h-[3px] w-0 transition-all duration-300 ease-in-out group-hover:left-0 group-hover:w-full">
+                <span className="block size-full bg-gray-500"></span>
               </span>
             </Link>
 
             <Link
               href="/#repository"
-              className="relative group hover:text-gray-600 transition-colors duration-300"
+              className="group relative transition-colors duration-300 hover:text-gray-600"
               aria-label="Navigate to Repository section">
               Repository
-              <span className="absolute left-1/2 bottom-[-5px] h-[3px] w-0 transition-all duration-300 ease-in-out group-hover:left-0 group-hover:w-full">
-                <span className="block w-full h-full bg-gray-500"></span>
+              <span className="absolute bottom-[-5px] left-1/2 h-[3px] w-0 transition-all duration-300 ease-in-out group-hover:left-0 group-hover:w-full">
+                <span className="block size-full bg-gray-500"></span>
               </span>
             </Link>
           </nav>
         </div>
         <div className="flex items-center space-x-4">
-          <nav className="hidden  custom-lg:flex space-x-6">
+          <nav className="hidden space-x-6 custom-lg:flex">
             <Link
               href="/about"
-              className="relative group hover:text-gray-600 transition-colors duration-300"
+              className="group relative transition-colors duration-300 hover:text-gray-600"
               aria-label="Learn more about us">
               Who we are
-              <span className="absolute left-1/2 bottom-[-5px] h-[3px] w-0 transition-all duration-300 ease-in-out group-hover:left-0 group-hover:w-full">
-                <span className="block w-full h-full bg-gray-500"></span>
+              <span className="absolute bottom-[-5px] left-1/2 h-[3px] w-0 transition-all duration-300 ease-in-out group-hover:left-0 group-hover:w-full">
+                <span className="block size-full bg-gray-500"></span>
               </span>
             </Link>
             <Link
               href="/helpdesk"
-              className="relative group hover:text-gray-600 transition-colors duration-300"
+              className="group relative transition-colors duration-300 hover:text-gray-600"
               aria-label="Navigate to Helpdesk">
               Helpdesk
-              <span className="absolute left-1/2 bottom-[-5px] h-[3px] w-0 transition-all duration-300 ease-in-out group-hover:left-0 group-hover:w-full">
-                <span className="block w-full h-full bg-gray-500"></span>
+              <span className="absolute bottom-[-5px] left-1/2 h-[3px] w-0 transition-all duration-300 ease-in-out group-hover:left-0 group-hover:w-full">
+                <span className="block size-full bg-gray-500"></span>
               </span>
             </Link>
             <Link
               href="https://chemotion.net/docs"
-              className="relative group hover:text-gray-600 transition-colors duration-300"
+              className="group relative transition-colors duration-300 hover:text-gray-600"
               rel="noopener noreferrer"
               target="_blank"
               aria-label="Navigate to Chemotion documentation">
               Docs
-              <span className="absolute left-1/2 bottom-[-5px] h-[3px] w-0 transition-all duration-300 ease-in-out group-hover:left-0 group-hover:w-full">
-                <span className="block w-full h-full bg-gray-500"></span>
+              <span className="absolute bottom-[-5px] left-1/2 h-[3px] w-0 transition-all duration-300 ease-in-out group-hover:left-0 group-hover:w-full">
+                <span className="block size-full bg-gray-500"></span>
               </span>
             </Link>
           </nav>
@@ -206,12 +213,8 @@ const NavBar = () => {
           <div className="relative hidden custom-lg:block">
             <div
               onClick={!isSearchVisible ? toggleSearch : undefined}
-              className={`custom-lg:mr-4 ml-4 flex items-center text-base justify-center duration-300 ease-in-out rounded-full px-4 py-2  
-                ${
-                  isSearchVisible
-                    ? 'w-72 h-10 bg-white font-light text-gray-800 border-2 border-gray-500'
-                    : 'w-52 h-10 bg-gray-100 border-2 cursor-pointer border-gray-100 hover:text-gray-700'
-                }
+              className={`ml-4 flex items-center justify-center rounded-full px-4 py-2 text-base duration-300 ease-in-out custom-lg:mr-4  
+                ${isSearchVisible ? 'h-10 w-72 border-2 border-gray-500 bg-white font-light text-gray-800' : 'h-10 w-52 cursor-pointer border-2 border-neutral-50 bg-neutral-50 hover:text-gray-700'}
               `}>
               {isSearchVisible ? (
                 <>
@@ -231,7 +234,7 @@ const NavBar = () => {
                     xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 24 24"
                     fill="currentColor"
-                    className="size-6 mr-2 text-[#008ab8]">
+                    className="mr-2 size-6 text-[#008ab8]">
                     <path d="M8.25 10.875a2.625 2.625 0 1 1 5.25 0 2.625 2.625 0 0 1-5.25 0Z" />
                     <path
                       fillRule="evenodd"
@@ -247,18 +250,18 @@ const NavBar = () => {
             {/* search results dropdown */}
             {isSearchVisible && (searchResults.length > 0 || searchTerm.trim().length > 0) && (
               <div
-                className="absolute right-4 mt-3 w-[60vw] md:w-[600px] bg-white border border-gray-200 shadow-lg rounded-lg z-50 max-h-[500px] overflow-y-auto"
+                className="absolute right-4 z-50 mt-3 max-h-[500px] w-[60vw] overflow-y-auto rounded-lg border border-gray-200 bg-white shadow-lg md:w-[600px]"
                 onMouseEnter={() => setIsDropdownHovered(true)}
                 onMouseLeave={() => setIsDropdownHovered(false)}>
                 {searchResults.length > 0 ? (
-                  <ul className="divide-y divide-gray-100">
+                  <ul className="divide-y divide-neutral-200">
                     {searchResults.map((doc) => (
-                      <li key={doc.__id} className="hover:bg-gray-50">
+                      <li key={doc.__id} className="hover:bg-neutral-100">
                         <Link
                           href={`https://chemotion.net${doc.u}?_highlight=${encodeURIComponent(searchTerm)}`}
                           className="block px-6 py-4">
-                          <h3 className="font-semibold text-gray-900 truncate">{doc.t}</h3>
-                          <p className="text-sm text-gray-500 truncate">{doc.u}</p>
+                          <h3 className="truncate font-semibold text-gray-900">{doc.t}</h3>
+                          <p className="truncate text-sm text-gray-500">{doc.u}</p>
                         </Link>
                       </li>
                     ))}
@@ -276,12 +279,12 @@ const NavBar = () => {
           <div className="relative w-full custom-lg:hidden">
             <div
               onClick={toggleSearch}
-              className="custom-lg:mr-4 ml-4 flex items-center text-base text-gray-600 justify-center duration-300 ease-in-out rounded-full px-4 py-2 w-32 h-10 bg-gray-100 border-2 cursor-pointer border-gray-100 hover:text-gray-700">
+              className="ml-4 flex h-10 w-32 cursor-pointer items-center justify-center rounded-full border-2 border-neutral-50 bg-neutral-50 px-4 py-2 text-base text-gray-600 duration-300 ease-in-out hover:text-gray-700 custom-lg:mr-4">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 24 24"
                 fill="currentColor"
-                className="size-6 mr-2 text-[#008ab8]">
+                className="mr-2 size-6 text-[#008ab8]">
                 <path d="M8.25 10.875a2.625 2.625 0 1 1 5.25 0 2.625 2.625 0 0 1-5.25 0Z" />
                 <path
                   fillRule="evenodd"
@@ -292,7 +295,7 @@ const NavBar = () => {
               <div>Search</div>
             </div>
             {isSearchVisible && (
-              <div className="fixed left-1/2 -translate-x-1/2 transform mt-2 top-16 flex items-center h-12 w-[95vw] bg-white border-2 border-gray-500 rounded-lg shadow-md p-2">
+              <div className="fixed left-1/2 top-16 mt-2 flex h-12 w-[95vw] -translate-x-1/2 items-center rounded-lg border-2 border-gray-500 bg-white p-2 shadow-md">
                 <input
                   type="text"
                   value={searchTerm}
@@ -308,18 +311,18 @@ const NavBar = () => {
             {/* mobile search results dropdown */}
             {isSearchVisible && (searchResults.length > 0 || searchTerm.trim().length > 0) && (
               <div
-                className="fixed left-1/2 -translate-x-1/2 transform top-32 w-[95vw] md:w-[600px] bg-white border border-gray-200 shadow-lg rounded-lg z-50 max-h-[500px] overflow-y-auto"
+                className="fixed left-1/2 top-32 z-50 max-h-[500px] w-[95vw] -translate-x-1/2 overflow-y-auto rounded-lg border border-gray-200 bg-white shadow-lg md:w-[600px]"
                 onMouseEnter={() => setIsDropdownHovered(true)}
                 onMouseLeave={() => setIsDropdownHovered(false)}>
                 {searchResults.length > 0 ? (
-                  <ul className="divide-y divide-gray-100">
+                  <ul className="divide-y divide-neutral-200">
                     {searchResults.map((doc) => (
-                      <li key={doc.__id} className="hover:bg-gray-50">
+                      <li key={doc.__id} className="hover:bg-neutral-100">
                         <Link
                           href={`https://chemotion.net${doc.u}?_highlight=${encodeURIComponent(searchTerm)}`}
                           className="block px-6 py-4">
-                          <h3 className="font-semibold text-gray-900 truncate">{doc.t}</h3>
-                          <p className="text-sm text-gray-500 truncate">{doc.u}</p>
+                          <h3 className="truncate font-semibold text-gray-900">{doc.t}</h3>
+                          <p className="truncate text-sm text-gray-500">{doc.u}</p>
                         </Link>
                       </li>
                     ))}
@@ -335,56 +338,48 @@ const NavBar = () => {
 
           <button
             onClick={toggleMenu}
-            className="custom-lg:hidden focus:outline-none p-4 relative z-50"
+            className="relative z-50 p-4 focus:outline-none custom-lg:hidden"
             aria-label="Toggle mobile menu"
             aria-expanded={isMobileMenuOpen}>
             <div className="space-y-1.5">
               <span
-                className={`block w-6 h-0.5 bg-gray-600 transform transition duration-300 ${
-                  isMobileMenuOpen ? 'rotate-45 translate-y-1.5' : ''
-                }`}></span>
+                className={`block h-0.5 w-6 bg-gray-600 transition duration-300 ${isMobileMenuOpen ? 'translate-y-1.5 rotate-45' : ''}`}></span>
               <span
-                className={`block w-6 h-0.5 bg-gray-600 transition duration-300 ${
-                  isMobileMenuOpen ? 'opacity-0' : ''
-                }`}></span>
+                className={`block h-0.5 w-6 bg-gray-600 transition duration-300 ${isMobileMenuOpen ? 'opacity-0' : ''}`}></span>
               <span
-                className={`block w-6 h-0.5 bg-gray-600 transform transition duration-300 ${
-                  isMobileMenuOpen ? '-rotate-45 -translate-y-1.5' : ''
-                }`}></span>
+                className={`block h-0.5 w-6 bg-gray-600 transition duration-300 ${isMobileMenuOpen ? '-translate-y-1.5 -rotate-45' : ''}`}></span>
             </div>
           </button>
         </div>
       </div>
       <div
-        className={`custom-lg:hidden bg-[#eaeaea] fixed inset-y-0 right-0 w-1/2 pt-24 transition-transform transform ${
-          isMobileMenuOpen ? 'translate-x-0' : 'translate-x-full'
-        }`}>
+        className={`fixed inset-y-0 right-0 w-1/2 bg-[#F0F0F0] pt-24 transition-transform custom-lg:hidden ${isMobileMenuOpen ? 'translate-x-0' : 'translate-x-full'}`}>
         <nav className="flex flex-col items-center space-y-6">
           <Link
             href="/#eln"
             onClick={() => setIsMobileMenuOpen(false)}
-            className="hover:text-gray-600 transition-colors font-light text-lg mb-2 md:mb-0 md:mr-4"
+            className="mb-2 text-lg font-light transition-colors hover:text-gray-600 md:mb-0 md:mr-4"
             aria-label="Navigate to ELN section">
             ELN
           </Link>
           <Link
             href="/#labimotion"
             onClick={() => setIsMobileMenuOpen(false)}
-            className="hover:text-gray-600 transition-colors font-light text-lg mb-2 md:mb-0 md:mr-4"
+            className="mb-2 text-lg font-light transition-colors hover:text-gray-600 md:mb-0 md:mr-4"
             aria-label="Navigate to LabIMotion section">
             LabIMotion
           </Link>
           <Link
             href="/#repository"
             onClick={() => setIsMobileMenuOpen(false)}
-            className="hover:text-gray-600 transition-colors font-light text-lg"
+            className="text-lg font-light transition-colors hover:text-gray-600"
             aria-label="Navigate to Repository section">
             Repository
           </Link>
           <hr className="w-3/4 border-t border-gray-400" />
           <Link
             href="https://chemotion.net/docs"
-            className="hover:text-gray-600 transition-colors font-light text-lg"
+            className="text-lg font-light transition-colors hover:text-gray-600"
             rel="noopener noreferrer"
             target="_blank"
             aria-label="Navigate to Chemotion documentation">
@@ -393,14 +388,14 @@ const NavBar = () => {
           <Link
             href="/helpdesk"
             onClick={() => setIsMobileMenuOpen(false)}
-            className="hover:text-gray-600 transition-colors font-light text-lg"
+            className="text-lg font-light transition-colors hover:text-gray-600"
             aria-label="Navigate to Helpdesk">
             Helpdesk
           </Link>
           <Link
             href="/about"
             onClick={() => setIsMobileMenuOpen(false)}
-            className="hover:text-gray-600 transition-colors font-light text-lg"
+            className="text-lg font-light transition-colors hover:text-gray-600"
             aria-label="Learn more about us">
             Who we are
           </Link>

@@ -114,7 +114,7 @@ const FeatureSection = () => {
     doc.text('Chemotion ELN', marginLeft + 5, yPosition + 17, { align: 'left' });
 
     // right logo
-    const logoPath = 'chemotion-lg.png';
+    const logoPath = 'images/chemotion-lg.png';
     doc.addImage(logoPath, 'PNG', pageWidth - marginRight - logoWidth - 20, yPosition - 28, logoWidth, logoHeight);
     yPosition += 35;
 
@@ -203,20 +203,13 @@ const FeatureSection = () => {
   };
 
   return (
-    <div className="px-4 text-gray-800 mb-14 max-w-6xl w-full" role="region" aria-labelledby="feature-list-heading">
-      <div
-        className="border-2 border-[#008ab8] p-12 bg-[#F6F6F6] rounded-md"
-        role="group"
-        aria-labelledby="feature-list-heading">
-        <h1
-          id="feature-list-heading"
-          className="text-3xl font-bold text-center mb-8"
-          tabIndex="0"
-          aria-label="Full Feature List">
+    <div className="mb-14 w-full max-w-6xl px-4 text-gray-800" role="region" aria-labelledby="feature-list-heading">
+      <div className="rounded-md border-2 border-[#008ab8] p-12" role="group" aria-labelledby="feature-list-heading">
+        <h1 id="feature-list-heading" className="mb-8 text-center text-3xl font-bold" aria-label="Full Feature List">
           Full Feature List
         </h1>
         <div
-          className="grid grid-cols-1 custom-lg:grid-cols-3 custom-lg:gap-14 px-2 mt-12"
+          className="mt-12 grid grid-cols-1 px-2 custom-lg:grid-cols-3 custom-lg:gap-14"
           role="list"
           aria-label="Feature columns">
           {features.map((column, index) => (
@@ -225,14 +218,13 @@ const FeatureSection = () => {
                 <div key={groupIndex} aria-labelledby={`feature-group-${index}-${groupIndex}`}>
                   <h2
                     id={`feature-group-${index}-${groupIndex}`}
-                    className="text-base font-semibold mb-2"
-                    tabIndex="0"
+                    className="mb-2 text-base font-semibold"
                     aria-label={group.title}>
                     {group.title}
                   </h2>
-                  <ul className="list-disc text-sm pl-5 space-y-2" role="list" aria-label={`${group.title} items`}>
+                  <ul className="list-disc space-y-2 pl-5 text-sm" aria-label={`${group.title} items`}>
                     {group.items.map((item, itemIndex) => (
-                      <li key={itemIndex} role="listitem" tabIndex="0" aria-label={item}>
+                      <li key={itemIndex} aria-label={item}>
                         {item}
                       </li>
                     ))}
@@ -243,8 +235,8 @@ const FeatureSection = () => {
                 {index === features.length - 1 && (
                   <button
                     onClick={generatePDF}
-                    className="mt-2 inline-block px-8 py-3 text-center text-xl text-white bg-[#008ab8] rounded-md font-semibold border-2
-                    border-[#008ab8] shadow-sm transition-all duration-300 hover:bg-gray-800 hover:border-gray-800
+                    className="mt-2 inline-block rounded-md border-2 border-[#008ab8] bg-[#008ab8] px-8 py-3 text-center text-xl font-semibold
+                    text-white shadow-sm transition-all duration-300 hover:border-gray-800 hover:bg-gray-800
                     hover:shadow-lg"
                     aria-label="Download feature list as PDF">
                     Download as PDF

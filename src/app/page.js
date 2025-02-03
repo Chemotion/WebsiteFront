@@ -1,23 +1,23 @@
-import NavBar from './components/NavBar';
-import Hero from './components/sections/Hero';
-import Diagram from './components/sections/Diagram';
-import CardContainer from './components/sections/FourCardsSection';
-import FeatureSection from './components/sections/FeatureSection';
-import ELNHero from './components/sections/ELNHero';
-import DemoSection from './components/sections/DemoSection';
-import DeviceSection from './components/sections/DeviceSection';
-import GetStartedSection from './components/sections/GetStartedSection';
-import LabimotionHero from './components/sections/LabimotionHero';
-import LabimotionSection from './components/sections/LabimotionSection';
-import RepositoryHero from './components/sections/RepositoryHero';
-import RepositorySection from './components/sections/RepositorySection';
-import Footer from './components/Footer';
+import NavBar from '@/components/NavBar';
+import Hero from '@/components/sections/Hero';
+import Diagram from '@/components/sections/Diagram';
+import CardContainer from '@/components/sections/FourCardsSection';
+import FeatureSection from '@/components/sections/FeatureSection';
+import ELNHero from '@/components/sections/ELNHero';
+import DemoSection from '@/components/sections/DemoSection';
+import DeviceSection from '@/components/sections/DeviceSection';
+import GetStartedSection from '@/components/sections/GetStartedSection';
+import LabimotionHero from '@/components/sections/LabimotionHero';
+import LabimotionSection from '@/components/sections/LabimotionSection';
+import RepositoryHero from '@/components/sections/RepositoryHero';
+import RepositorySection from '@/components/sections/RepositorySection';
+import Footer from '@/components/Footer';
 
 export default function Home() {
   return (
-    <div className="font-geist text-gray-800 scroll-smooth bg-[#F6F6F6] overflow-x-hidden">
+    <div className="overflow-x-hidden scroll-smooth bg-neutral-50 font-geist text-gray-800">
       <NavBar />
-      <main className="pt-20 min-h-screen flex flex-col items-center justify-center w-full">
+      <main className="flex min-h-screen w-full flex-col items-center justify-center pt-20">
         <Hero />
         <Diagram />
         <ELNHero />
