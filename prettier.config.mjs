@@ -1,4 +1,4 @@
-export default {
+const prettierConfig = {
   semi: true,
   singleQuote: true,
   tabWidth: 2,
@@ -10,3 +10,5 @@ export default {
   htmlWhitespaceSensitivity: 'ignore',
   bracketSameLine: true
 };
+
+export default prettierConfig;
