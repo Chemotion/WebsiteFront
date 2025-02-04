@@ -68,7 +68,7 @@ const DeviceSection = () => {
           </div>
         </div>
         <div
-          className="relative mt-8 flex aspect-[3/2] w-full justify-center overflow-hidden rounded-md border-2 border-[#008ab8] px-2 lg:my-2 lg:mr-2 lg:mt-0 lg:w-1/2 lg:justify-end lg:px-0"
+          className="relative mt-8 flex aspect-[3/2] w-full justify-center overflow-hidden rounded-md border-2 border-[#008ab8] px-2 lg:my-2 lg:mr-2 lg:w-1/2 lg:justify-end lg:px-0"
           aria-hidden="true">
           {content?.image?.url ? (
             <Image
