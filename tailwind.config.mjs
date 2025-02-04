@@ -1,4 +1,6 @@
 /** @type {import('tailwindcss').Config} */
+const colors = require('tailwindcss/colors');
+
 module.exports = {
   content: [
     './src/pages/**/*.{js,ts,jsx,tsx,mdx}',
@@ -8,8 +10,10 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        background: 'var(--background)',
-        foreground: 'var(--foreground)'
+        background: colors.neutral[50],
+        foreground: colors.gray[800],
+        darkBackground: colors.neutral[950],
+        darkForeground: colors.neutral[200]
       },
       screens: {
         'custom-lg': '1080px'
@@ -20,5 +24,6 @@ module.exports = {
       }
     }
   },
+  darkMode: 'class',
   plugins: []
 };
