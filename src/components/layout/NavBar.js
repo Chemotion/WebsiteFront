@@ -20,7 +20,6 @@ const NavBar = () => {
     fetch('/api/search')
       .then((res) => res.json())
       .then((data) => {
-        // data might be an array of blocks or a single object
         const blocks = Array.isArray(data) ? data : [data];
         const mergedDocuments = [];
 
@@ -129,7 +128,7 @@ const NavBar = () => {
 
   return (
     <header
-      className="fixed inset-x-0 top-0 z-50 flex h-16 items-center bg-[#F0F0F0] py-[3px] text-base font-medium text-gray-700 shadow-md"
+      className="fixed inset-x-0 top-0 z-50 flex h-[66px] items-center bg-[#eeeeee] py-[3px] text-base font-medium text-gray-800 shadow-md "
       role="banner">
       <div className="container mx-auto flex max-w-7xl items-center justify-between">
         <div className="flex items-center">
@@ -137,72 +136,72 @@ const NavBar = () => {
             <Link
               href="/"
               onClick={scrollToTop}
-              className="width-auto height-auto group relative ml-4 mr-12 flex items-center font-semibold text-gray-600"
+              className="width-auto height-auto group relative ml-4 mr-12 flex items-center text-lg font-semibold text-gray-800"
               aria-label="Navigate to Chemotion homepage">
               <Image src="/images/open-c.png" alt="Chemotion Logo" className="mr-4" width={35} height={42} />
               Chemotion
             </Link>
           </div>
-          <nav className="hidden space-x-10 custom-lg:flex" aria-label="Main navigation">
+          <nav className="hidden space-x-8 custom-lg:flex" aria-label="Main navigation">
             <Link
               href="/#eln"
-              className="group relative transition-colors duration-300 hover:text-gray-600"
+              className="group relative transition-colors duration-300 hover:text-gray-700"
               aria-label="Navigate to ELN section">
               ELN
-              <span className="absolute bottom-[-5px] left-1/2 h-[3px] w-0 transition-all duration-300 ease-in-out group-hover:left-0 group-hover:w-full">
+              <span className="absolute bottom-[-4px] left-1/2 h-[3px] w-0 transition-all duration-300 ease-in-out group-hover:left-0 group-hover:w-full">
                 <span className="block size-full bg-gray-500"></span>
               </span>
             </Link>
 
             <Link
               href="/#labimotion"
-              className="group relative transition-colors duration-300 hover:text-gray-600"
+              className="group relative transition-colors duration-300 hover:text-gray-700"
               aria-label="Navigate to LabIMotion section">
               LabIMotion
-              <span className="absolute bottom-[-5px] left-1/2 h-[3px] w-0 transition-all duration-300 ease-in-out group-hover:left-0 group-hover:w-full">
+              <span className="absolute bottom-[-4px] left-1/2 h-[3px] w-0 transition-all duration-300 ease-in-out group-hover:left-0 group-hover:w-full">
                 <span className="block size-full bg-gray-500"></span>
               </span>
             </Link>
 
             <Link
               href="/#repository"
-              className="group relative transition-colors duration-300 hover:text-gray-600"
+              className="group relative transition-colors duration-300 hover:text-gray-700"
               aria-label="Navigate to Repository section">
               Repository
-              <span className="absolute bottom-[-5px] left-1/2 h-[3px] w-0 transition-all duration-300 ease-in-out group-hover:left-0 group-hover:w-full">
+              <span className="absolute bottom-[-4px] left-1/2 h-[3px] w-0 transition-all duration-300 ease-in-out group-hover:left-0 group-hover:w-full">
                 <span className="block size-full bg-gray-500"></span>
               </span>
             </Link>
           </nav>
         </div>
         <div className="flex items-center space-x-4">
-          <nav className="hidden space-x-6 custom-lg:flex">
+          <nav className="hidden space-x-8 custom-lg:flex">
             <Link
               href="/about"
-              className="group relative transition-colors duration-300 hover:text-gray-600"
+              className="group relative transition-colors duration-300 hover:text-gray-700"
               aria-label="Learn more about us">
               Who we are
-              <span className="absolute bottom-[-5px] left-1/2 h-[3px] w-0 transition-all duration-300 ease-in-out group-hover:left-0 group-hover:w-full">
+              <span className="absolute bottom-[-4px] left-1/2 h-[3px] w-0 transition-all duration-300 ease-in-out group-hover:left-0 group-hover:w-full">
                 <span className="block size-full bg-gray-500"></span>
               </span>
             </Link>
             <Link
               href="/helpdesk"
-              className="group relative transition-colors duration-300 hover:text-gray-600"
+              className="group relative transition-colors duration-300 hover:text-gray-700"
               aria-label="Navigate to Helpdesk">
               Helpdesk
-              <span className="absolute bottom-[-5px] left-1/2 h-[3px] w-0 transition-all duration-300 ease-in-out group-hover:left-0 group-hover:w-full">
+              <span className="absolute bottom-[-4px] left-1/2 h-[3px] w-0 transition-all duration-300 ease-in-out group-hover:left-0 group-hover:w-full">
                 <span className="block size-full bg-gray-500"></span>
               </span>
             </Link>
             <Link
               href="https://chemotion.net/docs"
-              className="group relative transition-colors duration-300 hover:text-gray-600"
+              className="group relative transition-colors duration-300 hover:text-gray-700"
               rel="noopener noreferrer"
               target="_blank"
               aria-label="Navigate to Chemotion documentation">
               Docs
-              <span className="absolute bottom-[-5px] left-1/2 h-[3px] w-0 transition-all duration-300 ease-in-out group-hover:left-0 group-hover:w-full">
+              <span className="absolute bottom-[-4px] left-1/2 h-[3px] w-0 transition-all duration-300 ease-in-out group-hover:left-0 group-hover:w-full">
                 <span className="block size-full bg-gray-500"></span>
               </span>
             </Link>
@@ -219,8 +218,8 @@ const NavBar = () => {
               }}
               role="button"
               tabIndex="0"
-              className={`ml-4 flex items-center justify-center rounded-full px-4 py-2 text-base duration-300 ease-in-out custom-lg:mr-4  
-                ${isSearchVisible ? 'h-10 w-72 border-2 border-gray-500 bg-white font-light text-gray-800' : 'h-10 w-52 cursor-pointer border-2 border-neutral-50 bg-neutral-50 hover:text-gray-700'}
+              className={`ml-4 flex items-center justify-center rounded-full px-4 py-2 font-light duration-300 ease-in-out custom-lg:mr-4
+                ${isSearchVisible ? 'h-10 w-72 border-2 border-gray-500 bg-white text-gray-700' : 'h-10 w-52 cursor-pointer border-2 border-neutral-50 bg-neutral-50 shadow-md hover:text-gray-700'}
               `}>
               {isSearchVisible ? (
                 <>
@@ -248,7 +247,7 @@ const NavBar = () => {
                       clipRule="evenodd"
                     />
                   </svg>
-                  <div className="mr-2 text-gray-500">Search the docs</div>
+                  <div className="mr-2 text-gray-700">Search the docs</div>
                 </div>
               )}
             </div>
@@ -294,7 +293,7 @@ const NavBar = () => {
               }}
               role="button"
               tabIndex="0"
-              className="ml-4 flex h-10 w-32 cursor-pointer items-center justify-center rounded-full border-2 border-neutral-50 bg-neutral-50 px-4 py-2 text-base text-gray-600 duration-300 ease-in-out hover:text-gray-700 custom-lg:mr-4">
+              className="ml-4 flex h-10 w-32 cursor-pointer items-center justify-center rounded-full border-2 border-neutral-50 bg-neutral-50 px-4 py-2 font-light text-gray-800 shadow-md duration-300 ease-in-out hover:text-gray-700 custom-lg:mr-4">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 24 24"
@@ -370,7 +369,7 @@ const NavBar = () => {
         </div>
       </div>
       <div
-        className={`fixed inset-y-0 right-0 w-1/2 bg-[#F0F0F0] pt-24 transition-transform custom-lg:hidden ${isMobileMenuOpen ? 'translate-x-0' : 'translate-x-full'}`}>
+        className={`fixed inset-y-0 right-0 w-1/2 bg-[#eeeeee] pt-24 shadow-md transition-transform custom-lg:hidden ${isMobileMenuOpen ? 'translate-x-0' : 'translate-x-full'}`}>
         <nav className="flex flex-col items-center space-y-6">
           <Link
             href="/#eln"

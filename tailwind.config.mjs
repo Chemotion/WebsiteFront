@@ -16,7 +16,7 @@ module.exports = {
         darkForeground: colors.neutral[200]
       },
       screens: {
-        'custom-lg': '1080px'
+        'custom-lg': '1150px'
       },
       fontFamily: {
         geist: ['var(--font-geist-sans)', 'sans-serif'],

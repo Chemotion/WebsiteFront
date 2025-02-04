@@ -2,7 +2,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 const Footer = () => (
-  <footer className="bg-[#F0F0F0] py-8 text-gray-700" role="contentinfo">
+  <footer className="bg-[#eeeeee] py-8 text-gray-700" role="contentinfo">
     <div className="flex flex-col items-center justify-center">
       <div className="mb-6 flex flex-col items-start space-y-6">
         <div className="w-full text-center custom-lg:text-left">

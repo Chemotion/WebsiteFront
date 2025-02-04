@@ -24,7 +24,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body
-        className={`bg-background font-geist text-foreground antialiased overflow-x-hidden scroll-smooth ${geistSans.variable} ${geistMono.variable}`}>
+        className={`overflow-x-hidden scroll-smooth bg-background font-geist text-foreground antialiased ${geistSans.variable} ${geistMono.variable}`}>
         {children}
       </body>
     </html>
