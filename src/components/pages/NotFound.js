@@ -28,7 +28,7 @@ export default function NotFoundPage() {
         href="/"
         aria-label="Go back to home page"
         className="inline-flex items-center rounded-md border-2 border-[#008ab8] px-10 py-4 text-center text-xl font-semibold
-          text-gray-700 shadow-sm transition-all duration-300 ease-in-out 
+          text-gray-700 shadow-sm transition-all duration-300 ease-in-out
           hover:bg-[#008ab8] hover:text-white">
         Back to home
       </Link>

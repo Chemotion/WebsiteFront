@@ -89,8 +89,7 @@ export default function HelpPage() {
               if (hasError) {
                 event.preventDefault();
                 $form.prepend(`
-                  <div id="zammad-error-alert" 
-                       class="bg-red-100 text-red-800 p-3 mb-4 rounded text-sm">
+                  <div id="zammad-error-alert" class="bg-red-100 text-red-800 p-3 mb-4 rounded text-sm">
                     Please fill out all 3 fields.
                   </div>
                 `);
