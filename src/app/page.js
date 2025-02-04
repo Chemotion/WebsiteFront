@@ -1,4 +1,4 @@
-import NavBar from '@/components/NavBar';
+import NavBar from '@/components/layout/NavBar';
 import Hero from '@/components/sections/Hero';
 import Diagram from '@/components/sections/Diagram';
 import CardContainer from '@/components/sections/FourCardsSection';
@@ -11,7 +11,7 @@ import LabimotionHero from '@/components/sections/LabimotionHero';
 import LabimotionSection from '@/components/sections/LabimotionSection';
 import RepositoryHero from '@/components/sections/RepositoryHero';
 import RepositorySection from '@/components/sections/RepositorySection';
-import Footer from '@/components/Footer';
+import Footer from '@/components/layout/Footer';
 
 export default function Home() {
   return (

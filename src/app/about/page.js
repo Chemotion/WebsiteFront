@@ -1,6 +1,6 @@
-import NavBar from '@/components/NavBar';
-import Footer from '@/components/Footer';
-import WhoWeArePage from '@/components/WhoWeAre';
+import NavBar from '@/components/layout/NavBar';
+import Footer from '@/components/layout/Footer';
+import WhoWeArePage from '@/components/pages/WhoWeAre';
 
 export default function WhoWeAre() {
   return (

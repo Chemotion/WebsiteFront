@@ -1,6 +1,6 @@
-import NavBar from '@/components/NavBar';
-import Footer from '@/components/Footer';
-import HelpDesk from '@/components/HelpDesk';
+import NavBar from '@/components/layout/NavBar';
+import Footer from '@/components/layout/Footer';
+import HelpDesk from '@/components/pages/HelpDesk';
 
 export default function HelpdeskPage() {
   return (
