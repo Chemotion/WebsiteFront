@@ -1,8 +1,49 @@
 'use client';
 
+import React from 'react';
 import { motion } from 'framer-motion';
+import useSWR from 'swr';
+import fallback from '/public/fallback.json';
+
+const fetcher = async () => {
+  const res = await fetch(`${process.env.NEXT_PUBLIC_STRAPI_URL}/api/hero-section?populate=*`, {
+    headers: {
+      Authorization: `Bearer ${process.env.NEXT_PUBLIC_API_TOKEN}`
+    }
+  });
+
+  if (!res.ok) {
+    throw new Error('Failed to fetch data');
+  }
+  return res.json();
+};
+
+const renderRichText = (nodes) => {
+  return nodes.map((node, index) => {
+    if (node.type === 'text') {
+      const extraClass = node.bold && node.text.trim() === 'Extended' ? 'tracking-widest' : '';
+      return (
+        <span key={index} className={`${node.bold ? 'font-bold' : ''} ${extraClass}`}>
+          {node.text}
+        </span>
+      );
+    }
+    if (node.children) {
+      return <React.Fragment key={index}>{renderRichText(node.children)}</React.Fragment>;
+    }
+    return null;
+  });
+};
 
 const Hero = () => {
+  const { data, error, isLoading } = useSWR('hero-section', fetcher);
+  const fallbackContent = fallback.HeroSection;
+
+  if (isLoading) return <div>Loading...</div>;
+
+  const content = !error && data?.data ? data.data : fallbackContent;
+  const heroTitle = content?.heroTitle || [];
+
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -58,32 +99,36 @@ const Hero = () => {
       animate="visible"
       role="region"
       aria-labelledby="hero-section-title">
-      <motion.div
-        variants={itemVariants}
-        id="hero-section-title"
-        className="mb-3 text-center text-4xl font-bold sm:text-5xl "
-        tabIndex="0"
-        aria-label="Designed for chemists">
-        Designed for chemists.
-      </motion.div>
-      <motion.div
-        variants={itemVariants}
-        className="mb-8 text-center text-3xl font-medium sm:text-[40px]"
-        tabIndex="0"
-        aria-label="Extended for life sciences">
-        <span className="font-bold tracking-widest">Extended</span> for life sciences.
-      </motion.div>
-      <motion.div
-        variants={itemVariants}
-        className="mb-8 max-w-4xl text-center text-4xl font-medium sm:text-5xl sm:tracking-tight"
-        tabIndex="0"
-        aria-label="Support for all your laboratory data from design to publication">
-        <span className="mb-2 block">
-          From <span className="text-primary font-bold">design</span> to&nbsp;
-          <span className="text-secondary font-bold">publication</span> –
-        </span>
-        <span className="block">support for all your laboratory data.</span>
-      </motion.div>
+      {heroTitle[0] && (
+        <motion.div
+          variants={itemVariants}
+          id="hero-section-title"
+          className="mb-3 text-center text-4xl font-bold sm:text-5xl"
+          tabIndex="0"
+          aria-label="Designed for chemists">
+          {renderRichText(heroTitle[0].children)}
+        </motion.div>
+      )}
+
+      {heroTitle[1] && (
+        <motion.div
+          variants={itemVariants}
+          className="mb-8 text-center text-3xl font-medium sm:text-[40px]"
+          tabIndex="0"
+          aria-label="Extended for life sciences">
+          {renderRichText(heroTitle[1].children)}
+        </motion.div>
+      )}
+
+      {(heroTitle[3] || heroTitle[4]) && (
+        <motion.div
+          variants={itemVariants}
+          className="mb-8 max-w-4xl text-center text-4xl font-medium sm:text-5xl sm:tracking-tight"
+          aria-label="Support for all your laboratory data from design to publication">
+          {heroTitle[3] && <span className="mb-2 block">{renderRichText(heroTitle[3].children)}</span>}
+          {heroTitle[4] && <span className="block">{renderRichText(heroTitle[4].children)}</span>}
+        </motion.div>
+      )}
 
       <motion.div
         variants={itemVariants}
@@ -92,10 +137,10 @@ const Hero = () => {
           type="button"
           onClick={() => scrollToSection('eln')}
           className="inline-flex items-center rounded-md border-2 border-[#008ab8] bg-neutral-50 px-10 py-4 text-center font-semibold
-          text-gray-700 shadow-sm transition-all duration-300 ease-in-out 
+          text-gray-700 shadow-sm transition-all duration-300 ease-in-out
           hover:bg-[#008ab8] hover:text-white"
           aria-label="Scroll to ELN section">
-          Explore
+          {content?.buttonText}
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"

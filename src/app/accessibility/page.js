@@ -1,6 +1,6 @@
 import NavBar from '@/components/layout/NavBar';
 import Footer from '@/components/layout/Footer';
-import AccessibilityPage from '@/components/pages/Accessibility';
+import AccessibilityPage from '@/components/subpages/Accessibility';
 
 export default function Accessibility() {
   return (

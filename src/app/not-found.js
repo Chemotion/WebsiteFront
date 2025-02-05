@@ -1,6 +1,6 @@
 import NavBar from '@/components/layout/NavBar';
 import Footer from '@/components/layout/Footer';
-import NotFoundPage from '@/components/pages/NotFound';
+import NotFoundPage from '@/components/subpages/NotFound';
 
 export default function NotFound() {
   return (

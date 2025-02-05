@@ -1,6 +1,6 @@
 import NavBar from '@/components/layout/NavBar';
 import Footer from '@/components/layout/Footer';
-import PrivacyPage from '@/components/pages/Privacy';
+import PrivacyPage from '@/components/subpages/Privacy';
 
 export default function Privacy() {
   return (
