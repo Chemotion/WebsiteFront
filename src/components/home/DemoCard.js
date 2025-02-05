@@ -4,14 +4,10 @@ import useContent from '@/hooks/useContent';
 import Card from '@/components/ui/Card';
 
 export default function DemoSection() {
-  const { content, error, isLoading } = useContent({
+  const { content, isLoading } = useContent({
     apiKey: 'demo-section',
     fallbackKey: 'demoSection'
   });
-
-  if (error) {
-    return <div>Error loading Demo Section</div>;
-  }
 
   return (
     <Card

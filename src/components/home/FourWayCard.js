@@ -3,8 +3,8 @@
 import useContent from '@/hooks/useContent';
 import Card from '@/components/ui/QuadCard';
 
-export default function ElnFourStepsSection() {
-  const { content, error, isLoading } = useContent({
+export default function CardContainer() {
+  const { content, isLoading } = useContent({
     apiKey: 'eln-four-steps-sections',
     fallbackKey: 'elnFourStepsSection'
   });
@@ -12,9 +12,7 @@ export default function ElnFourStepsSection() {
   if (isLoading) {
     return <div>Loading...</div>;
   }
-  if (error) {
-    return <div>Error loading ElnFourStepsSection.</div>;
-  }
+
   if (!content || !Array.isArray(content)) {
     return <div>No data found for ElnFourStepsSection.</div>;
   }

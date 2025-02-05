@@ -27,5 +27,5 @@ export default function useContent({ apiKey, fallbackKey }) {
   const fallbackData = fallback[fallbackKey];
   const content = !error && data?.data ? data.data : fallbackData;
 
-  return { content, error, isLoading };
+  return { content, isLoading };
 }

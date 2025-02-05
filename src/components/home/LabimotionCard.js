@@ -4,14 +4,10 @@ import useContent from '@/hooks/useContent';
 import Card from '@/components/ui/Card';
 
 export default function LabimotionSection() {
-  const { content, error, isLoading } = useContent({
+  const { content, isLoading } = useContent({
     apiKey: 'labimotion-section',
     fallbackKey: 'labimotionSection'
   });
-
-  if (error) {
-    return <div>Error loading Labimotion Section</div>;
-  }
 
   return (
     <Card

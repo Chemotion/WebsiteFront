@@ -4,14 +4,10 @@ import useContent from '@/hooks/useContent';
 import Card from '@/components/ui/Card';
 
 export default function DeviceSection() {
-  const { content, error, isLoading } = useContent({
+  const { content, isLoading } = useContent({
     apiKey: 'device-section',
     fallbackKey: 'deviceSection'
   });
-
-  if (error) {
-    return <div>Error loading Device Section</div>;
-  }
 
   return (
     <Card

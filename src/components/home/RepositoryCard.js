@@ -4,14 +4,10 @@ import useContent from '@/hooks/useContent';
 import Card from '@/components/ui/Card';
 
 export default function RepositorySection() {
-  const { content, error, isLoading } = useContent({
+  const { content, isLoading } = useContent({
     apiKey: 'repository-section',
     fallbackKey: 'repositorySection'
   });
-
-  if (error) {
-    return <div>Error loading Repository Section</div>;
-  }
 
   return (
     <Card
