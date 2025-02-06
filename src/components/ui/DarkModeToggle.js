@@ -27,7 +27,7 @@ export default function ModeToggle() {
       aria-pressed={isDark}
       title={isDark ? 'Switch to Light Mode' : 'Switch to Dark Mode'}
       className="flex items-center justify-center focus:outline-none">
-      <span className="mr-2 hidden hover:underline sm:inline">{isDark ? 'Day' : 'Night'}</span>
+      <span className="mr-2 hidden w-12 hover:underline sm:inline">{isDark ? 'Day' : 'Night'}</span>
       <span
         className={`inline-block transition-transform duration-500 ${
           isDark ? 'rotate-180' : 'rotate-0'

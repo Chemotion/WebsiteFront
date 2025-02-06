@@ -137,7 +137,7 @@ const Footer = () => (
         <Link href="/about#imprint" aria-label="View Imprint section" className="hover:underline">
           Imprint
         </Link>
-        <span aria-hidden="true" className="mx-2">
+        <span aria-hidden="true" className="ml-2">
           |
         </span>
         <ModeToggle />
