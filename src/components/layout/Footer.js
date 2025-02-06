@@ -1,8 +1,11 @@
 import Image from 'next/image';
 import Link from 'next/link';
+import ModeToggle from '../ui/DarkModeToggle';
 
 const Footer = () => (
-  <footer className="bg-[#eeeeee] py-8 text-gray-700" role="contentinfo">
+  <footer
+    className="bg-[#eeeeee] py-8 text-gray-700 dark:border-t dark:border-darkForeground dark:bg-darkBackground dark:text-darkForeground"
+    role="contentinfo">
     <div className="flex flex-col items-center justify-center">
       <div className="mb-6 flex flex-col items-start space-y-6">
         <div className="w-full text-center custom-lg:text-left">
@@ -13,13 +16,31 @@ const Footer = () => (
           role="list"
           aria-label="Funding organizations">
           <div role="listitem">
-            <Image src="/images/DFG.png" alt="Deutsche Forschungsgemeinschaft logo" width={390} height={50} />
+            <Image
+              src="/images/DFG.png"
+              alt="Deutsche Forschungsgemeinschaft logo"
+              width={390}
+              height={50}
+              className="dark:brightness-0 dark:invert"
+            />
           </div>
           <div role="listitem">
-            <Image src="/images/KIT.png" alt="Karlsruher Institut für Technologie logo" width={160} height={80} />
+            <Image
+              src="/images/KIT.png"
+              alt="Karlsruher Institut für Technologie logo"
+              width={160}
+              height={80}
+              className="dark:brightness-0 dark:invert"
+            />
           </div>
           <div role="listitem">
-            <Image src="/images/bawue.png" alt="Baden-Württemberg logo" width={183} height={100} />
+            <Image
+              src="/images/bawue.png"
+              alt="Baden-Württemberg logo"
+              width={183}
+              height={100}
+              className="dark:brightness-0 dark:invert"
+            />
           </div>
         </div>
       </div>
@@ -37,7 +58,7 @@ const Footer = () => (
             target="_blank"
             rel="noopener noreferrer"
             className="flex flex-col items-center gap-2 hover:underline sm:flex-row">
-            <Image src="/images/youtube.png" alt="YouTube icon" width={30} height={30} />
+            <Image src="/images/youtube.png" alt="YouTube icon" width={30} height={30} className="dark:invert" />
             <span className="text-sm md:text-base">YouTube</span>
           </a>
           <a
@@ -46,7 +67,7 @@ const Footer = () => (
             target="_blank"
             rel="noopener noreferrer"
             className="flex flex-col items-center gap-2 hover:underline sm:flex-row">
-            <Image src="/images/instagram.png" alt="Instagram icon" width={30} height={30} />
+            <Image src="/images/instagram.png" alt="Instagram icon" width={30} height={30} className="dark:invert" />
             <span className="text-sm md:text-base">Instagram</span>
           </a>
           <a
@@ -55,7 +76,7 @@ const Footer = () => (
             target="_blank"
             rel="noopener noreferrer"
             className="flex flex-col items-center gap-2 hover:underline sm:flex-row">
-            <Image src="/images/linkedin.png" alt="LinkedIn icon" width={30} height={30} />
+            <Image src="/images/linkedin.png" alt="LinkedIn icon" width={30} height={30} className="dark:invert" />
             <span className="text-sm md:text-base">LinkedIn</span>
           </a>
           <a
@@ -64,7 +85,7 @@ const Footer = () => (
             target="_blank"
             rel="noopener noreferrer"
             className="flex flex-col items-center gap-2 hover:underline sm:flex-row">
-            <Image src="/images/flusk.png" alt="Repository icon" width={30} height={30} />
+            <Image src="/images/flusk.png" alt="Repository icon" width={30} height={30} className="dark:invert" />
             <span className="text-sm md:text-base">Repository</span>
           </a>
           <a
@@ -73,7 +94,7 @@ const Footer = () => (
             target="_blank"
             rel="noopener noreferrer"
             className="flex flex-col items-center gap-2 hover:underline sm:flex-row">
-            <Image src="/images/github.png" alt="GitHub icon" width={30} height={30} />
+            <Image src="/images/github.png" alt="GitHub icon" width={30} height={30} className="dark:invert" />
             <span className="text-sm md:text-base">ELN Source Code</span>
           </a>
         </div>
@@ -116,6 +137,10 @@ const Footer = () => (
         <Link href="/about#imprint" aria-label="View Imprint section" className="hover:underline">
           Imprint
         </Link>
+        <span aria-hidden="true" className="mx-2">
+          |
+        </span>
+        <ModeToggle />
       </div>
     </div>
   </footer>

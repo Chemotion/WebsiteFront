@@ -2,6 +2,7 @@
 
 import { useState, useRef, useEffect } from 'react';
 import Image from 'next/image';
+import { useTheme } from 'next-themes';
 import { motion, AnimatePresence } from 'framer-motion';
 
 export default function Card({
@@ -15,6 +16,8 @@ export default function Card({
   const [isClicked, setIsClicked] = useState(false);
   const cardRef = useRef(null);
   const timerRef = useRef(null);
+  const { theme } = useTheme();
+  const isDark = theme === 'dark';
 
   const handleCardClick = () => {
     setIsClicked((prev) => !prev);
@@ -74,8 +77,8 @@ export default function Card({
     <motion.div
       ref={cardRef}
       onClick={handleCardClick}
-      className="relative flex h-[400px] w-full cursor-pointer flex-col items-start rounded-md border-2 p-8 hover:shadow-lg"
-      style={{ borderColor }}
+      className="relative flex h-[400px] w-full cursor-pointer flex-col items-start rounded-md border-2 p-8 hover:shadow-lg dark:border-darkForeground"
+      style={!isDark ? { borderColor } : {}}
       variants={cardVariants}
       initial="initial"
       animate={isClicked ? 'clicked' : 'initial'}
@@ -93,7 +96,7 @@ export default function Card({
             initial="hidden"
             animate="visible"
             exit="hidden"
-            className="text-md mr-6 mt-2 space-y-2 overflow-hidden text-left font-semibold text-gray-700"
+            className="text-md mr-6 mt-2 space-y-2 overflow-hidden text-left font-semibold text-gray-700 dark:text-darkForeground"
             aria-labelledby={`${title}-details`}>
             {longDescription?.map((feature, fIdx) => {
               if (feature.type === 'list' && feature.format === 'unordered') {
@@ -125,7 +128,7 @@ export default function Card({
             transition={{ duration: 0.5, ease: 'easeOut' }}>
             <motion.h2
               id={`${title}-heading`}
-              className="text-2xl font-semibold text-gray-800"
+              className="text-2xl font-semibold text-gray-800 dark:text-darkForeground"
               initial={{ opacity: 0, y: -10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.4, ease: 'easeOut' }}
@@ -135,7 +138,7 @@ export default function Card({
             </motion.h2>
             <motion.p
               id={`${title}-description`}
-              className="mb-8 mt-4 text-[16px] font-semibold text-gray-700"
+              className="mb-8 mt-4 text-[16px] font-semibold text-gray-700 dark:text-darkForeground"
               initial={{ opacity: 0, y: -10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.4, ease: 'easeOut', delay: 0.1 }}
@@ -148,8 +151,8 @@ export default function Card({
               transition={{ duration: 0.4, ease: 'easeOut', delay: 0.2 }}>
               <div
                 aria-hidden="true"
-                className="mx-auto flex aspect-[2/1] w-full items-end justify-center overflow-hidden rounded-md border-2"
-                style={{ borderColor }}>
+                className="mx-auto flex aspect-[2/1] w-full items-end justify-center overflow-hidden rounded-md border-2 dark:border-darkForeground"
+                style={!isDark ? { borderColor } : {}}>
                 {image ? (
                   <Image
                     src={image}
@@ -175,12 +178,12 @@ export default function Card({
         transition={{ duration: 0.3, ease: 'easeInOut' }}>
         <div className="relative size-6">
           <div
-            className={`absolute h-[4px] w-full bg-[#008ab8] transition-transform duration-300 ${
+            className={`absolute h-[4px] w-full bg-[#008ab8] transition-transform duration-300 dark:bg-darkForeground ${
               isClicked ? 'rotate-45' : ''
             }`}
           />
           <div
-            className={`absolute h-[4px] w-full bg-[#008ab8] transition-transform duration-300 ${
+            className={`absolute h-[4px] w-full bg-[#008ab8] transition-transform duration-300 dark:bg-darkForeground ${
               isClicked ? '-rotate-45' : 'rotate-90'
             }`}
           />

@@ -60,7 +60,7 @@ const GetStartedSection = () => {
         {features.map((feature, index) => (
           <div
             key={index}
-            className="flex flex-1 flex-col justify-between rounded-md border-2 border-[#008ab8] p-12 text-gray-800"
+            className="flex flex-1 flex-col justify-between rounded-md border-2 border-[#008ab8] p-12 text-gray-800 dark:border-darkForeground dark:text-darkForeground"
             role="group"
             aria-labelledby={`feature-column-${index}-title`}>
             <div>
@@ -89,9 +89,9 @@ const GetStartedSection = () => {
                 href={feature.button.link}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-block rounded-md border-2 border-[#008ab8] bg-[#008ab8] px-8 py-3 text-center text-xl font-semibold
-                text-white shadow-sm transition-all duration-300 hover:border-gray-800 hover:bg-gray-800
-                hover:shadow-lg"
+                className="inline-block rounded-md border-2 border-[#008ab8] bg-[#008ab8] px-8 py-3 text-center text-xl font-semibold text-white shadow-sm
+                transition-all duration-300 hover:border-gray-800 hover:bg-gray-800 hover:shadow-lg dark:border-darkForeground
+                dark:bg-darkBackground"
                 aria-label={`Learn more about ${feature.columnTitle}`}>
                 {feature.button.text}
               </a>

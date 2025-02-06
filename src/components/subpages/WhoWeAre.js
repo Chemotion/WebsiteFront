@@ -6,28 +6,28 @@ export default function WhoWeArePage() {
       <section className="mb-12">
         <h1
           id="who-we-are-title"
-          className="text-5xl font-extrabold leading-normal text-gray-900"
+          className="text-5xl font-extrabold leading-normal"
           aria-label="Who We Are — ComPlat & Chemotion">
           Who We Are —<br />
           ComPlat &amp; Chemotion
         </h1>
-        <p className="mt-4 text-lg text-gray-600" aria-label="Introduction to ComPlat and Chemotion mission and team">
+        <p className="mt-4 text-lg opacity-90" aria-label="Introduction to ComPlat and Chemotion mission and team">
           Discover the mission, infrastructure, and team behind ComPlat & Chemotion.
         </p>
       </section>
 
       <div className="w-full">
-        <section className="space-y-12 text-gray-800" aria-labelledby="mission-and-team">
+        <section className="space-y-12 opacity-95" aria-labelledby="mission-and-team">
           <div>
-            <h2 id="mission-and-team" className="mb-4 text-2xl font-bold text-gray-900" aria-label="Aim">
+            <h2 id="mission-and-team" className="mb-4 text-2xl font-bold" aria-label="Aim">
               Aim
             </h2>
-            <p className="mb-6 leading-relaxed text-gray-700" aria-label="Details about ComPlat and Chemotion goals">
+            <p className="mb-6 leading-relaxed" aria-label="Details about ComPlat and Chemotion goals">
               The ComPlat (Compound Platform) project is developing freely available infrastructure resources for
               management of research data through the development of two independent, but closely compatible, IT systems
               namely:
             </p>
-            <ul className="mb-6 list-disc space-y-4 pl-6 text-gray-700" aria-label="IT systems developed by ComPlat">
+            <ul className="mb-6 list-disc space-y-4 pl-6" aria-label="IT systems developed by ComPlat">
               <li>
                 <strong>Chemotion ELN</strong> - an electronic laboratory notebook (ELN)
               </li>
@@ -35,13 +35,13 @@ export default function WhoWeArePage() {
                 <strong>Chemotion Repository</strong> - a data repository for Chemistry available on the web
               </li>
             </ul>
-            <p className="leading-relaxed text-gray-700">
+            <p className="leading-relaxed">
               With the ELN, it is possible to integrate state-of-the-art Research Data Management techniques into the
               routine work of academic researchers, thereby improving the data that is obtained as well as the quality
               of information that is published. The ELN is complemented by the Repository, to which it can be connected
               directly for fast, easy and secure transfer of selected research information for sharing and archiving.
             </p>
-            <p className="mt-4 leading-relaxed text-gray-700">
+            <p className="mt-4 leading-relaxed">
               By providing an&nbsp;
               <a
                 href="#opensource"
@@ -54,23 +54,21 @@ export default function WhoWeArePage() {
               were initially targeted at chemists, they are developing rapidly with increased interest from other
               domains, particularly biochemists.
             </p>
-            <p className="mt-4 leading-relaxed text-gray-700">
+            <p className="mt-4 leading-relaxed">
               Free access and free use by academic researchers is one principle of this project allowing and promoting
               collaborative work and scientific exchange among scientists.
             </p>
           </div>
 
           <div>
-            <h2 className="mb-4 text-2xl font-bold text-gray-900" aria-label="Acknowledgements">
+            <h2 className="mb-4 text-2xl font-bold" aria-label="Acknowledgements">
               Acknowledgements
             </h2>
-            <p
-              className="mb-2 font-bold leading-relaxed text-gray-700"
-              aria-label="Contributions to the ComPlat project">
+            <p className="mb-2 font-bold leading-relaxed" aria-label="Contributions to the ComPlat project">
               The ComPlat project is part of the work of the Stefan Bräse group at the Karlsruhe Institute of
               Technology.
             </p>
-            <p className="mb-6 leading-relaxed text-gray-700" aria-label="Supporters of the ComPlat project">
+            <p className="mb-6 leading-relaxed" aria-label="Supporters of the ComPlat project">
               While many researchers and various agencies have contributed to the project, we particularly thank the
               following for their support:
             </p>
@@ -80,22 +78,34 @@ export default function WhoWeArePage() {
                 alt="Deutsche Forschungsgemeinschaft Logo"
                 width={400}
                 height={51}
-                className="h-[51px] w-[400px] object-contain"
+                className="h-[51px] w-[400px] object-contain dark:brightness-0 dark:invert"
               />
             </div>
             <div className="mb-10" aria-label="NFDI4Chem Logo Image">
-              <Image src="/images/NFDI4Chem.svg" alt="NFDI4Chem Logo" width={350} height={70} />
+              <Image
+                src="/images/NFDI4Chem.svg"
+                alt="NFDI4Chem Logo"
+                width={350}
+                height={70}
+                className="dark:brightness-0 dark:invert"
+              />
             </div>
             <div className="mb-16" aria-label="KIT Logo">
-              <Image src="/images/KIT.png" alt="Karlsruhe Institute of Technology Logo" width={150} height={75} />
+              <Image
+                src="/images/KIT.png"
+                alt="Karlsruhe Institute of Technology Logo"
+                width={150}
+                height={75}
+                className="dark:brightness-0 dark:invert"
+              />
             </div>
           </div>
 
           <div>
-            <h2 className="mb-4 text-2xl font-bold text-gray-900" aria-label="Authors and Copyright title">
+            <h2 className="mb-4 text-2xl font-bold" aria-label="Authors and Copyright title">
               Authors and Copyright
             </h2>
-            <ul className="mb-6 list-none space-y-2 text-gray-700" aria-label="Authors and their contact details">
+            <ul className="mb-6 list-none space-y-2" aria-label="Authors and their contact details">
               <li>
                 <strong>
                   <a
@@ -129,7 +139,7 @@ export default function WhoWeArePage() {
                 </strong>
               </li>
             </ul>
-            <div className="leading-relaxed text-gray-700" aria-labelledby="institute-details">
+            <div className="leading-relaxed" aria-labelledby="institute-details">
               <sup>1</sup> Institute of Organic Chemistry <br />
               <sup>2</sup> Institute of Biological and Chemical Systems – Functional Molecular Systems (IBCS-FMS)
               <div className="mt-6">
@@ -141,11 +151,11 @@ export default function WhoWeArePage() {
 
             <h3
               id="opensource"
-              className="mt-8 scroll-mt-[90px] text-lg font-semibold text-gray-800"
+              className="mt-8 scroll-mt-[90px] text-lg font-semibold"
               aria-label="Source Code and Licenses">
               Source Code and Licenses
             </h3>
-            <div className="mt-4 space-y-4 text-gray-700">
+            <div className="mt-4 space-y-4">
               <div>
                 <strong>Chemotion ELN</strong> <br />
                 Source Code:&nbsp;
@@ -201,8 +211,8 @@ export default function WhoWeArePage() {
                 </a>
               </div>
             </div>
-            <h3 className="mt-8 text-lg font-semibold text-gray-800">Content</h3>
-            <p className="mt-2 leading-relaxed text-gray-700" aria-label="Website copyright and usage information">
+            <h3 className="mt-8 text-lg font-semibold">Content</h3>
+            <p className="mt-2 leading-relaxed" aria-label="Website copyright and usage information">
               All texts, pictures, and other information published on this website (i.e. documentation) are subject to
               copyright. The logo may not be used without the prior consent of the&nbsp;
               <a href="#imprint" className="text-[#008ab8] hover:underline" aria-label="More about the working group">
@@ -210,20 +220,20 @@ export default function WhoWeArePage() {
               </a>
               . A change of the logo is not permitted.
             </p>
-            <p className="mt-4 leading-relaxed text-gray-700" aria-label="Website content disclaimer">
+            <p className="mt-4 leading-relaxed" aria-label="Website content disclaimer">
               The contents of this website are created with the utmost care. Nevertheless, no guarantee for topicality
               and completeness can be taken over. ComPlat does not assume any responsibility for any web content
               connected by a link, as this is not its own content.
             </p>
             <details
-              className="group my-4 rounded-md border-l-4 border-[#008ab8] bg-white px-4 py-3 shadow-sm"
+              className="group my-4 rounded-md border-l-4 border-[#008ab8] bg-white px-4 py-3 shadow-sm dark:border-2 dark:border-darkForeground dark:bg-darkBackground"
               aria-labelledby="details-summary">
               <summary
                 id="details-summary"
-                className="flex cursor-pointer items-center justify-between font-medium leading-relaxed text-gray-800">
+                className="flex cursor-pointer items-center justify-between font-medium leading-relaxed">
                 <span>Details</span>
                 <svg
-                  className="ml-2 size-5 text-[#008ab8] transition-transform duration-200 group-open:rotate-180"
+                  className="ml-2 size-5 text-[#008ab8] transition-transform duration-200 group-open:rotate-180 dark:text-darkForeground"
                   fill="none"
                   stroke="currentColor"
                   strokeWidth="2"
@@ -232,7 +242,7 @@ export default function WhoWeArePage() {
                   <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
                 </svg>
               </summary>
-              <div className="mt-4 space-y-4 text-gray-700">
+              <div className="mt-4 space-y-4">
                 <p className="font-semibold">Nota bene</p>
                 <p>
                   When submitting to the repository, the submitter of a publication can choose between several CC
@@ -273,7 +283,7 @@ export default function WhoWeArePage() {
                     </a>
                   </li>
                 </ul>
-                <p className="text-sm text-gray-600" aria-label="Trademark information for DOI">
+                <p className="text-sm" aria-label="Trademark information for DOI">
                   DOI®, DOI.ORG®, and shortDOI® are trademarks of the International DOI Foundation.
                 </p>
               </div>
@@ -281,13 +291,13 @@ export default function WhoWeArePage() {
           </div>
 
           <div>
-            <h2 id="imprint" className="mb-4 scroll-mt-[90px] text-2xl font-bold text-gray-900" aria-label="Imprint">
+            <h2 id="imprint" className="mb-4 scroll-mt-[90px] text-2xl font-bold" aria-label="Imprint">
               Imprint
             </h2>
-            <h3 className="mt-4 text-lg font-semibold text-gray-800" aria-label="Leader of the Research Group">
+            <h3 className="mt-4 text-lg font-semibold" aria-label="Leader of the Research Group">
               Leader
             </h3>
-            <p className="mt-2 leading-relaxed text-gray-700" aria-label="Leader contact details">
+            <p className="mt-2 leading-relaxed" aria-label="Leader contact details">
               Leader of the Research Group:&nbsp;
               <a
                 href="https://www.ioc.kit.edu/braese/"
@@ -301,19 +311,19 @@ export default function WhoWeArePage() {
               Phone: +49 721 608 42903 <br />
               Fax: +49 721 608 48581
             </p>
-            <h3 className="mt-4 text-lg font-semibold text-gray-800" aria-label="Address of South Campus, KIT">
+            <h3 className="mt-4 text-lg font-semibold" aria-label="Address of South Campus, KIT">
               Address: South Campus (KIT)
             </h3>
-            <p className="mt-2 leading-relaxed text-gray-700" aria-label="South Campus address">
+            <p className="mt-2 leading-relaxed" aria-label="South Campus address">
               Institute of Organic Chemistry <br />
               Karlsruhe Institute of Technology <br />
               Fritz-Haber-Weg 6, Geb. 30.42 <br />
               76131 Karlsruhe, Germany
             </p>
-            <h3 className="mt-4 text-lg font-semibold text-gray-800" aria-label="Address of North Campus, KIT">
+            <h3 className="mt-4 text-lg font-semibold" aria-label="Address of North Campus, KIT">
               Address: North Campus (KIT)
             </h3>
-            <p className="mt-2 leading-relaxed text-gray-700" aria-label="North Campus address">
+            <p className="mt-2 leading-relaxed" aria-label="North Campus address">
               Institute of Biological and Chemical Systems – Functional Molecular Systems (IBCS-FMS) <br />
               Karlsruhe Institute of Technology <br />
               Hermann-von-Helmholtz-Platz 1, Geb. 319 <br />

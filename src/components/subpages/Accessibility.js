@@ -2,11 +2,11 @@ export default function AccessibilityPage() {
   return (
     <main className="mx-auto mb-20 mt-8 max-w-4xl p-4" role="main">
       <section className="mb-12">
-        <h1 className="text-5xl font-extrabold leading-normal text-gray-900" aria-label="Accessibility Statement">
+        <h1 className="text-5xl font-extrabold leading-normal" aria-label="Accessibility Statement">
           Accessibility Statement
         </h1>
 
-        <p className="mt-4 text-lg text-gray-600">
+        <p className="mt-4 text-lg opacity-90">
           Karlsruhe Institute of Technology (KIT) seeks to make its websites and mobile applications accessible in
           accordance with Article 10, par. 1 of the State Equal Opportunities for People with Disabilities Act (L-BGG).
           The following declaration on accessibility applies to the Chemotion website and associated services.
@@ -14,32 +14,32 @@ export default function AccessibilityPage() {
       </section>
 
       <div className="w-full">
-        <section className="space-y-12 text-gray-800" aria-labelledby="compliance-status">
+        <section className="space-y-12" aria-labelledby="compliance-status">
           <div>
             <h2
               id="compliance-status"
-              className="mb-4 text-2xl font-bold text-gray-900"
+              className="mb-4 text-2xl font-bold opacity-95"
               aria-label="Status of Compliance with the Requirements">
               Status of Compliance with the Requirements
             </h2>
-            <p className="mb-6 leading-relaxed text-gray-700">
+            <p className="mb-6 leading-relaxed opacity-90">
               This website is partly in compliance with Article 10, par. 1, L-BGG.
             </p>
           </div>
 
           <div>
-            <h2 className="mb-4 text-2xl font-bold text-gray-900" aria-label="Inaccessible Contents">
+            <h2 className="mb-4 text-2xl font-bold opacity-95" aria-label="Inaccessible Contents">
               Inaccessible Contents
             </h2>
-            <p className="mb-6 leading-relaxed text-gray-700">
+            <p className="mb-6 leading-relaxed opacity-90">
               KIT runs an extensive website that is managed by numerous editors. Therefore, the accessibility aspects
               cannot always be guaranteed. However, we constantly strive to improve accessibility and to train and
               sensitize the editors.
             </p>
-            <p className="mb-4 leading-relaxed text-gray-700">
+            <p className="mb-4 leading-relaxed opacity-95">
               The following contents are inaccessible or partly accessible only:
             </p>
-            <ul className="list-disc space-y-4 pl-6 text-gray-700" aria-label="List of inaccessible contents">
+            <ul className="list-disc space-y-4 pl-6 opacity-95" aria-label="List of inaccessible contents">
               <li>1.</li>
               <li>2.</li>
               <li>3.</li>
@@ -47,29 +47,29 @@ export default function AccessibilityPage() {
           </div>
 
           <div>
-            <h2 className="mb-4 text-2xl font-bold text-gray-900" aria-label="Date of Issue">
+            <h2 className="mb-4 text-2xl font-bold opacity-95" aria-label="Date of Issue">
               Date of Issue
             </h2>
-            <p className="leading-relaxed text-gray-700">
+            <p className="leading-relaxed opacity-90">
               This declaration was issued on <strong>September 9, 2020</strong>, and last reviewed on{' '}
               <strong>November 14, 2024</strong>.
             </p>
-            <p className="leading-relaxed text-gray-700">Method: Self-assessment</p>
+            <p className="leading-relaxed">Method: Self-assessment</p>
           </div>
 
-          <div>
-            <h2 className="mb-4 text-2xl font-bold text-gray-900" aria-label="Feedback and Contact Data">
+          <div className="opacity-95">
+            <h2 className="mb-4 text-2xl font-bold " aria-label="Feedback and Contact Data">
               Feedback and Contact Data
             </h2>
-            <p className="mb-6 leading-relaxed text-gray-700">
+            <p className="mb-6 leading-relaxed ">
               The contents of our web appearance are intended to be equally accessible for people with disabilities. If
               you encounter inaccessibilities on our websites or mobile applications, please help us improve by
               providing feedback.
             </p>
-            <p className="leading-relaxed text-gray-700">
+            <p className="leading-relaxed ">
               You can reach us via the contact form or by email
               <br />
-              <strong>Email:</strong>{' '}
+              <strong>Email:&nbsp;</strong>
               <a
                 href="mailto:internetredaktion@sts.kit.edu"
                 className="text-[#008ab8] hover:underline"
@@ -77,27 +77,27 @@ export default function AccessibilityPage() {
                 internetredaktion@sts.kit.edu
               </a>
             </p>
-            <p className="mt-4 leading-relaxed text-gray-700">
+            <p className="mt-4 leading-relaxed">
               <strong>Mail:</strong> Karlsruhe Institute of Technology <br />
               Executive Office and Strategy <br />
               Corporate Communications <br />
               Kaiserstraße 12 <br />
               76131 Karlsruhe, Germany
             </p>
-            <p className="mt-4 leading-relaxed text-gray-700">
+            <p className="mt-4 leading-relaxed">
               <strong>Phone:</strong> +49 (0)721/608-41105
             </p>
           </div>
 
-          <div>
-            <h2 className="mb-4 text-2xl font-bold text-gray-900" aria-label="Enforcement Procedure">
+          <div className="opacity-95">
+            <h2 className="mb-4 text-2xl font-bold" aria-label="Enforcement Procedure">
               Enforcement Procedure
             </h2>
-            <p className="leading-relaxed text-gray-700">
+            <p className="leading-relaxed">
               To ensure that the website meets the requirements outlined in Article 10, par. 1, L-BGG, contact us and
               give feedback. The contact details can be found above.
             </p>
-            <p className="mt-4 leading-relaxed text-gray-700">
+            <p className="mt-4 leading-relaxed">
               If you do not receive a reply within four weeks or if our reply is not satisfactory, you can contact the
               Commissioner of the State Government for the Needs of People with Disabilities:
             </p>
@@ -106,7 +106,7 @@ export default function AccessibilityPage() {
                 <strong>Phone:</strong> +49 (0)711/279-3360
               </li>
               <li>
-                <strong>Email:</strong>{' '}
+                <strong>Email:&nbsp;</strong>
                 <a
                   href="mailto:internetredaktion@sts.kit.edu"
                   className="text-[#008ab8] hover:underline"

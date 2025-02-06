@@ -12,15 +12,14 @@ module.exports = {
       colors: {
         background: colors.neutral[50],
         foreground: colors.gray[800],
-        darkBackground: colors.neutral[950],
-        darkForeground: colors.neutral[200]
+        darkBackground: colors.neutral[800],
+        darkForeground: colors.gray[100]
       },
       screens: {
         'custom-lg': '1150px'
       },
       fontFamily: {
-        geist: ['var(--font-geist-sans)', 'sans-serif'],
-        geistmono: ['var(--font-geist-mono)', 'monospace']
+        geist: ['var(--font-geist-sans)', 'sans-serif']
       }
     }
   },

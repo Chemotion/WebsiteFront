@@ -203,8 +203,14 @@ const FeatureSection = () => {
   };
 
   return (
-    <div className="mb-14 w-full max-w-6xl px-4 text-gray-800" role="region" aria-labelledby="feature-list-heading">
-      <div className="rounded-md border-2 border-[#008ab8] p-12" role="group" aria-labelledby="feature-list-heading">
+    <div
+      className="mb-14 w-full max-w-6xl px-4 text-gray-800 dark:text-darkForeground"
+      role="region"
+      aria-labelledby="feature-list-heading">
+      <div
+        className="rounded-md border-2 border-[#008ab8] p-12 dark:border-darkForeground"
+        role="group"
+        aria-labelledby="feature-list-heading">
         <h1 id="feature-list-heading" className="mb-8 text-center text-3xl font-bold" aria-label="Full Feature List">
           Full Feature List
         </h1>
@@ -235,9 +241,9 @@ const FeatureSection = () => {
                 {index === features.length - 1 && (
                   <button
                     onClick={generatePDF}
-                    className="mt-2 inline-block rounded-md border-2 border-[#008ab8] bg-[#008ab8] px-8 py-3 text-center text-xl font-semibold
-                    text-white shadow-sm transition-all duration-300 hover:border-gray-800 hover:bg-gray-800
-                    hover:shadow-lg"
+                    className="mt-2 inline-block rounded-md border-2 border-[#008ab8] bg-[#008ab8] px-8 py-3 text-center text-xl font-semibold text-white shadow-sm
+                    transition-all duration-300 hover:border-gray-800 hover:bg-gray-800 hover:shadow-lg dark:border-darkForeground
+                    dark:bg-darkBackground dark:hover:border-darkForeground"
                     aria-label="Download feature list as PDF">
                     Download as PDF
                   </button>

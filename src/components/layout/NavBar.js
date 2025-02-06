@@ -128,7 +128,7 @@ const NavBar = () => {
 
   return (
     <header
-      className="fixed inset-x-0 top-0 z-50 flex h-[66px] items-center bg-[#eeeeee] py-[3px] text-base font-medium text-gray-800 shadow-md "
+      className="fixed inset-x-0 top-0 z-50 flex h-[66px] items-center bg-[#eeeeee] py-[3px] text-base font-medium text-gray-700 shadow-md dark:border-b dark:border-darkForeground dark:bg-darkBackground dark:text-darkForeground "
       role="banner">
       <div className="container mx-auto flex max-w-7xl items-center justify-between">
         <div className="flex items-center">
@@ -136,7 +136,7 @@ const NavBar = () => {
             <Link
               href="/"
               onClick={scrollToTop}
-              className="width-auto height-auto group relative ml-4 mr-12 flex items-center text-lg font-semibold text-gray-800"
+              className="width-auto height-auto group relative ml-4 mr-12 flex items-center text-lg font-semibold text-gray-800 dark:text-darkForeground"
               aria-label="Navigate to Chemotion homepage">
               <Image src="/images/open-c.png" alt="Chemotion Logo" className="mr-4" width={35} height={42} />
               Chemotion
@@ -219,7 +219,7 @@ const NavBar = () => {
               role="button"
               tabIndex="0"
               className={`ml-4 flex items-center justify-center rounded-full px-4 py-2 font-light duration-300 ease-in-out custom-lg:mr-4
-                ${isSearchVisible ? 'h-10 w-72 border-2 border-gray-500 bg-white text-gray-700' : 'h-10 w-52 cursor-pointer border-2 border-neutral-50 bg-neutral-50 shadow-md hover:text-gray-700'}
+                ${isSearchVisible ? 'h-10 w-72 border-2 border-gray-500 bg-white text-gray-700 dark:border-darkForeground dark:bg-darkBackground dark:text-darkForeground' : 'h-10 w-52 cursor-pointer border-2 border-neutral-50 bg-neutral-50 shadow-md hover:text-gray-700 dark:border-darkForeground dark:bg-darkBackground'}
               `}>
               {isSearchVisible ? (
                 <>
@@ -239,7 +239,7 @@ const NavBar = () => {
                     xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 24 24"
                     fill="currentColor"
-                    className="mr-2 size-6 text-[#008ab8]">
+                    className="mr-2 size-6 text-[#008ab8] dark:text-darkForeground">
                     <path d="M8.25 10.875a2.625 2.625 0 1 1 5.25 0 2.625 2.625 0 0 1-5.25 0Z" />
                     <path
                       fillRule="evenodd"
@@ -247,7 +247,7 @@ const NavBar = () => {
                       clipRule="evenodd"
                     />
                   </svg>
-                  <div className="mr-2 text-gray-700">Search the docs</div>
+                  <div className="mr-2 text-gray-700 dark:text-darkForeground">Search the docs</div>
                 </div>
               )}
             </div>
@@ -255,7 +255,7 @@ const NavBar = () => {
             {/* search results dropdown */}
             {isSearchVisible && (searchResults.length > 0 || searchTerm.trim().length > 0) && (
               <div
-                className="absolute right-4 z-50 mt-3 max-h-[500px] w-[60vw] overflow-y-auto rounded-lg border border-gray-200 bg-white shadow-lg md:w-[600px]"
+                className="absolute right-4 z-50 mt-3 max-h-[500px] w-[60vw] overflow-y-auto rounded-lg border border-gray-200 bg-white shadow-lg dark:border-darkForeground dark:bg-darkBackground md:w-[600px]"
                 role="menu"
                 tabIndex="0"
                 onMouseEnter={() => setIsDropdownHovered(true)}
@@ -263,18 +263,18 @@ const NavBar = () => {
                 {searchResults.length > 0 ? (
                   <ul className="divide-y divide-neutral-200">
                     {searchResults.map((doc) => (
-                      <li key={doc.__id} className="hover:bg-neutral-100">
+                      <li key={doc.__id} className="hover:bg-neutral-100 dark:hover:bg-darkBackground">
                         <Link
                           href={`https://chemotion.net${doc.u}?_highlight=${encodeURIComponent(searchTerm)}`}
                           className="block px-6 py-4">
-                          <h3 className="truncate font-semibold text-gray-900">{doc.t}</h3>
-                          <p className="truncate text-sm text-gray-500">{doc.u}</p>
+                          <h3 className="truncate font-semibold text-gray-900 dark:text-darkForeground">{doc.t}</h3>
+                          <p className="truncate text-sm text-gray-500 dark:text-darkForeground">{doc.u}</p>
                         </Link>
                       </li>
                     ))}
                   </ul>
                 ) : (
-                  <div className="px-6 py-4 text-center text-gray-500">
+                  <div className="px-6 py-4 text-center text-gray-500 dark:text-darkForeground">
                     No results found for <span className="font-bold">{searchTerm}</span>.
                   </div>
                 )}

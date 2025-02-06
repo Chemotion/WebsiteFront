@@ -15,7 +15,7 @@ export default function LabimotionHero() {
       headingId="labimotion-hero-heading"
       headingAriaLabel="Out of Chemistry. Generic Elements for Life Sciences"
       containerAriaLabelledby="labimotion-hero-heading"
-      textColorClass="text-[#e63946]"
+      textColorClass="text-[#e63946] dark:text-darkForeground"
       containerClassName="relative my-10 flex cursor-default scroll-mt-[110px] flex-col items-center"
       titleClassName="text-center text-4xl"
       content={content}

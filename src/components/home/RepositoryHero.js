@@ -15,7 +15,7 @@ export default function RepositoryHero() {
       headingId="repository-hero-heading"
       headingAriaLabel="Mission Completed. Streamlined process from Lab to Publication."
       containerAriaLabelledby="repository-hero-heading"
-      textColorClass="text-gray-800"
+      textColorClass="text-gray-800 dark:text-darkForeground"
       containerClassName="relative my-10 flex cursor-default scroll-mt-[110px] flex-col items-center"
       titleClassName="text-center text-4xl"
       content={content}

@@ -39,10 +39,10 @@ export default function HelpPage() {
 
             $form.addClass(
               'space-y-8 mt-10 p-6 lg:px-16 py-12 flex flex-col justify-between ' +
-                'bg-[#f2f2f2] border-l-4 border-[#008ab8] shadow-md rounded-md'
+                'bg-[#eeeeee] dark:bg-darkBackground border-l-4 dark:border-2 border-[#008ab8] dark:border-darkForeground shadow-md rounded-md'
             );
             $form.find('.form-group').addClass('space-y-2');
-            $form.find('label').addClass('block text-sm font-medium text-gray-800');
+            $form.find('label').addClass('block text-sm font-medium');
             $form
               .find('input, textarea')
               .addClass(
@@ -53,7 +53,7 @@ export default function HelpPage() {
               .find('button')
               .addClass(
                 'inline-block px-8 py-3 text-center text-xl text-white ' +
-                  'bg-[#008ab8] rounded-md font-semibold border-2 border-[#008ab8] ' +
+                  'bg-[#008ab8] dark:bg-darkBackground rounded-md font-semibold border-2 border-[#008ab8] dark:border-darkForeground ' +
                   'shadow-sm transition-all duration-300 hover:bg-gray-800 ' +
                   'hover:border-gray-800 hover:shadow-lg text-center w-36 ml-auto'
               );
@@ -116,28 +116,23 @@ export default function HelpPage() {
   return (
     <main className="mx-auto mb-20 mt-8 max-w-4xl p-4">
       <section className="mb-12">
-        <h1 className="text-6xl font-extrabold leading-normal text-gray-900" aria-label="Helpdesk">
+        <h1 className="text-6xl font-extrabold leading-normal" aria-label="Helpdesk">
           Helpdesk
         </h1>
-        <p className="mt-4 text-lg text-gray-600">
-          Comprehensive guidance and support for every step of using Chemotion.
-        </p>
+        <p className="mt-4 text-lg opacity-90">Comprehensive guidance and support for every step of using Chemotion.</p>
       </section>
 
       <div className="w-full">
-        <section className="space-y-8 text-gray-800" aria-labelledby="help-description">
+        <section className="space-y-8" aria-labelledby="help-description">
           <div>
-            <h2
-              id="help-description"
-              className="mb-2 text-2xl font-semibold text-gray-900"
-              aria-label="How We Can Help">
+            <h2 id="help-description" className="mb-2 text-2xl font-semibold opacity-95" aria-label="How We Can Help">
               How We Can Help
             </h2>
-            <p className="mb-2 leading-relaxed text-gray-700">
+            <p className="mb-2 leading-relaxed opacity-90">
               Our team is dedicated to providing you with the support you need, whether you are new to Chemotion or
               require advanced assistance.
             </p>
-            <ul className="list-disc space-y-4 pl-6 text-gray-700" aria-label="Support Areas">
+            <ul className="list-disc space-y-4 pl-6 opacity-95" aria-label="Support Areas">
               <li>
                 <strong>Learn About Chemotion ELN</strong>
                 <br />
@@ -157,8 +152,8 @@ export default function HelpPage() {
           </div>
 
           <div>
-            <h2 className="text-2xl font-semibold text-gray-900">Support for Chemotion Repository</h2>
-            <p className="leading-relaxed text-gray-700">
+            <h2 className="text-2xl font-semibold opacity-95">Support for Chemotion Repository</h2>
+            <p className="leading-relaxed opacity-90">
               For assistance with Chemotion Repository, please reach out to our&nbsp;
               <a
                 href="mailto:chemotion-repository@lists.kit.edu"
@@ -169,8 +164,8 @@ export default function HelpPage() {
             </p>
           </div>
           <div>
-            <h2 className="text-2xl font-semibold text-gray-900">Contact Us</h2>
-            <p className="leading-relaxed text-gray-700">
+            <h2 className="text-2xl font-semibold opacity-95">Contact Us</h2>
+            <p className="leading-relaxed opacity-90">
               If you have any questions or require further assistance, feel free to contact the helpdesk via&nbsp;
               <a
                 href="mailto:helpdesk@nfdi4chem.de"

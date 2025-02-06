@@ -27,7 +27,10 @@ export default function SectionCard({
     <section id={sectionId} className={sectionClassName} aria-labelledby={headingId}>
       <div className={`border-2 ${borderColorClass} ${containerClassName}`}>
         <div className={leftSideClassName}>
-          <h1 id={headingId} className="text-[26px] font-bold text-gray-800" aria-label={headingAriaLabel}>
+          <h1
+            id={headingId}
+            className="text-[26px] font-bold text-gray-800 dark:text-darkForeground"
+            aria-label={headingAriaLabel}>
             {content?.titleImage?.url ? (
               <Image
                 src={`${process.env.NEXT_PUBLIC_STRAPI_URL}${content.titleImage.url}`}
@@ -45,7 +48,7 @@ export default function SectionCard({
             {content.features?.map((feature, index) => (
               <div
                 key={index}
-                className="transition-all duration-200 hover:text-gray-900"
+                className="transition-all duration-200 hover:text-gray-900 dark:hover:text-darkForeground"
                 role="listitem"
                 aria-label={feature?.children?.map((child) => child?.text).join(' ') || ''}>
                 {feature?.children?.map((child, childIndex) => (
