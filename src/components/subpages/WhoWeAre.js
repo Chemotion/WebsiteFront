@@ -11,13 +11,13 @@ export default function WhoWeArePage() {
           Who We Are —<br />
           ComPlat &amp; Chemotion
         </h1>
-        <p className="mt-4 text-lg opacity-90" aria-label="Introduction to ComPlat and Chemotion mission and team">
+        <p className="mt-4 text-lg" aria-label="Introduction to ComPlat and Chemotion mission and team">
           Discover the mission, infrastructure, and team behind ComPlat & Chemotion.
         </p>
       </section>
 
       <div className="w-full">
-        <section className="space-y-12 opacity-95" aria-labelledby="mission-and-team">
+        <section className="space-y-12" aria-labelledby="mission-and-team">
           <div>
             <h2 id="mission-and-team" className="mb-4 text-2xl font-bold" aria-label="Aim">
               Aim

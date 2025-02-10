@@ -6,7 +6,7 @@ export default function AccessibilityPage() {
           Accessibility Statement
         </h1>
 
-        <p className="mt-4 text-lg opacity-90">
+        <p className="mt-4 text-lg">
           Karlsruhe Institute of Technology (KIT) seeks to make its websites and mobile applications accessible in
           accordance with Article 10, par. 1 of the State Equal Opportunities for People with Disabilities Act (L-BGG).
           The following declaration on accessibility applies to the Chemotion website and associated services.
@@ -18,28 +18,24 @@ export default function AccessibilityPage() {
           <div>
             <h2
               id="compliance-status"
-              className="mb-4 text-2xl font-bold opacity-95"
+              className="mb-4 text-2xl font-bold"
               aria-label="Status of Compliance with the Requirements">
               Status of Compliance with the Requirements
             </h2>
-            <p className="mb-6 leading-relaxed opacity-90">
-              This website is partly in compliance with Article 10, par. 1, L-BGG.
-            </p>
+            <p className="mb-6 leading-relaxed">This website is partly in compliance with Article 10, par. 1, L-BGG.</p>
           </div>
 
           <div>
-            <h2 className="mb-4 text-2xl font-bold opacity-95" aria-label="Inaccessible Contents">
+            <h2 className="mb-4 text-2xl font-bold" aria-label="Inaccessible Contents">
               Inaccessible Contents
             </h2>
-            <p className="mb-6 leading-relaxed opacity-90">
+            <p className="mb-6 leading-relaxed">
               KIT runs an extensive website that is managed by numerous editors. Therefore, the accessibility aspects
               cannot always be guaranteed. However, we constantly strive to improve accessibility and to train and
               sensitize the editors.
             </p>
-            <p className="mb-4 leading-relaxed opacity-95">
-              The following contents are inaccessible or partly accessible only:
-            </p>
-            <ul className="list-disc space-y-4 pl-6 opacity-95" aria-label="List of inaccessible contents">
+            <p className="mb-4 leading-relaxed">The following contents are inaccessible or partly accessible only:</p>
+            <ul className="list-disc space-y-4 pl-6 " aria-label="List of inaccessible contents">
               <li>1.</li>
               <li>2.</li>
               <li>3.</li>
@@ -47,17 +43,17 @@ export default function AccessibilityPage() {
           </div>
 
           <div>
-            <h2 className="mb-4 text-2xl font-bold opacity-95" aria-label="Date of Issue">
+            <h2 className="mb-4 text-2xl font-bold " aria-label="Date of Issue">
               Date of Issue
             </h2>
-            <p className="leading-relaxed opacity-90">
+            <p className="leading-relaxed ">
               This declaration was issued on <strong>September 9, 2020</strong>, and last reviewed on{' '}
               <strong>November 14, 2024</strong>.
             </p>
             <p className="leading-relaxed">Method: Self-assessment</p>
           </div>
 
-          <div className="opacity-95">
+          <div>
             <h2 className="mb-4 text-2xl font-bold " aria-label="Feedback and Contact Data">
               Feedback and Contact Data
             </h2>
@@ -89,7 +85,7 @@ export default function AccessibilityPage() {
             </p>
           </div>
 
-          <div className="opacity-95">
+          <div>
             <h2 className="mb-4 text-2xl font-bold" aria-label="Enforcement Procedure">
               Enforcement Procedure
             </h2>

@@ -138,20 +138,20 @@ export default function HelpPage() {
         <h1 className="text-6xl font-extrabold leading-normal" aria-label="Helpdesk">
           Helpdesk
         </h1>
-        <p className="mt-4 text-lg opacity-90">Comprehensive guidance and support for every step of using Chemotion.</p>
+        <p className="mt-4 text-lg">Comprehensive guidance and support for every step of using Chemotion.</p>
       </section>
 
       <div className="w-full">
         <section className="space-y-8" aria-labelledby="help-description">
           <div>
-            <h2 id="help-description" className="mb-2 text-2xl font-semibold opacity-95" aria-label="How We Can Help">
+            <h2 id="help-description" className="mb-2 text-2xl font-semibold" aria-label="How We Can Help">
               How We Can Help
             </h2>
-            <p className="mb-2 leading-relaxed opacity-90">
+            <p className="mb-2 leading-relaxed">
               Our team is dedicated to providing you with the support you need, whether you are new to Chemotion or
               require advanced assistance.
             </p>
-            <ul className="list-disc space-y-4 pl-6 opacity-95" aria-label="Support Areas">
+            <ul className="list-disc space-y-4 pl-6" aria-label="Support Areas">
               <li>
                 <strong>Learn About Chemotion ELN</strong>
                 <br />
@@ -171,8 +171,8 @@ export default function HelpPage() {
           </div>
 
           <div>
-            <h2 className="text-2xl font-semibold opacity-95">Support for Chemotion Repository</h2>
-            <p className="leading-relaxed opacity-90">
+            <h2 className="text-2xl font-semibold">Support for Chemotion Repository</h2>
+            <p className="leading-relaxed">
               For assistance with Chemotion Repository, please reach out to our&nbsp;
               <a
                 href="mailto:chemotion-repository@lists.kit.edu"
@@ -183,8 +183,8 @@ export default function HelpPage() {
             </p>
           </div>
           <div>
-            <h2 className="text-2xl font-semibold opacity-95">Contact Us</h2>
-            <p className="leading-relaxed opacity-90">
+            <h2 className="text-2xl font-semibold">Contact Us</h2>
+            <p className="leading-relaxed">
               If you have any questions or require further assistance, feel free to contact the helpdesk via&nbsp;
               <a
                 href="mailto:helpdesk@nfdi4chem.de"
