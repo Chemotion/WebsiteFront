@@ -160,6 +160,7 @@ export default function Card({
                     width={460}
                     height={230}
                     className="object-cover object-bottom"
+                    unoptimized
                   />
                 ) : (
                   <div className="flex h-full w-[460px] items-center justify-center bg-gray-200 object-cover object-bottom">

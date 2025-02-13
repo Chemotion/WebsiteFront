@@ -8,7 +8,11 @@ const nextConfig = {
       },
       {
         protocol: 'https',
-        hostname: 'chemotion.net'
+        hostname: 'cms.chemotion.net'
+      },
+      {
+        protocol: 'https',
+        hostname: 'cms.web123.chemotion.scc.kit.edu'
       }
     ]
   }

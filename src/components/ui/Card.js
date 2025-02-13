@@ -38,6 +38,7 @@ export default function SectionCard({
                 width={300}
                 height={46}
                 className="mx-auto mb-2 h-[46px] w-[300px] object-contain lg:mx-0"
+                unoptimized
               />
             ) : (
               content?.title || 'No Title'
@@ -89,6 +90,7 @@ export default function SectionCard({
               fill
               sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
               className="object-cover transition-transform duration-300"
+              unoptimized
             />
           ) : (
             <div className="flex size-full items-center justify-center bg-gray-200">
