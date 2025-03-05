@@ -23,6 +23,14 @@ const secondaryNavLinks = [
   }
 ];
 
+const slugify = (text) =>
+  text
+    .toLowerCase()
+    .replace(/[^\w\s-]/g, '')
+    .trim()
+    .replace(/[\s_-]+/g, '-')
+    .replace(/^-+|-+$/g, '');
+
 const SearchResults = ({ results, searchTerm, onItemClick }) => {
   if (results.length > 0) {
     return (
@@ -30,7 +38,7 @@ const SearchResults = ({ results, searchTerm, onItemClick }) => {
         {results.map((doc) => (
           <li key={doc.__id} className="hover:bg-neutral-100 dark:hover:bg-darkBackground">
             <Link
-              href={`https://chemotion.net${doc.u}?_highlight=${encodeURIComponent(searchTerm)}`}
+              href={`https://chemotion.net${doc.u}?_highlight=${encodeURIComponent(searchTerm)}#${slugify(doc.t)}`}
               onClick={onItemClick}
               className="block px-6 py-4"
               aria-label={`Navigate to ${doc.t}`}
