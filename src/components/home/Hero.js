@@ -1,23 +1,11 @@
 'use client';
 
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
+import Image from 'next/image';
 import { useTheme } from 'next-themes';
-import useSWR from 'swr';
-import fallback from '/public/fallback.json';
-
-const fetcher = async () => {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_STRAPI_URL}/api/hero-section?populate=*`, {
-    headers: {
-      Authorization: `Bearer ${process.env.NEXT_PUBLIC_API_TOKEN}`
-    }
-  });
-
-  if (!res.ok) {
-    throw new Error('Failed to fetch data');
-  }
-  return res.json();
-};
+import useContent from '@/hooks/useContent';
+import { HeroButton } from '@/components/ui/HeroButton';
 
 const renderRichText = (nodes) => {
   return nodes.map((node, index) => {
@@ -40,12 +28,21 @@ const Hero = () => {
   const { theme } = useTheme();
   const isDark = theme === 'dark';
 
-  const { data, error, isLoading } = useSWR('hero-section', fetcher);
-  const fallbackContent = fallback.HeroSection;
+  const { content, isLoading } = useContent({
+    apiKey: 'hero-section',
+    fallbackKey: 'heroSection'
+  });
+  const heroRef = useRef(null);
+
+  useEffect(() => {
+    if (!isDark && content?.heroBackgroundSVG?.url && heroRef.current) {
+      const bgUrl = `${process.env.NEXT_PUBLIC_STRAPI_URL}${content.heroBackgroundSVG.url}`;
+      heroRef.current.style.setProperty('--hero-background', `url("${bgUrl}")`);
+    }
+  }, [isDark, content]);
 
   if (isLoading) return <div>Loading...</div>;
 
-  const content = !error && data?.data ? data.data : fallbackContent;
   const heroTitle = content?.heroTitle || [];
 
   const containerVariants = {
@@ -88,20 +85,8 @@ const Hero = () => {
 
   return (
     <motion.div
-      className="relative flex flex-col items-center px-6 py-10 sm:px-[100px] sm:py-20"
-      style={
-        !isDark
-          ? {
-              backgroundImage: `
-          radial-gradient(ellipse at center 60%, rgba(250, 250, 250, 0) 20%, rgba(250, 250, 250, 1) 50%),
-          url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='52' height='52' viewBox='0 0 52 52'%3E%3Cpath fill='%23389fd4' fill-opacity='0.1' d='M0 17.83V0h17.83a3 3 0 0 1-5.66 2H5.9A5 5 0 0 1 2 5.9v6.27a3 3 0 0 1-2 5.66zm0 18.34a3 3 0 0 1 2 5.66v6.27A5 5 0 0 1 5.9 52h6.27a3 3 0 0 1 5.66 0H0V36.17zM36.17 52a3 3 0 0 1 5.66 0h6.27a5 5 0 0 1 3.9-3.9v-6.27a3 3 0 0 1 0-5.66V52H36.17zM0 31.93v-9.78a5 5 0 0 1 3.8.72l4.43-4.43a3 3 0 1 1 1.42 1.41L5.2 24.28a5 5 0 0 1 0 5.52l4.44 4.43a3 3 0 1 1-1.42 1.42L3.8 31.2a5 5 0 0 1-3.8.72zm52-14.1a3 3 0 0 1 0-5.66V5.9A5 5 0 0 1 48.1 2h-6.27a3 3 0 0 1-5.66-2H52v17.83zm0 14.1a4.97 4.97 0 0 1-1.72-.72l-4.43 4.44a3 3 0 1 1-1.41-1.42l4.43-4.43a5 5 0 0 1 0-5.52l-4.43-4.43a3 3 0 1 1 1.41-1.41l4.43 4.43c.53-.35 1.12-.6 1.72-.72v9.78zM22.15 0h9.78a5 5 0 0 1-.72 3.8l4.44 4.43a3 3 0 1 1-1.42 1.42L29.8 5.2a5 5 0 0 1-5.52 0l-4.43 4.44a3 3 0 1 1-1.41-1.42l4.43-4.43a5 5 0 0 1-.72-3.8zm0 52c.13-.6.37-1.19.72-1.72l-4.43-4.43a3 3 0 1 1 1.41-1.41l4.43 4.43a5 5 0 0 1 5.52 0l4.43-4.43a3 3 0 1 1 1.42 1.41l-4.44 4.43c.36.53.6 1.12.72 1.72h-9.78zm9.75-24a5 5 0 0 1-3.9 3.9v6.27a3 3 0 1 1-2 0V31.9a5 5 0 0 1-3.9-3.9h-6.27a3 3 0 1 1 0-2h6.27a5 5 0 0 1 3.9-3.9v-6.27a3 3 0 1 1 2 0v6.27a5 5 0 0 1 3.9 3.9h6.27a3 3 0 1 1 0 2H31.9z'%3E%3C/path%3E%3C/svg%3E")
-        `,
-              backgroundSize: 'cover, 100px 100px',
-              backgroundRepeat: 'no-repeat, repeat',
-              backgroundPosition: 'center, center'
-            }
-          : {}
-      }
+      ref={heroRef}
+      className={`relative flex flex-col items-center px-6 py-10 sm:px-[100px] sm:py-20 ${!isDark ? 'hero-background' : ''}`}
       variants={containerVariants}
       initial="hidden"
       animate="visible"
@@ -121,7 +106,7 @@ const Hero = () => {
       {heroTitle[1] && (
         <motion.div
           variants={itemVariants}
-          className="mb-8 text-center text-3xl font-medium sm:text-[40px]"
+          className="my-4 text-center text-4xl font-medium sm:mb-8 sm:mt-0 sm:text-[40px]"
           tabIndex="0"
           aria-label="Extended for life sciences">
           {renderRichText(heroTitle[1].children)}
@@ -140,26 +125,36 @@ const Hero = () => {
 
       <motion.div
         variants={itemVariants}
-        className="mt-12 flex flex-wrap justify-center text-xl custom-lg:justify-start">
-        <button
-          type="button"
+        className="mt-12 flex flex-wrap justify-center gap-6 text-xl custom-lg:justify-start">
+        <HeroButton
           onClick={() => scrollToSection('eln')}
-          className="inline-flex items-center rounded-md border-2 border-[#008ab8] bg-neutral-50 px-10 py-4 text-center font-semibold text-gray-700 shadow-sm
-          transition-all duration-300 ease-in-out hover:bg-[#008ab8] hover:text-white
-          dark:border-darkForeground dark:bg-darkBackground dark:text-darkForeground dark:hover:bg-darkForeground dark:hover:text-darkBackground"
-          aria-label="Scroll to ELN section">
-          {content?.buttonText}
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            strokeWidth={1.5}
-            stroke="currentColor"
-            className="ml-2 size-6"
-            aria-hidden="true">
-            <path strokeLinecap="round" strokeLinejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
-          </svg>
-        </button>
+          aria-label="Scroll to ELN section"
+          className="w-48 border-2 border-[#008ab8] bg-[#008ab8] font-semibold dark:border-darkForeground dark:bg-darkBackground">
+          <div className="text-white">{content?.buttonText}</div>
+          <Image
+            src={`${process.env.NEXT_PUBLIC_STRAPI_URL}${content?.buttonSVG?.url}`}
+            alt={content?.buttonSVG?.alternativeText}
+            className="ml-2 brightness-0 invert"
+            width={24}
+            height={24}
+            unoptimized
+          />
+        </HeroButton>
+
+        <HeroButton
+          onClick={() => window.open(content?.demoButtonLink, '_blank')}
+          aria-label="Open demo in new tab"
+          className="w-48 border-2 border-[#008ab8] bg-neutral-50 font-semibold dark:border-darkForeground dark:bg-darkBackground">
+          {content?.demoButtonText}
+          <Image
+            src={`${process.env.NEXT_PUBLIC_STRAPI_URL}${content?.demoButtonSVG?.url}`}
+            alt={content?.demoButtonSVG?.alternativeText}
+            className="ml-2"
+            width={24}
+            height={24}
+            unoptimized
+          />
+        </HeroButton>
       </motion.div>
     </motion.div>
   );
