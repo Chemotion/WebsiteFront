@@ -96,24 +96,24 @@ export default function Card({
             initial="hidden"
             animate="visible"
             exit="hidden"
-            className="text-md mr-6 mt-2 space-y-2 overflow-hidden text-left font-semibold text-gray-700 dark:text-darkForeground"
+            className="text-md mr-6 mt-2 space-y-2 overflow-hidden text-left text-sm font-light text-gray-700 dark:text-darkForeground sm:text-base"
             aria-labelledby={`${title}-details`}>
             {longDescription?.map((feature, fIdx) => {
-              if (feature.type === 'list' && feature.format === 'unordered') {
+              if (feature.type === 'paragraph') {
                 return (
-                  <motion.ul key={fIdx} className="list-disc pl-5">
-                    {feature.children.map((listItem, liIdx) => {
-                      if (listItem.type === 'list-item') {
-                        const bulletText = listItem.children.map((child) => child.text).join(' ');
-                        return (
-                          <motion.li key={liIdx} custom={liIdx} variants={listItemVariants} className="mb-2">
-                            {bulletText}
-                          </motion.li>
-                        );
-                      }
-                      return null;
+                  <motion.p key={fIdx} className="mb-2" variants={listItemVariants}>
+                    {feature.children.map((child, idx) => {
+                      return child.bold ? (
+                        <span key={idx} className="font-semibold text-gray-900 dark:text-white">
+                          {child.text}
+                        </span>
+                      ) : (
+                        <span key={idx} className="ml-1">
+                          {child.text}
+                        </span>
+                      );
                     })}
-                  </motion.ul>
+                  </motion.p>
                 );
               }
               return null;

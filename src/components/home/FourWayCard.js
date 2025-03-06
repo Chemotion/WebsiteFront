@@ -9,13 +9,7 @@ export default function CardContainer() {
     fallbackKey: 'elnFourStepsSection'
   });
 
-  if (isLoading) {
-    return <div>Loading...</div>;
-  }
-
-  if (!content || !Array.isArray(content)) {
-    return <div>No data found for ElnFourStepsSection.</div>;
-  }
+  if (isLoading) return <div>Loading...</div>;
 
   // custom order
   const order = ['Plan', 'Collect', 'Analyse', 'Publish'];
