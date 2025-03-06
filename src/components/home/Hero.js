@@ -149,7 +149,7 @@ const Hero = () => {
           <Image
             src={`${process.env.NEXT_PUBLIC_STRAPI_URL}${content?.demoButtonSVG?.url}`}
             alt={content?.demoButtonSVG?.alternativeText}
-            className="ml-2"
+            className="ml-2 dark:brightness-0 dark:invert"
             width={24}
             height={24}
             unoptimized
