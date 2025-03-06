@@ -5,6 +5,7 @@ import CardContainer from '@/components/home/FourWayCard';
 import FeatureSection from '@/components/home/FeaturesCard';
 import ELNHero from '@/components/home/ELNHero';
 import DemoSection from '@/components/home/DemoCard';
+import VideoSection from '@/components/home/VideoCard';
 import DeviceSection from '@/components/home/DevicesCard';
 import GetStartedSection from '@/components/home/TwoWayCard';
 import LabimotionHero from '@/components/home/LabimotionHero';
@@ -22,10 +23,11 @@ export default function Home() {
         <Diagram />
         <ELNHero />
         <CardContainer />
-        <DeviceSection />
+        <VideoSection />
         <FeatureSection />
         <DemoSection />
         <GetStartedSection />
+        <DeviceSection />
         <LabimotionHero />
         <LabimotionSection />
         <RepositoryHero />
