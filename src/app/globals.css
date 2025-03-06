@@ -5,3 +5,13 @@
 html {
   scroll-behavior: smooth;
 }
+
+.hero-background {
+  background-image: radial-gradient(ellipse at center 60%, rgba(250, 250, 250, 0) 20%, rgba(250, 250, 250, 1) 50%),
+    var(--hero-background);
+  background-size:
+    cover,
+    100px 100px;
+  background-repeat: no-repeat, repeat;
+  background-position: center, center;
+}
