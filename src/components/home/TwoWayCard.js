@@ -55,7 +55,7 @@ const GetStartedSection = () => {
   ];
 
   return (
-    <div id="explore" className="mb-16 w-full max-w-6xl px-4" role="region" aria-labelledby="explore-section-heading">
+    <div id="explore" className="mb-14 w-full max-w-6xl px-4" role="region" aria-labelledby="explore-section-heading">
       <div className="flex flex-col items-stretch gap-14 sm:flex-row">
         {features.map((feature, index) => (
           <div
