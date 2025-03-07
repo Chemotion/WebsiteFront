@@ -1,9 +1,74 @@
 'use client';
 import { useState } from 'react';
 import Image from 'next/image';
+import { motion } from 'framer-motion';
+import useContent from '@/hooks/useContent';
 
 const Diagram = () => {
-  const [isImageLoaded, setIsImageLoaded] = useState(false);
+  const { content, isLoading } = useContent({
+    apiKey: 'flowchart-section',
+    fallbackKey: 'flowchartSection'
+  });
+
+  const [cursor, setCursor] = useState({ x: 0, y: 0 });
+  const [active, setActive] = useState(false);
+
+  if (isLoading) return <div>Loading...</div>;
+
+  const handleMouseMove = (e) => {
+    const rect = e.currentTarget.getBoundingClientRect();
+    setCursor({
+      x: e.clientX - rect.left,
+      y: e.clientY - rect.top
+    });
+    if (!active) setActive(true);
+  };
+
+  const handleMouseLeave = () => {
+    setActive(false);
+  };
+
+  const handleTouchMove = (e) => {
+    const touch = e.touches[0];
+    const rect = e.currentTarget.getBoundingClientRect();
+    setCursor({
+      x: touch.clientX - rect.left,
+      y: touch.clientY - rect.top
+    });
+    if (!active) setActive(true);
+  };
+
+  const handleTouchEnd = () => {
+    setActive(false);
+  };
+
+  const handleKeyDown = (e) => {
+    const moveAmount = 10;
+    setCursor((prev) => {
+      let { x, y } = prev;
+      switch (e.key) {
+        case 'ArrowUp':
+          y = Math.max(0, y - moveAmount);
+          break;
+        case 'ArrowDown':
+          y = y + moveAmount;
+          break;
+        case 'ArrowLeft':
+          x = Math.max(0, x - moveAmount);
+          break;
+        case 'ArrowRight':
+          x = x + moveAmount;
+          break;
+        case 'Escape':
+          setActive(false);
+          break;
+        default:
+          return prev;
+      }
+      return { x, y };
+    });
+    if (!active) setActive(true);
+  };
 
   return (
     <div
@@ -11,21 +76,33 @@ const Diagram = () => {
       className="relative mb-16 mt-4 flex max-w-6xl flex-col items-center"
       role="region"
       aria-labelledby="diagram-heading">
-      <div className="relative w-full px-4 custom-lg:px-0">
+      <div
+        onMouseMove={handleMouseMove}
+        onMouseLeave={handleMouseLeave}
+        onTouchMove={handleTouchMove}
+        onTouchEnd={handleTouchEnd}
+        onKeyDown={handleKeyDown}
+        tabIndex={0}
+        role="button"
+        aria-label="Interactive flowchart"
+        className="relative w-full cursor-default drop-shadow-sm transition-transform duration-300 hover:-translate-y-1 hover:scale-[1.01] hover:drop-shadow-md focus:outline-none">
         <Image
-          src="/images/Hauptgrafik.png"
-          alt="Main Diagram showcasing key features"
+          src={`${process.env.NEXT_PUBLIC_STRAPI_URL}${content?.flowchartImage?.url}`}
+          alt={content?.flowchartImage?.alternativeText}
           width={1130}
           height={1130}
-          className="size-full object-contain grayscale-[10%]"
-          onLoad={() => setIsImageLoaded(true)}
-          priority
+          unoptimized
         />
-        {isImageLoaded && (
-          <div className="absolute inset-0 flex items-center justify-center" aria-hidden="true">
-            <span className="bg-white text-center text-7xl font-bold text-black drop-shadow-lg">Demo</span>
-          </div>
-        )}
+        <motion.div
+          animate={{
+            x: cursor.x,
+            y: cursor.y,
+            opacity: active ? 1 : 0,
+            scale: active ? 1.2 : 0.8
+          }}
+          transition={{ type: 'spring', stiffness: 300, damping: 30 }}
+          className="pointer-events-none absolute left-0 top-0 size-[150px] -translate-x-1/2 -translate-y-1/2 bg-[radial-gradient(circle,rgba(255,255,255,0.4)_0%,transparent_70%)]"
+        />
       </div>
     </div>
   );
