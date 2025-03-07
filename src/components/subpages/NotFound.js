@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import Image from 'next/image';
+import { HeroButton } from '@/components/ui/HeroButton';
 
 export default function NotFoundPage() {
   return (
@@ -21,14 +22,13 @@ export default function NotFoundPage() {
           Sorry, the page you are looking for does not exist. It might have been moved, renamed, or removed.
         </p>
       </section>
-      <Link
+      <HeroButton
+        as="a"
         href="/"
         aria-label="Go back to home page"
-        className="inline-flex items-center rounded-md border-2 border-[#008ab8] px-10 py-4 text-center text-xl font-semibold
-          text-gray-700 shadow-sm transition-all duration-300 ease-in-out
-          hover:bg-[#008ab8] hover:text-white dark:border-darkForeground dark:bg-darkBackground dark:text-darkForeground dark:hover:bg-darkForeground dark:hover:text-darkBackground">
-        Back to home
-      </Link>
+        className="w-48 border-2 border-[#008ab8] bg-[#008ab8] font-semibold dark:border-darkForeground dark:bg-darkBackground">
+        <div className="py-2 text-xl text-white"> Back to home</div>
+      </HeroButton>
     </div>
   );
 }
