@@ -7,7 +7,7 @@ const GetStartedSection = () => {
     apiKey: 'two-cards-section',
     fallbackKey: 'twoCardsSection'
   });
-  console.log('Content:', content);
+
   if (isLoading) return <div>Loading...</div>;
 
   const parseCard = (card, buttonText, buttonLink) => {

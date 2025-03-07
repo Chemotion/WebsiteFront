@@ -5,23 +5,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useSearch } from '@/hooks/useSearch';
-
-const primaryNavLinks = [
-  { href: '/#eln', label: 'ELN', ariaLabel: 'Navigate to ELN section' },
-  { href: '/#labimotion', label: 'LabIMotion', ariaLabel: 'Navigate to LabIMotion section' },
-  { href: '/#repository', label: 'Repository', ariaLabel: 'Navigate to Repository section' }
-];
-
-const secondaryNavLinks = [
-  { href: '/about', label: 'Who we are', ariaLabel: 'Learn more about us' },
-  { href: '/helpdesk', label: 'Helpdesk', ariaLabel: 'Navigate to Helpdesk' },
-  {
-    href: 'https://chemotion.net/docs',
-    label: 'Docs',
-    ariaLabel: 'Navigate to Chemotion documentation',
-    external: true
-  }
-];
+import useContent from '@/hooks/useContent';
 
 const slugify = (text) =>
   text
@@ -106,6 +90,34 @@ const NavBar = () => {
     }
   };
 
+  const { content, isLoading } = useContent({
+    apiKey: 'navigation-bar',
+    fallbackKey: 'navigationBar'
+  });
+
+  if (isLoading) return <div>Loading...</div>;
+
+  const primaryNavLinks = [
+    { href: content.elnLink, label: content.elnButton, ariaLabel: `Navigate to ${content.elnButton} section` },
+    {
+      href: content.labimotionLink,
+      label: content.labimotionButton,
+      ariaLabel: `Navigate to ${content.labimotionButton} section`
+    },
+    { href: content.repoLink, label: content.repoButton, ariaLabel: `Navigate to ${content.repoButton} section` }
+  ];
+
+  const secondaryNavLinks = [
+    { href: content.aboutLink, label: content.aboutButton, ariaLabel: 'Learn more about us' },
+    { href: content.helpdeskLink, label: content.helpdeskButton, ariaLabel: 'Navigate to Helpdesk' },
+    {
+      href: content.docsLink,
+      label: content.docsButton,
+      ariaLabel: 'Navigate to Chemotion documentation',
+      external: true
+    }
+  ];
+
   return (
     <>
       <header
@@ -119,8 +131,16 @@ const NavBar = () => {
                 onClick={scrollToTop}
                 className="ml-4 mr-12 flex items-center text-lg font-semibold text-gray-800 dark:text-darkForeground"
                 aria-label="Navigate to Chemotion homepage">
-                <Image src="/images/open-c.png" alt="Chemotion Logo" className="mr-4" width={35} height={42} />
-                Chemotion
+                <Image
+                  src={`${process.env.NEXT_PUBLIC_STRAPI_URL}${content?.logo?.url}`}
+                  alt={content?.logo?.alternativeText}
+                  width={35}
+                  height={42}
+                  unoptimized
+                  className="mr-4"
+                />
+
+                {content.logoText}
               </Link>
             </div>
             <nav className="hidden space-x-8 custom-lg:flex" aria-label="Main navigation">
@@ -175,7 +195,7 @@ const NavBar = () => {
                       onChange={handleSearch}
                       onBlur={handleBlur}
                       autoFocus
-                      placeholder="Search the docs"
+                      placeholder={content.searchSubText}
                       className="w-full bg-transparent font-medium outline-none transition-opacity duration-300"
                     />
                     <button
@@ -187,19 +207,15 @@ const NavBar = () => {
                   </>
                 ) : (
                   <div className="flex flex-row items-center">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      viewBox="0 0 24 24"
-                      fill="currentColor"
-                      className="mr-2 size-6 text-[#008ab8] dark:text-darkForeground">
-                      <path d="M8.25 10.875a2.625 2.625 0 1 1 5.25 0 2.625 2.625 0 0 1-5.25 0Z" />
-                      <path
-                        fillRule="evenodd"
-                        d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25Zm-1.125 4.5a4.125 4.125 0 1 0 2.338 7.524l2.007 2.006a.75.75 0 1 0 1.06-1.06l-2.006-2.007a4.125 4.125 0 0 0-3.399-6.463Z"
-                        clipRule="evenodd"
-                      />
-                    </svg>
-                    <div className="mr-2 text-gray-700 dark:text-darkForeground">Search the docs</div>
+                    <Image
+                      src={`${process.env.NEXT_PUBLIC_STRAPI_URL}${content?.searchIcon?.url}`}
+                      alt={content?.searchIcon?.alternativeText}
+                      width={24}
+                      height={24}
+                      className="mr-2 size-6 dark:brightness-0 dark:invert"
+                    />
+
+                    <div className="mr-2 text-gray-700 dark:text-darkForeground">{content.searchText}</div>
                   </div>
                 )}
               </div>
@@ -221,19 +237,16 @@ const NavBar = () => {
                 onClick={toggleSearch}
                 aria-label="Toggle search"
                 className="ml-4 flex h-10 w-28 cursor-pointer items-center justify-center rounded-full border-2 border-neutral-50 bg-neutral-50 px-4 py-2 font-light text-gray-800 shadow-md duration-300 ease-in-out hover:text-gray-700 dark:border-darkForeground dark:bg-darkBackground dark:text-darkForeground">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 24 24"
-                  fill="currentColor"
-                  className="mr-2 size-6 text-[#008ab8] dark:text-darkForeground">
-                  <path d="M8.25 10.875a2.625 2.625 0 1 1 5.25 0 2.625 2.625 0 0 1-5.25 0Z" />
-                  <path
-                    fillRule="evenodd"
-                    d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25Zm-1.125 4.5a4.125 4.125 0 1 0 2.338 7.524l2.007 2.006a.75.75 0 1 0 1.06-1.06l-2.006-2.007a4.125 4.125 0 0 0-3.399-6.463Z"
-                    clipRule="evenodd"
+                <div className="mr-2 size-6 text-[#008ab8] dark:text-darkForeground">
+                  <Image
+                    src={`${process.env.NEXT_PUBLIC_STRAPI_URL}${content?.searchIcon?.url}`}
+                    alt={content?.searchIcon?.alternativeText}
+                    width={24}
+                    height={24}
+                    className="mr-2 size-6 dark:brightness-0 dark:invert"
                   />
-                </svg>
-                <div className="text-gray-700 dark:text-darkForeground">Docs</div>
+                </div>
+                <div className="text-gray-700 dark:text-darkForeground">{content.searchTextMobileView}</div>
               </button>
             </div>
 
@@ -277,19 +290,15 @@ const NavBar = () => {
                 value={searchTerm}
                 onChange={handleSearch}
                 autoFocus
-                placeholder="Search the docs"
+                placeholder={content.searchSubText}
                 className="grow rounded-md border border-gray-300 p-2 focus:outline-none dark:border-darkForeground"
               />
-              <button onClick={toggleSearch} aria-label="Close search" className="ml-4">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  strokeWidth={2}
-                  stroke="currentColor"
-                  className="size-6">
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
-                </svg>
+
+              <button
+                onClick={toggleSearch}
+                aria-label="Close search"
+                className="ml-6 mr-2 text-gray-500 hover:text-gray-700 dark:text-darkForeground">
+                ✕
               </button>
             </div>
             <div className="grow overflow-auto p-4">
@@ -324,21 +333,7 @@ const NavBar = () => {
               transition={{ type: 'spring', stiffness: 300, damping: 30 }}
               className="absolute right-0 top-0 h-full w-2/3 bg-white p-8 dark:bg-darkBackground"
               onClick={(e) => e.stopPropagation()}>
-              <div className="mb-8 flex justify-end">
-                <button onClick={toggleMenu} aria-label="Close menu">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    strokeWidth={2}
-                    stroke="currentColor"
-                    className="size-6 text-gray-700 dark:text-darkForeground">
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
-                  </svg>
-                </button>
-              </div>
-
-              <nav className="flex flex-col space-y-8">
+              <nav className="mt-20 flex flex-col space-y-8">
                 {primaryNavLinks.map(({ href, label, ariaLabel }) => (
                   <Link
                     key={href}
