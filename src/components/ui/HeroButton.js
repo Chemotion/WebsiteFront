@@ -19,7 +19,7 @@ const getRippleAnimation = (type) => ({
   }
 });
 
-export const HeroButton = React.forwardRef(({ className, children, ...props }, forwardedRef) => {
+export const HeroButton = React.forwardRef(({ as, className, children, ...props }, forwardedRef) => {
   const [ripple, setRipple] = useState(null);
   const buttonRef = useRef(null);
 
@@ -68,10 +68,12 @@ export const HeroButton = React.forwardRef(({ className, children, ...props }, f
 
   const rippleVariants = useMemo(() => ripple && getRippleAnimation(ripple.type), [ripple]);
 
+  const Component = as ? motion[as] : motion.button;
+
   return (
     <div className="inline-flex items-center" style={{ verticalAlign: 'middle' }}>
       <div className="relative inline-block">
-        <motion.button
+        <Component
           ref={combinedRef}
           whileHover={{ scale: 1.02 }}
           whileTap={{ scale: 0.98 }}
@@ -104,7 +106,7 @@ export const HeroButton = React.forwardRef(({ className, children, ...props }, f
               />
             )}
           </AnimatePresence>
-        </motion.button>
+        </Component>
         <div className="pointer-events-none absolute inset-0 flex items-center justify-center shadow-sm">
           <span className="flex items-center justify-center whitespace-nowrap font-semibold">{children}</span>
         </div>

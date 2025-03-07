@@ -2,6 +2,7 @@
 
 import jsPDF from 'jspdf';
 import useContent from '@/hooks/useContent';
+import { HeroButton } from '@/components/ui/HeroButton';
 
 const formatFeatures = (blocks) => {
   const groups = [];
@@ -251,23 +252,19 @@ const FeatureSection = () => {
           ))}
         </div>
         <div className="mt-10 text-center">
-          {content?.fileDownloadLink ? (
-            <a
-              href={content.fileDownloadLink}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-block rounded-md border-2 border-[#008ab8] bg-[#008ab8] px-8 py-3 text-center text-xl font-semibold text-white shadow-sm transition-all duration-300 hover:border-gray-800 hover:bg-gray-800 hover:shadow-lg dark:border-darkForeground dark:bg-darkBackground dark:hover:border-darkForeground"
-              aria-label="Download feature list as PDF">
-              {content.btnText}
-            </a>
-          ) : (
-            <button
-              onClick={generatePDF}
-              className="inline-block rounded-md border-2 border-[#008ab8] bg-[#008ab8] px-8 py-3 text-center text-xl font-semibold text-white shadow-sm transition-all duration-300 hover:border-gray-800 hover:bg-gray-800 hover:shadow-lg dark:border-darkForeground dark:bg-darkBackground dark:hover:border-darkForeground"
-              aria-label="Download feature list as PDF">
-              {content?.btnText}
-            </button>
-          )}
+          <HeroButton
+            {...(content?.fileDownloadLink
+              ? {
+                  as: 'a',
+                  href: content.fileDownloadLink,
+                  target: '_blank',
+                  rel: 'noopener noreferrer'
+                }
+              : { onClick: generatePDF })}
+            aria-label="Download feature list as PDF"
+            className=" w-60 border-2 border-[#008ab8] bg-[#008ab8] p-6 font-bold dark:border-darkForeground dark:bg-darkBackground">
+            <div className="py-2 text-xl text-white">{content?.btnText}</div>
+          </HeroButton>
         </div>
       </div>
     </div>

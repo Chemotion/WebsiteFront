@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import { HeroButton } from '@/components/ui/HeroButton';
 
 export default function SectionCard({
   sectionId,
@@ -65,19 +66,15 @@ export default function SectionCard({
 
           <div className="flex justify-center lg:justify-start">
             {content.buttonUrl && content.buttonText && (
-              <a
+              <HeroButton
+                as="a"
                 href={content.buttonUrl}
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label={buttonAriaLabel}
-                className={[
-                  'inline-block rounded-md border-2 px-8 py-3 text-center text-xl font-semibold text-white shadow-sm transition-all duration-300',
-                  buttonBorderClass,
-                  buttonBackgroundClass,
-                  'hover:border-gray-800 hover:bg-gray-800 hover:shadow-lg'
-                ].join(' ')}>
-                {content.buttonText}
-              </a>
+                className={['p-6 w-52', buttonBorderClass, buttonBackgroundClass].join(' ')}>
+                <div className="py-2 text-xl text-white"> {content?.buttonText}</div>
+              </HeroButton>
             )}
           </div>
         </div>

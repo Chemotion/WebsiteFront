@@ -142,7 +142,10 @@ const Hero = () => {
         </HeroButton>
 
         <HeroButton
-          onClick={() => window.open(content?.demoButtonLink, '_blank')}
+          as="a"
+          href={content?.demoButtonLink}
+          target="_blank"
+          rel="noopener noreferrer"
           aria-label="Open demo in new tab"
           className="w-48 border-2 border-[#008ab8] bg-neutral-50 font-semibold dark:border-darkForeground dark:bg-darkBackground">
           {content?.demoButtonText}
