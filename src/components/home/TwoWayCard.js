@@ -1,57 +1,36 @@
 'use client';
+import { HeroButton } from '@/components/ui/HeroButton';
+import useContent from '@/hooks/useContent';
 
 const GetStartedSection = () => {
-  const features = [
-    {
-      columnTitle: 'Explore Admin Features',
-      groups: [
-        {
-          title: 'Manage advanced features',
-          items: ['Curate Text and Report Templates', 'Generic Elements and Datasets', 'Structure Editors']
-        },
-        {
-          title: 'Manage users, groups and devices',
-          items: [
-            'Lock, unlock, delete and restore user accounts',
-            'Reset forgotten passwords',
-            'Remote desktop features'
-          ]
-        },
-        {
-          title: 'Monitor disk usage',
-          items: []
+  const { content, isLoading } = useContent({
+    apiKey: 'two-cards-section',
+    fallbackKey: 'twoCardsSection'
+  });
+  console.log('Content:', content);
+  if (isLoading) return <div>Loading...</div>;
+
+  const parseCard = (card, buttonText, buttonLink) => {
+    const columnTitle = card.find((item) => item.type === 'heading' && item.level === 1)?.children[0].text || '';
+
+    const groups = [];
+    for (let i = 0; i < card.length; i++) {
+      if (card[i].type === 'heading' && card[i].level === 3) {
+        const groupTitle = card[i].children[0].text;
+        let items = [];
+        if (i + 1 < card.length && card[i + 1].type === 'list') {
+          items = card[i + 1].children.map((listItem) => listItem.children[0].text);
+          i++;
         }
-      ],
-      button: {
-        text: 'Documentation',
-        link: 'https://chemotion.net/docs/eln'
-      }
-    },
-    {
-      columnTitle: 'Install and Manage Chemotion',
-      groups: [
-        {
-          title: 'Use our helper toolkit ChemCLI',
-          items: [
-            'Deploy, manage and backup instance(s) of Chemotion ELN',
-            'Manage users',
-            'Access shell, ruby and database consoles'
-          ]
-        },
-        {
-          title: 'Go beyond the scenes',
-          items: ['Use full power of our containerized distribution', 'Use our nginx guide to setup reverse proxy']
-        },
-        {
-          title: 'Use our API',
-          items: ['To access the ELN data programmatically', 'Push attachments to the ELN']
-        }
-      ],
-      button: {
-        text: 'Get Started!',
-        link: 'https://chemotion.net/docs/eln/install_configure'
+        groups.push({ title: groupTitle, items });
       }
     }
+    return { columnTitle, groups, button: { text: buttonText, link: buttonLink } };
+  };
+
+  const features = [
+    parseCard(content.exploreCard, content.exploreButtonText, content.exploreButtonLink),
+    parseCard(content.installCard, content.installButtonText, content.installButtonLink)
   ];
 
   return (
@@ -84,17 +63,16 @@ const GetStartedSection = () => {
                 ))}
               </div>
             </div>
-            <div className="mt-6">
-              <a
+            <div className="mt-10">
+              <HeroButton
+                as="a"
                 href={feature.button.link}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-block rounded-md border-2 border-[#008ab8] bg-[#008ab8] px-8 py-3 text-center text-xl font-semibold text-white shadow-sm
-                transition-all duration-300 hover:border-gray-800 hover:bg-gray-800 hover:shadow-lg dark:border-darkForeground
-                dark:bg-darkBackground"
-                aria-label={`Learn more about ${feature.columnTitle}`}>
-                {feature.button.text}
-              </a>
+                aria-label={`Learn more about ${feature.columnTitle}`}
+                className="size-auto w-52 border-2 border-[#008ab8] bg-[#008ab8] p-6 font-bold dark:border-darkForeground dark:bg-darkBackground">
+                <div className="py-2 text-xl text-white">{feature.button.text}</div>
+              </HeroButton>
             </div>
           </div>
         ))}
