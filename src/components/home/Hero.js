@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useEffect, useRef } from 'react';
+import React, { useRef } from 'react';
 import Image from 'next/image';
 import { useTheme } from 'next-themes';
 import useContent from '@/hooks/useContent';
