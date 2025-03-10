@@ -72,7 +72,11 @@ export default function SectionCard({
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label={buttonAriaLabel}
-                className={['p-6 w-52', buttonBorderClass, buttonBackgroundClass].join(' ')}>
+                className={[
+                  'p-6 w-52 dark:border-2 dark:border-darkForeground',
+                  buttonBorderClass,
+                  buttonBackgroundClass
+                ].join(' ')}>
                 <div className="py-2 text-xl text-white"> {content?.buttonText}</div>
               </HeroButton>
             )}

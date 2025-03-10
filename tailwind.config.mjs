@@ -12,7 +12,7 @@ module.exports = {
       colors: {
         background: colors.neutral[50],
         foreground: colors.gray[800],
-        darkBackground: '#3c3c3c',
+        darkBackground: colors.neutral[700],
         darkForeground: colors.gray[100]
       },
       screens: {

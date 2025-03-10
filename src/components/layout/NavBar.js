@@ -148,7 +148,7 @@ const NavBar = () => {
                 <Link
                   key={href}
                   href={href}
-                  className="group relative transition-colors duration-300 hover:text-gray-700"
+                  className="group relative transition-colors duration-300 hover:text-gray-700 dark:hover:text-gray-400"
                   aria-label={ariaLabel}>
                   {label}
                   <span className="absolute bottom-[-4px] left-1/2 h-[3px] w-0 transition-all duration-300 ease-in-out group-hover:left-0 group-hover:w-full">
@@ -164,7 +164,7 @@ const NavBar = () => {
                 <Link
                   key={href}
                   href={href}
-                  className="group relative transition-colors duration-300 hover:text-gray-700"
+                  className="group relative transition-colors duration-300 hover:text-gray-700 dark:hover:text-gray-400"
                   aria-label={ariaLabel}
                   {...(external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}>
                   {label}
