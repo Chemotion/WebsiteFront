@@ -6,7 +6,11 @@ const RichTextRenderer = ({ content }) => {
     const children = [];
 
     parts.forEach((part, i) => {
-      children.push(part);
+      if (part === '') {
+        children.push(<span key={`${index}-empty-${i}`} className="block h-px" />);
+      } else {
+        children.push(part);
+      }
       if (i !== parts.length - 1) {
         children.push(<br key={`${index}-br-${i}`} />);
       }
@@ -50,7 +54,7 @@ const RichTextRenderer = ({ content }) => {
         } else if (level === 2) {
           classes = 'text-3xl font-bold leading-tight mb-4';
         } else {
-          classes = 'text-2xl font-bold mt-12 mb-2';
+          classes = 'text-2xl font-bold mt-12 mb-4';
         }
         return (
           <div key={index} className={classes}>
@@ -66,7 +70,7 @@ const RichTextRenderer = ({ content }) => {
         );
       }
       case 'list': {
-        const listClasses = 'mb-4 ml-4';
+        const listClasses = 'mb-4 ml-8 ';
         if (node.format === 'ordered') {
           return (
             <ol key={index} className={`${listClasses} list-decimal`}>
@@ -75,14 +79,14 @@ const RichTextRenderer = ({ content }) => {
           );
         }
         return (
-          <ul key={index} className={`${listClasses} list-disc`}>
+          <ul key={index} className={`${listClasses} mb-8 mt-6 list-disc`}>
             {node.children && node.children.map((child, i) => renderNode(child, i))}
           </ul>
         );
       }
       case 'list-item': {
         return (
-          <li key={index} className="mb-2">
+          <li key={index} className="my-4">
             {node.children && node.children.map((child, i) => renderNode(child, i))}
           </li>
         );
