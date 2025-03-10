@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import { HeroButton } from '@/components/ui/HeroButton';
+import LoadingAnimation from '@/components/ui/LoadingAnimation';
 
 export default function SectionCard({
   sectionId,
@@ -18,12 +19,8 @@ export default function SectionCard({
   content,
   isLoading
 }) {
-  if (isLoading) {
-    return <div>Loading...</div>;
-  }
-  if (!content) {
-    return <div>No content available</div>;
-  }
+  if (isLoading) return <LoadingAnimation />;
+
   return (
     <section id={sectionId} className={sectionClassName} aria-labelledby={headingId}>
       <div className={`border-2 ${borderColorClass} ${containerClassName}`}>

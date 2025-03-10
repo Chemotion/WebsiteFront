@@ -6,6 +6,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useSearch } from '@/hooks/useSearch';
 import useContent from '@/hooks/useContent';
+import LoadingAnimation from '@/components/ui/LoadingAnimation';
 
 const slugify = (text) =>
   text
@@ -95,7 +96,7 @@ const NavBar = () => {
     fallbackKey: 'navigationBar'
   });
 
-  if (isLoading) return <div>Loading...</div>;
+  if (isLoading) return <LoadingAnimation />;
 
   const primaryNavLinks = [
     { href: content?.elnLink, label: content?.elnButton, ariaLabel: `Navigate to ${content?.elnButton} section` },

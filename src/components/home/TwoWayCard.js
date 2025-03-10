@@ -1,6 +1,7 @@
 'use client';
 import { HeroButton } from '@/components/ui/HeroButton';
 import useContent from '@/hooks/useContent';
+import LoadingAnimation from '@/components/ui/LoadingAnimation';
 
 const GetStartedSection = () => {
   const { content, isLoading } = useContent({
@@ -8,7 +9,7 @@ const GetStartedSection = () => {
     fallbackKey: 'twoCardsSection'
   });
 
-  if (isLoading) return <div>Loading...</div>;
+  if (isLoading) return <LoadingAnimation />;
 
   const parseCard = (card, buttonText, buttonLink) => {
     const columnTitle = card.find((item) => item.type === 'heading' && item.level === 1)?.children[0].text || '';

@@ -4,6 +4,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import ModeToggle from '@/components/ui/DarkModeToggle';
 import useContent from '@/hooks/useContent';
+import LoadingAnimation from '@/components/ui/LoadingAnimation';
 
 const Footer = () => {
   const { content, isLoading } = useContent({
@@ -11,7 +12,7 @@ const Footer = () => {
     fallbackKey: 'footer'
   });
 
-  if (isLoading) return <div>Loading...</div>;
+  if (isLoading) return <LoadingAnimation />;
 
   return (
     <footer

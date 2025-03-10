@@ -6,6 +6,7 @@ import Image from 'next/image';
 import { useTheme } from 'next-themes';
 import useContent from '@/hooks/useContent';
 import { HeroButton } from '@/components/ui/HeroButton';
+import LoadingAnimation from '@/components/ui/LoadingAnimation';
 
 const renderRichText = (nodes) => {
   return nodes.map((node, index) => {
@@ -41,7 +42,7 @@ const Hero = () => {
     }
   }, [isDark, content]);
 
-  if (isLoading) return <div>Loading...</div>;
+  if (isLoading) return <LoadingAnimation />;
 
   const heroTitle = content?.heroTitle || [];
 

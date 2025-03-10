@@ -3,6 +3,7 @@ import { useState } from 'react';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
 import useContent from '@/hooks/useContent';
+import LoadingAnimation from '@/components/ui/LoadingAnimation';
 
 const Diagram = () => {
   const { content, isLoading } = useContent({
@@ -13,7 +14,7 @@ const Diagram = () => {
   const [cursor, setCursor] = useState({ x: 0, y: 0 });
   const [active, setActive] = useState(false);
 
-  if (isLoading) return <div>Loading...</div>;
+  if (isLoading) return <LoadingAnimation />;
 
   const handleMouseMove = (e) => {
     const rect = e.currentTarget.getBoundingClientRect();

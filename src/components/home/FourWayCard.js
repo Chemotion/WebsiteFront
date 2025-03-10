@@ -2,6 +2,7 @@
 
 import useContent from '@/hooks/useContent';
 import Card from '@/components/ui/QuadCard';
+import LoadingAnimation from '@/components/ui/LoadingAnimation';
 
 export default function CardContainer() {
   const { content, isLoading } = useContent({
@@ -9,7 +10,7 @@ export default function CardContainer() {
     fallbackKey: 'elnFourStepsSection'
   });
 
-  if (isLoading) return <div>Loading...</div>;
+  if (isLoading) return <LoadingAnimation />;
 
   // custom order
   const order = ['Plan', 'Collect', 'Analyse', 'Publish'];

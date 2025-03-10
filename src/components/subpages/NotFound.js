@@ -3,6 +3,7 @@
 import Image from 'next/image';
 import { HeroButton } from '@/components/ui/HeroButton';
 import useContent from '@/hooks/useContent';
+import LoadingAnimation from '@/components/ui/LoadingAnimation';
 
 export default function NotFoundPage() {
   const { content, isLoading } = useContent({
@@ -10,7 +11,7 @@ export default function NotFoundPage() {
     fallbackKey: 'notFoundPage'
   });
 
-  if (isLoading) return <div>Loading...</div>;
+  if (isLoading) return <LoadingAnimation />;
 
   const { mainText, subText, buttonText, buttonLink, logo } = content;
 

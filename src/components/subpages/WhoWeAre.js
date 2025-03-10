@@ -3,6 +3,7 @@
 import Image from 'next/image';
 import useContent from '@/hooks/useContent';
 import RichTextRenderer from '@/components/helpers/RichTextRenderer';
+import LoadingAnimation from '@/components/ui/LoadingAnimation';
 
 export default function WhoWeArePage() {
   const { content, isLoading } = useContent({
@@ -10,7 +11,7 @@ export default function WhoWeArePage() {
     fallbackKey: 'aboutPage'
   });
 
-  if (isLoading) return <div>Loading...</div>;
+  if (isLoading) return <LoadingAnimation />;
 
   return (
     <main className="mx-auto mb-20 mt-8 max-w-4xl p-4" role="main" aria-labelledby="who-we-are-title">

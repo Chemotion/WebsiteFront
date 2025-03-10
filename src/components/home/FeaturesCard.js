@@ -3,6 +3,7 @@
 import jsPDF from 'jspdf';
 import useContent from '@/hooks/useContent';
 import { HeroButton } from '@/components/ui/HeroButton';
+import LoadingAnimation from '@/components/ui/LoadingAnimation';
 
 const formatFeatures = (blocks) => {
   const groups = [];
@@ -107,7 +108,7 @@ const FeatureSection = () => {
     fallbackKey: 'featuresSection'
   });
 
-  if (isLoading) return <div>Loading...</div>;
+  if (isLoading) return <LoadingAnimation />;
 
   const groups = content?.features ? formatFeatures(content.features) : [];
 

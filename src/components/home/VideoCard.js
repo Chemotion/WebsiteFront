@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import useContent from '@/hooks/useContent';
 import { HeroButton } from '@/components/ui/HeroButton';
+import LoadingAnimation from '@/components/ui/LoadingAnimation';
 
 export default function VideoCard() {
   const [consentGiven, setConsentGiven] = useState(false);
@@ -11,7 +12,7 @@ export default function VideoCard() {
     fallbackKey: 'videoSection'
   });
 
-  if (isLoading) return <div>Loading...</div>;
+  if (isLoading) return <LoadingAnimation />;
 
   const getYoutubeEmbedUrl = (url) => {
     try {

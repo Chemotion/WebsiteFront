@@ -1,6 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import LoadingAnimation from '@/components/ui/LoadingAnimation';
 
 export default function SubHero({
   heroId,
@@ -15,11 +16,7 @@ export default function SubHero({
   isLoading
 }) {
   if (isLoading) {
-    return <div>Loading...</div>;
-  }
-
-  if (!content) {
-    return <div>No content available</div>;
+    return <LoadingAnimation />;
   }
 
   const heroTitle = content?.heroTitle || [];
