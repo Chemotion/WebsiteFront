@@ -98,21 +98,21 @@ const NavBar = () => {
   if (isLoading) return <div>Loading...</div>;
 
   const primaryNavLinks = [
-    { href: content.elnLink, label: content.elnButton, ariaLabel: `Navigate to ${content.elnButton} section` },
+    { href: content?.elnLink, label: content?.elnButton, ariaLabel: `Navigate to ${content?.elnButton} section` },
     {
-      href: content.labimotionLink,
-      label: content.labimotionButton,
-      ariaLabel: `Navigate to ${content.labimotionButton} section`
+      href: content?.labimotionLink,
+      label: content?.labimotionButton,
+      ariaLabel: `Navigate to ${content?.labimotionButton} section`
     },
-    { href: content.repoLink, label: content.repoButton, ariaLabel: `Navigate to ${content.repoButton} section` }
+    { href: content?.repoLink, label: content?.repoButton, ariaLabel: `Navigate to ${content?.repoButton} section` }
   ];
 
   const secondaryNavLinks = [
-    { href: content.aboutLink, label: content.aboutButton, ariaLabel: 'Learn more about us' },
-    { href: content.helpdeskLink, label: content.helpdeskButton, ariaLabel: 'Navigate to Helpdesk' },
+    { href: content?.aboutLink, label: content?.aboutButton, ariaLabel: 'Learn more about us' },
+    { href: content?.helpdeskLink, label: content?.helpdeskButton, ariaLabel: 'Navigate to Helpdesk' },
     {
-      href: content.docsLink,
-      label: content.docsButton,
+      href: content?.docsLink,
+      label: content?.docsButton,
       ariaLabel: 'Navigate to Chemotion documentation',
       external: true
     }
@@ -140,7 +140,7 @@ const NavBar = () => {
                   className="mr-4"
                 />
 
-                {content.logoText}
+                {content?.logoText}
               </Link>
             </div>
             <nav className="hidden space-x-8 custom-lg:flex" aria-label="Main navigation">
@@ -195,7 +195,7 @@ const NavBar = () => {
                       onChange={handleSearch}
                       onBlur={handleBlur}
                       autoFocus
-                      placeholder={content.searchSubText}
+                      placeholder={content?.searchSubText}
                       className="w-full bg-transparent font-medium outline-none transition-opacity duration-300"
                     />
                     <button
@@ -212,10 +212,10 @@ const NavBar = () => {
                       alt={content?.searchIcon?.alternativeText}
                       width={24}
                       height={24}
-                      className="mr-2 size-6 dark:brightness-0 dark:invert"
+                      className="mx-2 size-6 dark:brightness-0 dark:invert"
                     />
 
-                    <div className="mr-2 text-gray-700 dark:text-darkForeground">{content.searchText}</div>
+                    <div className="mr-2 text-gray-700 dark:text-darkForeground">{content?.searchText}</div>
                   </div>
                 )}
               </div>
@@ -246,7 +246,7 @@ const NavBar = () => {
                     className="mr-2 size-6 dark:brightness-0 dark:invert"
                   />
                 </div>
-                <div className="text-gray-700 dark:text-darkForeground">{content.searchTextMobileView}</div>
+                <div className="text-gray-700 dark:text-darkForeground">{content?.searchTextMobileView}</div>
               </button>
             </div>
 
@@ -290,7 +290,7 @@ const NavBar = () => {
                 value={searchTerm}
                 onChange={handleSearch}
                 autoFocus
-                placeholder={content.searchSubText}
+                placeholder={content?.searchSubText}
                 className="grow rounded-md border border-gray-300 p-2 focus:outline-none dark:border-darkForeground"
               />
 
