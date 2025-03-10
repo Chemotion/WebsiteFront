@@ -11,8 +11,6 @@ const Footer = () => {
     fallbackKey: 'footer'
   });
 
-  console.log('Content:', content);
-
   if (isLoading) return <div>Loading...</div>;
 
   return (

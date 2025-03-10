@@ -1,21 +1,34 @@
 'use client';
 
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
+import useContent from '@/hooks/useContent';
+import RichTextRenderer from '@/components/helpers/RichTextRenderer';
 
 export default function HelpPage() {
-  useEffect(() => {
-    // load jquery
-    if (!window.jQuery) {
-      const jQueryScript = document.createElement('script');
-      jQueryScript.src = 'https://code.jquery.com/jquery-3.6.0.min.js';
-      jQueryScript.async = true;
-      document.body.appendChild(jQueryScript);
-      jQueryScript.onload = loadZammadScript;
-    } else {
-      loadZammadScript();
-    }
+  const { content, isLoading } = useContent({
+    apiKey: 'helpdesk-page',
+    fallbackKey: 'helpdeskPage'
+  });
+  const feedbackFormRef = useRef(null);
 
-    function loadZammadScript() {
+  useEffect(() => {
+    if (isLoading) return;
+    if (!feedbackFormRef.current) return;
+
+    // load jquery
+    const loadScripts = () => {
+      if (!window.jQuery) {
+        const jQueryScript = document.createElement('script');
+        jQueryScript.src = 'https://code.jquery.com/jquery-3.6.0.min.js';
+        jQueryScript.async = true;
+        document.body.appendChild(jQueryScript);
+        jQueryScript.onload = loadZammadScript;
+      } else {
+        loadZammadScript();
+      }
+    };
+
+    const loadZammadScript = () => {
       // load zammadform
       const script = document.createElement('script');
       script.id = 'zammad_form_script';
@@ -25,8 +38,8 @@ export default function HelpPage() {
 
       // init zammadform
       script.onload = () => {
-        if (window.jQuery) {
-          window.jQuery('#feedback-form').ZammadForm({
+        if (window.jQuery && feedbackFormRef.current) {
+          window.jQuery(feedbackFormRef.current).ZammadForm({
             messageTitle: 'Contact Team Chemotion',
             messageSubmit: 'Submit',
             messageThankYou: "Thank you for your inquiry (#%s)! We'll contact you as soon as possible.",
@@ -36,16 +49,14 @@ export default function HelpPage() {
           pollForZammadForm();
         }
       };
-    }
+    };
 
-    function pollForZammadForm() {
+    const pollForZammadForm = () => {
       let attempts = 0;
       const maxAttempts = 30;
-
       const intervalId = setInterval(() => {
         attempts++;
         const $form = window.jQuery('.zammad-form');
-
         if ($form.length) {
           clearInterval(intervalId);
           styleAndObserveForm($form);
@@ -54,9 +65,9 @@ export default function HelpPage() {
           console.warn('Zammad form not found after polling. It may have failed to inject.');
         }
       }, 200);
-    }
+    };
 
-    function styleAndObserveForm($form) {
+    const styleAndObserveForm = ($form) => {
       $form.addClass(
         'space-y-8 mt-10 p-6 lg:px-16 py-12 flex flex-col justify-between ' +
           'bg-[#eeeeee] dark:bg-darkBackground border-l-4 dark:border-2 border-[#008ab8] dark:border-darkForeground ' +
@@ -129,76 +140,17 @@ export default function HelpPage() {
         childList: true,
         subtree: true
       });
-    }
-  }, []);
+    };
+
+    loadScripts();
+  }, [isLoading]);
+
+  if (isLoading) return <div>Loading...</div>;
 
   return (
     <main className="mx-auto mb-20 mt-8 max-w-4xl p-4">
-      <section className="mb-12">
-        <h1 className="text-6xl font-extrabold leading-normal" aria-label="Helpdesk">
-          Helpdesk
-        </h1>
-        <p className="mt-4 text-lg">Comprehensive guidance and support for every step of using Chemotion.</p>
-      </section>
-
-      <div className="w-full">
-        <section className="space-y-8" aria-labelledby="help-description">
-          <div>
-            <h2 id="help-description" className="mb-2 text-2xl font-semibold" aria-label="How We Can Help">
-              How We Can Help
-            </h2>
-            <p className="mb-2 leading-relaxed">
-              Our team is dedicated to providing you with the support you need, whether you are new to Chemotion or
-              require advanced assistance.
-            </p>
-            <ul className="list-disc space-y-4 pl-6" aria-label="Support Areas">
-              <li>
-                <strong>Learn About Chemotion ELN</strong>
-                <br />
-                Explore ELN features, request a demonstration, or try a test installation.
-              </li>
-              <li>
-                <strong>Installation and IT Support</strong>
-                <br />
-                Get help with installing Chemotion ELN, resolving IT issues, or troubleshooting technical challenges.
-              </li>
-              <li>
-                <strong>Feature Requests and Customization</strong>
-                <br />
-                Share your ideas for new features or request custom functionalities for your Chemotion ELN instance.
-              </li>
-            </ul>
-          </div>
-
-          <div>
-            <h2 className="text-2xl font-semibold">Support for Chemotion Repository</h2>
-            <p className="leading-relaxed">
-              For assistance with Chemotion Repository, please reach out to our&nbsp;
-              <a
-                href="mailto:chemotion-repository@lists.kit.edu"
-                className="font-semibold text-[#008ab8] hover:underline"
-                aria-label="Send email to Chemotion Repository Team">
-                Chemotion Repository Team
-              </a>
-            </p>
-          </div>
-          <div>
-            <h2 className="text-2xl font-semibold">Contact Us</h2>
-            <p className="leading-relaxed">
-              If you have any questions or require further assistance, feel free to contact the helpdesk via&nbsp;
-              <a
-                href="mailto:helpdesk@nfdi4chem.de"
-                className="font-semibold text-[#008ab8] hover:underline"
-                aria-label="Send email to Helpdesk">
-                E-Mail
-              </a>
-              &nbsp;or through our contact form:
-            </p>
-
-            <div id="feedback-form" aria-labelledby="Contact Form"></div>
-          </div>
-        </section>
-      </div>
+      <RichTextRenderer content={content} />
+      <div id="feedback-form" ref={feedbackFormRef} aria-labelledby="Contact Form"></div>
     </main>
   );
 }
