@@ -39,7 +39,7 @@ const Footer = () => {
                     src={`${process.env.NEXT_PUBLIC_STRAPI_URL}${content?.dfgLogo?.url}`}
                     alt={content?.dfgLogo?.alternativeText}
                     width={390}
-                    height={50}
+                    height={Math.round(content?.dfgLogo?.height * (390 / content?.dfgLogo?.width))}
                     unoptimized
                   />
                 </div>
@@ -57,7 +57,7 @@ const Footer = () => {
                     src={`${process.env.NEXT_PUBLIC_STRAPI_URL}${content?.kitLogo?.url}`}
                     alt={content?.kitLogo?.alternativeText}
                     width={160}
-                    height={80}
+                    height={Math.round(content?.kitLogo?.height * (160 / content?.kitLogo?.width))}
                     unoptimized
                   />
                 </div>
@@ -74,8 +74,8 @@ const Footer = () => {
                   <Image
                     src={`${process.env.NEXT_PUBLIC_STRAPI_URL}${content?.bwLogo?.url}`}
                     alt={content?.bwLogo?.alternativeText}
-                    width={183}
-                    height={100}
+                    width={185}
+                    height={Math.round(content?.bwLogo?.height * (185 / content?.bwLogo?.width))}
                     unoptimized
                   />
                 </div>
@@ -101,7 +101,7 @@ const Footer = () => {
                 src={`${process.env.NEXT_PUBLIC_STRAPI_URL}${content?.youtubeLogo?.url}`}
                 alt={content?.youtubeLogo?.alternativeText}
                 width={30}
-                height={30}
+                height={Math.round(content?.youtubeLogo?.height * (30 / content?.youtubeLogo?.width))}
                 className="dark:invert"
                 unoptimized
               />
@@ -117,7 +117,7 @@ const Footer = () => {
                 src={`${process.env.NEXT_PUBLIC_STRAPI_URL}${content?.instagramLogo?.url}`}
                 alt={content?.instagramLogo?.alternativeText}
                 width={30}
-                height={30}
+                height={Math.round(content?.instagramLogo?.height * (30 / content?.instagramLogo?.width))}
                 className="dark:invert"
                 unoptimized
               />
@@ -133,7 +133,7 @@ const Footer = () => {
                 src={`${process.env.NEXT_PUBLIC_STRAPI_URL}${content?.linkedinLogo?.url}`}
                 alt={content?.linkedinLogo?.alternativeText}
                 width={30}
-                height={30}
+                height={Math.round(content?.linkedinLogo?.height * (30 / content?.linkedinLogo?.width))}
                 className="dark:invert"
                 unoptimized
               />
@@ -149,7 +149,7 @@ const Footer = () => {
                 src={`${process.env.NEXT_PUBLIC_STRAPI_URL}${content?.repoLogo?.url}`}
                 alt={content?.repoLogo?.alternativeText}
                 width={30}
-                height={30}
+                height={Math.round(content?.repoLogo?.height * (30 / content?.repoLogo?.width))}
                 className="dark:invert"
                 unoptimized
               />
@@ -165,7 +165,7 @@ const Footer = () => {
                 src={`${process.env.NEXT_PUBLIC_STRAPI_URL}${content?.elncodeLogo?.url}`}
                 alt={content?.elncodeLogo?.alternativeText}
                 width={30}
-                height={30}
+                height={Math.round(content?.elncodeLogo?.height * (30 / content?.elncodeLogo?.width))}
                 className="dark:invert"
                 unoptimized
               />

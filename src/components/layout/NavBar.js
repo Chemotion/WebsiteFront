@@ -135,7 +135,7 @@ const NavBar = () => {
                   src={`${process.env.NEXT_PUBLIC_STRAPI_URL}${content?.logo?.url}`}
                   alt={content?.logo?.alternativeText}
                   width={35}
-                  height={42}
+                  height={Math.round(content?.logo?.height * (35 / content?.logo?.width))}
                   unoptimized
                   className="mr-4"
                 />
@@ -191,6 +191,7 @@ const NavBar = () => {
                   <>
                     <input
                       type="text"
+                      id="0"
                       value={searchTerm}
                       onChange={handleSearch}
                       onBlur={handleBlur}
@@ -211,7 +212,7 @@ const NavBar = () => {
                       src={`${process.env.NEXT_PUBLIC_STRAPI_URL}${content?.searchIcon?.url}`}
                       alt={content?.searchIcon?.alternativeText}
                       width={24}
-                      height={24}
+                      height={Math.round(content?.searchIcon?.height * (24 / content?.searchIcon?.width))}
                       className="mx-2 size-6 dark:brightness-0 dark:invert"
                     />
 
@@ -242,7 +243,7 @@ const NavBar = () => {
                     src={`${process.env.NEXT_PUBLIC_STRAPI_URL}${content?.searchIcon?.url}`}
                     alt={content?.searchIcon?.alternativeText}
                     width={24}
-                    height={24}
+                    height={Math.round(content?.searchIcon?.height * (24 / content?.searchIcon?.width))}
                     className="mr-2 size-6 dark:brightness-0 dark:invert"
                   />
                 </div>
@@ -283,6 +284,7 @@ const NavBar = () => {
         <div className="flex items-center justify-between border-b border-gray-200 p-4 dark:border-darkForeground">
           <input
             type="text"
+            id="1"
             value={searchTerm}
             onChange={handleSearch}
             autoFocus
@@ -292,7 +294,7 @@ const NavBar = () => {
           <button
             onClick={toggleSearch}
             aria-label="Close search"
-            className="ml-6 mr-2 text-gray-500 hover:text-gray-700 dark:text-darkForeground">
+            className="ml-6 mr-2 text-2xl font-bold text-gray-500 hover:text-gray-700 dark:text-darkForeground">
             ✕
           </button>
         </div>

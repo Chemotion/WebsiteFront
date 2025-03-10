@@ -1,5 +1,6 @@
 'use client';
 import React, { useState } from 'react';
+import Image from 'next/image';
 import useContent from '@/hooks/useContent';
 import { HeroButton } from '@/components/ui/HeroButton';
 import LoadingAnimation from '@/components/ui/LoadingAnimation';
@@ -29,6 +30,21 @@ export default function VideoCard() {
     return url;
   };
 
+  const getYoutubeThumbnail = (url) => {
+    try {
+      const urlObj = new URL(url);
+      let videoId = urlObj.searchParams.get('v');
+      if (!videoId && url.includes('youtu.be')) {
+        const parts = url.split('/');
+        videoId = parts.pop();
+      }
+      return videoId ? `https://img.youtube.com/vi/${videoId}/maxresdefault.jpg` : '';
+    } catch {
+      console.error('Invalid URL:', url);
+      return '';
+    }
+  };
+
   const handleConsent = () => {
     setConsentGiven(true);
   };
@@ -55,17 +71,25 @@ export default function VideoCard() {
           )}
 
           {content.videoURL && !consentGiven && (
-            <div className="absolute inset-0 flex flex-col items-center justify-center bg-gray-900/50 p-6 text-center backdrop-blur-sm">
-              <h3 className="text-md mb-2 font-semibold text-darkForeground sm:mb-20 sm:text-3xl">
-                {content.videoTitle}
-              </h3>
-              <p className="text-md mb-2 text-darkForeground sm:mb-6 sm:text-2xl">{content.warningMessage}</p>
-              <HeroButton
-                onClick={handleConsent}
-                aria-label="Consent to YouTube Warning"
-                className="w-36 border-2 border-[#008ab8] bg-[#008ab8] py-3 font-semibold dark:border-darkForeground dark:bg-darkBackground">
-                <div className="text-xl text-white">{content.buttonText}</div>
-              </HeroButton>
+            <div className="absolute inset-0 flex flex-col items-center justify-center p-6 text-center text-darkForeground">
+              <Image
+                src={getYoutubeThumbnail(content.videoURL)}
+                alt={content.videoTitle}
+                layout="fill"
+                objectFit="cover"
+                priority
+              />
+              <div className="absolute inset-0 bg-black/50 backdrop-blur-sm"></div>
+              <div className="relative z-10">
+                <h3 className="text-md mb-2 font-semibold sm:mb-20 sm:text-3xl">{content.videoTitle}</h3>
+                <p className="text-md mb-2  sm:mb-6 sm:text-2xl">{content.warningMessage}</p>
+                <HeroButton
+                  onClick={handleConsent}
+                  aria-label="Consent to YouTube Warning"
+                  className="w-36 border-2 border-[#008ab8] bg-[#008ab8] py-3 font-semibold dark:border-darkForeground dark:bg-darkBackground">
+                  <div className="text-xl text-white">{content.buttonText}</div>
+                </HeroButton>
+              </div>
             </div>
           )}
         </div>

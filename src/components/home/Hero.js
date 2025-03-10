@@ -34,12 +34,12 @@ const Hero = () => {
   });
   const heroRef = useRef(null);
 
-  useEffect(() => {
-    if (!isDark && content?.heroBackgroundSVG?.url && heroRef.current) {
-      const bgUrl = `${process.env.NEXT_PUBLIC_STRAPI_URL}${content.heroBackgroundSVG.url}`;
-      heroRef.current.style.setProperty('--hero-background', `url("${bgUrl}")`);
-    }
-  }, [isDark, content]);
+  const backgroundStyle =
+    !isDark && content?.heroBackgroundSVG?.url
+      ? {
+          '--hero-background': `url("${process.env.NEXT_PUBLIC_STRAPI_URL}${content.heroBackgroundSVG.url}")`
+        }
+      : {};
 
   if (isLoading) return <LoadingAnimation />;
 
@@ -62,7 +62,10 @@ const Hero = () => {
   return (
     <div
       ref={heroRef}
-      className={`relative flex flex-col items-center px-6 py-10 sm:px-[100px] sm:py-20 ${!isDark ? 'hero-background' : ''}`}
+      style={backgroundStyle}
+      className={`relative flex flex-col items-center px-6 py-10 sm:px-[100px] sm:py-20 ${
+        !isDark ? 'hero-background' : ''
+      }`}
       role="region"
       aria-labelledby="hero-section-title">
       {heroTitle[0] && (
@@ -102,7 +105,7 @@ const Hero = () => {
             alt={content?.buttonSVG?.alternativeText}
             className="ml-2 brightness-0 invert"
             width={24}
-            height={24}
+            height={Math.round(content?.buttonSVG?.height * (24 / content?.buttonSVG?.width))}
             unoptimized
           />
         </HeroButton>
@@ -120,7 +123,7 @@ const Hero = () => {
             alt={content?.demoButtonSVG?.alternativeText}
             className="ml-2 dark:brightness-0 dark:invert"
             width={24}
-            height={24}
+            height={Math.round(content?.demoButtonSVG?.height * (24 / content?.demoButtonSVG?.width))}
             unoptimized
           />
         </HeroButton>

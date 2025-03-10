@@ -31,7 +31,7 @@ export default function WhoWeArePage() {
               src={`${process.env.NEXT_PUBLIC_STRAPI_URL}${img?.url}`}
               alt={img.alternativeText}
               width={400}
-              height={img.height}
+              height={Math.round(img?.height * (400 / img?.width))}
               className="max-h-28 object-contain object-left"
               unoptimized
             />

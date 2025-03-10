@@ -71,7 +71,7 @@ export const HeroButton = React.forwardRef(({ as, className, children, ...props 
   const Component = as ? motion[as] : motion.button;
 
   return (
-    <div className="inline-flex items-center" style={{ verticalAlign: 'middle' }}>
+    <div className="inline-flex items-center align-middle">
       <div className="relative inline-block">
         <Component
           ref={combinedRef}
@@ -93,12 +93,8 @@ export const HeroButton = React.forwardRef(({ as, className, children, ...props 
             {ripple && rippleVariants && (
               <motion.div
                 key={ripple.type}
-                className="pointer-events-none absolute rounded-full bg-white/30"
-                style={{
-                  left: ripple.x,
-                  top: ripple.y,
-                  transform: 'translate(-50%, -50%)'
-                }}
+                className="pointer-events-none absolute -translate-x-1/2 -translate-y-1/2 rounded-full bg-white/30"
+                style={{ left: ripple.x, top: ripple.y }}
                 initial={rippleVariants.initial}
                 animate={rippleVariants.animate}
                 exit={rippleVariants.exit}

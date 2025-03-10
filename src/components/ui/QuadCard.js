@@ -15,6 +15,7 @@ export default function Card({
 }) {
   const [isClicked, setIsClicked] = useState(false);
   const cardRef = useRef(null);
+  const imageContainerRef = useRef(null);
   const timerRef = useRef(null);
   const { theme } = useTheme();
   const isDark = theme === 'dark';
@@ -26,6 +27,15 @@ export default function Card({
       timerRef.current = null;
     }
   };
+
+  useEffect(() => {
+    if (!isDark && cardRef.current) {
+      cardRef.current.style.setProperty('--border-color', borderColor);
+    }
+    if (!isDark && imageContainerRef.current) {
+      imageContainerRef.current.style.setProperty('--border-color', borderColor);
+    }
+  }, [isDark, borderColor]);
 
   useEffect(() => {
     function handleClickOutside(event) {
@@ -77,8 +87,9 @@ export default function Card({
     <motion.div
       ref={cardRef}
       onClick={handleCardClick}
-      className="relative flex h-[400px] w-full cursor-pointer flex-col items-start rounded-md border-2 p-8 hover:shadow-lg dark:border-darkForeground"
-      style={!isDark ? { borderColor } : {}}
+      className={`relative flex h-[400px] w-full cursor-pointer flex-col items-start rounded-md border-2 p-8 hover:shadow-lg dark:border-darkForeground ${
+        !isDark ? 'border-dynamic' : ''
+      }`}
       variants={cardVariants}
       initial="initial"
       animate={isClicked ? 'clicked' : 'initial'}
@@ -150,9 +161,11 @@ export default function Card({
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.4, ease: 'easeOut', delay: 0.2 }}>
               <div
+                ref={imageContainerRef}
                 aria-hidden="true"
-                className="mx-auto flex aspect-[2/1] w-full items-end justify-center overflow-hidden rounded-md border-2 dark:border-darkForeground"
-                style={!isDark ? { borderColor } : {}}>
+                className={`mx-auto flex aspect-[2/1] w-full items-end justify-center overflow-hidden rounded-md border-2 dark:border-darkForeground ${
+                  !isDark ? 'border-dynamic' : ''
+                }`}>
                 {image ? (
                   <Image
                     src={image}
@@ -163,7 +176,7 @@ export default function Card({
                     unoptimized
                   />
                 ) : (
-                  <div className="flex h-full w-[460px] items-center justify-center bg-gray-200 object-cover object-bottom">
+                  <div className="flex h-full w-[460px] items-center justify-center bg-gray-200">
                     <span className="text-xl font-bold text-gray-600">No Image</span>
                   </div>
                 )}

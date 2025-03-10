@@ -13,6 +13,10 @@ const nextConfig = {
       {
         protocol: 'https',
         hostname: 'cms.web123.chemotion.scc.kit.edu'
+      },
+      {
+        protocol: 'https',
+        hostname: 'img.youtube.com'
       }
     ]
   }

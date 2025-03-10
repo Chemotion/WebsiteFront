@@ -34,8 +34,8 @@ export default function SectionCard({
                 src={`${process.env.NEXT_PUBLIC_STRAPI_URL}${content.titleImage.url}`}
                 alt={content?.titleImage?.alternativeText || 'Heading image'}
                 width={300}
-                height={46}
-                className="mx-auto mb-2 h-[46px] w-[300px] object-contain lg:mx-0"
+                height={Math.round(content.titleImage?.height * (300 / content.titleImage?.width))}
+                className="mx-auto mb-2 lg:mx-0"
                 unoptimized
               />
             ) : (

@@ -93,15 +93,18 @@ const Diagram = () => {
             <span>Loading Flowchart...</span>
           </div>
         )}
-        <Image
-          src={`${process.env.NEXT_PUBLIC_STRAPI_URL}${content?.flowchartImage?.url}`}
-          alt={content?.flowchartImage?.alternativeText}
-          width={1130}
-          height={1130}
-          unoptimized
-          priority
-          onLoadingComplete={() => setImgLoaded(true)}
-        />
+        <div className="mx-auto w-full max-w-[1130px]">
+          <Image
+            src={`${process.env.NEXT_PUBLIC_STRAPI_URL}${content?.flowchartImage?.url}`}
+            alt={content?.flowchartImage?.alternativeText}
+            width={1130}
+            height={Math.round(content?.flowchartImage?.height * (1130 / content?.flowchartImage?.width))}
+            unoptimized
+            priority
+            onLoad={() => setImgLoaded(true)}
+          />
+        </div>
+
         <motion.div
           animate={{
             x: cursor.x,

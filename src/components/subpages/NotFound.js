@@ -22,7 +22,7 @@ export default function NotFoundPage() {
           src={`${process.env.NEXT_PUBLIC_STRAPI_URL}${logo?.url}`}
           alt={logo?.alternativeText}
           width={500}
-          height={301}
+          height={Math.round(logo?.height * (500 / logo?.width))}
           unoptimized
           className="mx-auto"
         />
