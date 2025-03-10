@@ -9,7 +9,6 @@ export default function WhoWeArePage() {
     apiKey: 'about-page',
     fallbackKey: 'aboutPage'
   });
-  console.log('Content:', content);
 
   if (isLoading) return <div>Loading...</div>;
 
