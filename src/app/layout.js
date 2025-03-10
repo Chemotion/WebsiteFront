@@ -5,7 +5,9 @@ import { ThemeProvider } from 'next-themes';
 const geistSans = localFont({
   src: '../../public/fonts/GeistVF.woff',
   variable: '--font-geist-sans',
-  weight: '100 900'
+  weight: '100 900',
+  display: 'swap',
+  fallback: ['system-ui', 'Helvetica', 'Arial']
 });
 
 export const metadata = {

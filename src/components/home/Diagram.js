@@ -13,6 +13,7 @@ const Diagram = () => {
 
   const [cursor, setCursor] = useState({ x: 0, y: 0 });
   const [active, setActive] = useState(false);
+  const [imgLoaded, setImgLoaded] = useState(false);
 
   if (isLoading) return <LoadingAnimation />;
 
@@ -87,12 +88,19 @@ const Diagram = () => {
         role="button"
         aria-label="Interactive flowchart"
         className="relative w-full cursor-default drop-shadow-sm transition-transform duration-300 hover:-translate-y-1 hover:scale-[1.01] hover:drop-shadow-md focus:outline-none">
+        {!imgLoaded && (
+          <div className="absolute inset-0 flex items-center justify-center rounded-md bg-gray-200">
+            <span>Loading Flowchart...</span>
+          </div>
+        )}
         <Image
           src={`${process.env.NEXT_PUBLIC_STRAPI_URL}${content?.flowchartImage?.url}`}
           alt={content?.flowchartImage?.alternativeText}
           width={1130}
           height={1130}
           unoptimized
+          priority
+          onLoadingComplete={() => setImgLoaded(true)}
         />
         <motion.div
           animate={{

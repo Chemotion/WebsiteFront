@@ -43,7 +43,7 @@ export default function SectionCard({
             )}
           </h1>
 
-          <div className={featuresContainerClassName} aria-label={featuresAriaLabel}>
+          <div className={featuresContainerClassName} role="list" aria-label={featuresAriaLabel}>
             {content.features?.map((feature, index) => (
               <div
                 key={index}
