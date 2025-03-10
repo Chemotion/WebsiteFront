@@ -1,11 +1,13 @@
 FROM node:18-alpine AS builder
 WORKDIR /app
 COPY package*.json ./
-RUN npm install
+RUN npm ci
 COPY . .
+COPY .env.production .env
 RUN npm run build
 
 FROM node:18-alpine
+ENV NODE_ENV=production
 WORKDIR /app
 COPY --from=builder /app/package*.json ./
 COPY --from=builder /app/node_modules ./node_modules
