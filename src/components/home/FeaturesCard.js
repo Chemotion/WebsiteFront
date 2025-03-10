@@ -133,7 +133,8 @@ const FeatureSection = () => {
     doc.text(content?.generatedPDFTitleText, marginLeft + 5, yPosition + 17, { align: 'left' });
 
     // right logo
-    const logoPath = 'images/chemotion-lg.png';
+    const logoPath = `${process.env.NEXT_PUBLIC_STRAPI_URL}${content?.logo?.url}`;
+
     doc.addImage(logoPath, 'PNG', pageWidth - marginRight - logoWidth - 20, yPosition - 28, logoWidth, logoHeight);
     yPosition += 35;
 
