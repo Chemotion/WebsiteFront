@@ -1,0 +1,35 @@
+networks:
+  proxy:
+    external: true
+
+services:
+  chemotion-cms:
+    image: mekkyz/chemotion-cms:2.0
+    container_name: chemotion-cms
+    restart: unless-stopped
+    networks:
+      - proxy
+    environment:
+      - NODE_ENV=production
+      - DATABASE_CLIENT=sqlite
+      - HOST=0.0.0.0
+      - PORT=1337
+      - PUBLIC_URL=https://cms.web123.chemotion.scc.kit.edu
+    labels:
+      - 'traefik.enable=true'
+      - 'traefik.docker.network=proxy'
+      - 'traefik.http.routers.chemotion-cms.rule=Host(`cms.web123.chemotion.scc.kit.edu`)'
+      - 'traefik.http.routers.chemotion-cms.entrypoints=websecure'
+  chemotion-web:
+    image: mekkyz/chemotion-web:2.0
+    container_name: chemotion-web
+    restart: unless-stopped
+    depends_on:
+      - chemotion-cms
+    networks:
+      - proxy
+    labels:
+      - 'traefik.enable=true'
+      - 'traefik.docker.network=proxy'
+      - 'traefik.http.routers.chemotion-web.rule=Host(`web123.chemotion.scc.kit.edu`)'
+      - 'traefik.http.routers.chemotion-web.entrypoints=websecure'
