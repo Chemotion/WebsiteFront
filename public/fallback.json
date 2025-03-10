@@ -31,7 +31,9 @@
       {
         "children": [
           { "text": "Sounds good?", "bold": true },
-          { "text": " Then go a little deeper. Check it out and see how it works, what functions it has, and how easy it is to use. Because nothing is as convincing as trying it out for yourself." }
+          {
+            "text": " Then go a little deeper. Check it out and see how it works, what functions it has, and how easy it is to use. Because nothing is as convincing as trying it out for yourself."
+          }
         ]
       }
     ],
@@ -89,25 +91,33 @@
           "children": [
             {
               "type": "list-item",
-              "children": [
-                { "type": "text", "text": "Organize your projects and share with colleagues." }
-              ]
+              "children": [{ "type": "text", "text": "Organize your projects and share with colleagues." }]
             },
             {
               "type": "list-item",
-              "children": [
-                { "type": "text", "text": "Manage your workflows efficiently." }
-              ]
+              "children": [{ "type": "text", "text": "Manage your workflows efficiently." }]
             },
             {
               "type": "list-item",
-              "children": [
-                { "type": "text", "text": "Collaborate seamlessly with team members." }
-              ]
+              "children": [{ "type": "text", "text": "Collaborate seamlessly with team members." }]
             }
           ]
         }
       ]
     }
-  ]
+  ],
+  "videoSection": {
+    "features": [
+      {
+        "children": [
+          { "text": "Video:", "bold": true },
+          {
+            "text": " ELN in a nutshell!"
+          }
+        ]
+      }
+    ],
+    "videoUrl": "https://www.youtube.com/watch?v=tZHaP6DW-Dw",
+    "videoTitle": "Chemotion ELN Video Demo"
+  }
 }

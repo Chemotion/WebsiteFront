@@ -75,9 +75,9 @@ export default function VideoCard() {
               <Image
                 src={getYoutubeThumbnail(content.videoURL)}
                 alt={content.videoTitle}
-                layout="fill"
-                objectFit="cover"
+                fill
                 priority
+                sizes="(max-width: 768px) 100vw, 50vw"
               />
               <div className="absolute inset-0 bg-black/50 backdrop-blur-sm"></div>
               <div className="relative z-10">
