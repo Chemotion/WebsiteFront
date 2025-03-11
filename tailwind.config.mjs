@@ -12,8 +12,8 @@ module.exports = {
       colors: {
         background: colors.neutral[50],
         foreground: colors.gray[800],
-        darkBackground: colors.neutral[700],
-        darkForeground: colors.gray[100]
+        darkBackground: '#3c3c3c',
+        darkForeground: '#dedee2'
       },
       screens: {
         'custom-lg': '1150px'

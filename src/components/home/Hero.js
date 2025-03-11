@@ -99,7 +99,7 @@ const Hero = () => {
           onClick={() => scrollToSection('eln')}
           aria-label="Scroll to ELN section"
           className="w-48 border-2 border-[#008ab8] bg-[#008ab8] font-semibold dark:border-darkForeground dark:bg-darkBackground">
-          <div className="text-white">{content?.buttonText}</div>
+          <div className="text-white dark:text-darkForeground">{content?.buttonText}</div>
           <Image
             src={`${process.env.NEXT_PUBLIC_STRAPI_URL}${content?.buttonSVG?.url}`}
             alt={content?.buttonSVG?.alternativeText}

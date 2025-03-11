@@ -77,12 +77,13 @@ export default function VideoCard() {
                 alt={content.videoTitle}
                 fill
                 priority
+                unoptimized
                 sizes="(max-width: 768px) 100vw, 50vw"
               />
               <div className="absolute inset-0 bg-black/50 backdrop-blur-sm"></div>
               <div className="relative z-10">
                 <h3 className="text-md mb-2 font-semibold sm:mb-20 sm:text-3xl">{content.videoTitle}</h3>
-                <p className="text-md mb-2  sm:mb-6 sm:text-2xl">{content.warningMessage}</p>
+                <p className="text-md mb-2 sm:mb-6 sm:text-2xl">{content.warningMessage}</p>
                 <HeroButton
                   onClick={handleConsent}
                   aria-label="Consent to YouTube Warning"

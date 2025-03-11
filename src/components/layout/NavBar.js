@@ -326,7 +326,7 @@ const NavBar = () => {
           role="button"
           tabIndex={0}
           onClick={(e) => e.stopPropagation()}
-          className={`absolute right-0 top-0 h-full w-2/3 bg-white p-8 transition-transform duration-300 dark:bg-darkBackground${
+          className={`absolute right-0 top-0 h-full w-2/3 bg-white p-8 shadow-md transition-transform duration-300 dark:border-l-2 dark:border-darkForeground dark:bg-darkBackground ${
             isMobileMenuOpen ? 'translate-x-0' : 'translate-x-full'
           }`}>
           <nav className="mt-20 flex flex-col space-y-8">
