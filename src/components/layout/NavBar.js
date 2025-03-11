@@ -121,7 +121,7 @@ const NavBar = () => {
   return (
     <>
       <header
-        className="fixed inset-x-0 top-0 z-50 flex h-[66px] items-center bg-[#eeeeee] py-[3px] text-base font-medium text-gray-700 shadow-md dark:border-b dark:border-darkForeground dark:bg-darkBackground dark:text-darkForeground"
+        className="fixed inset-x-0 top-0 z-50 flex h-[66px] items-center bg-neutral-50 py-[3px] text-base font-medium text-gray-700 shadow-md dark:border-b dark:border-darkForeground dark:bg-darkBackground dark:text-darkForeground"
         role="banner">
         <div className="container mx-auto flex max-w-7xl items-center justify-between">
           <div className="flex items-center">
@@ -129,7 +129,7 @@ const NavBar = () => {
               <Link
                 href="/"
                 onClick={scrollToTop}
-                className="ml-4 mr-12 flex items-center text-lg font-semibold text-gray-800 dark:text-darkForeground"
+                className="ml-4 mr-12 flex items-center text-lg font-semibold text-gray-700 dark:text-darkForeground"
                 aria-label="Navigate to Chemotion homepage">
                 <Image
                   src={`${process.env.NEXT_PUBLIC_STRAPI_URL}${content?.logo?.url}`}

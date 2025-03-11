@@ -71,7 +71,7 @@ export default function HelpPage() {
     const styleAndObserveForm = ($form) => {
       $form.addClass(
         'space-y-8 mt-10 p-6 lg:px-16 py-12 flex flex-col justify-between ' +
-          'bg-[#eeeeee] dark:bg-darkBackground border-l-4 dark:border-2 border-[#008ab8] dark:border-darkForeground ' +
+          ' border-2 border-l-4 dark:bg-darkBackground border-gray-400 dark:border-darkForeground ' +
           'shadow-md rounded-md'
       );
       $form.find('.form-group').addClass('space-y-2');
