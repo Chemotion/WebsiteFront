@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useRef } from 'react';
+import React, { useRef, useEffect, useMemo } from 'react';
 import Image from 'next/image';
 import { useTheme } from 'next-themes';
 import useContent from '@/hooks/useContent';
@@ -12,9 +12,15 @@ const renderRichText = (nodes) => {
     if (node.type === 'text') {
       const extraClass = node.bold && node.text.trim() === 'Extended' ? 'tracking-widest' : '';
       return (
-        <span key={index} className={`${node.bold ? 'font-bold' : ''} ${extraClass}`}>
-          {node.text}
-        </span>
+        <React.Fragment key={index}>
+          {node.text.split(' ').map((word, i) => (
+            <span
+              key={i}
+              className={`${node.bold ? 'animated-word font-bold' : ''} ${extraClass} transition-colors duration-300 ease-in-out`}>
+              {word}{' '}
+            </span>
+          ))}
+        </React.Fragment>
       );
     }
     if (node.children) {
@@ -34,16 +40,36 @@ const Hero = () => {
   });
   const heroRef = useRef(null);
 
-  const backgroundStyle =
-    !isDark && content?.heroBackgroundSVG?.url
-      ? {
-          '--hero-background': `url("${process.env.NEXT_PUBLIC_STRAPI_URL}${content.heroBackgroundSVG.url}")`
+  const backgroundStyle = useMemo(() => {
+    if (!isDark && content?.heroBackgroundSVG?.url) {
+      return {
+        '--hero-background': `url("${process.env.NEXT_PUBLIC_STRAPI_URL}${content.heroBackgroundSVG.url}")`
+      };
+    }
+    return {};
+  }, [isDark, content]);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      if (heroRef.current) {
+        const words = heroRef.current.querySelectorAll('.animated-word');
+        if (words.length > 0) {
+          const randomIndex = Math.floor(Math.random() * words.length);
+          const randomWord = words[randomIndex];
+          randomWord.classList.add('animate-hero-word');
+          randomWord.addEventListener(
+            'animationend',
+            () => {
+              randomWord.classList.remove('animate-hero-word');
+            },
+            { once: true }
+          );
         }
-      : {};
+      }
+    }, 7000);
 
-  if (isLoading) return <LoadingAnimation />;
-
-  const heroTitle = content?.heroTitle || [];
+    return () => clearInterval(interval);
+  }, []);
 
   const scrollToSection = (id) => {
     const section = document.getElementById(id);
@@ -59,13 +85,15 @@ const Hero = () => {
     }
   };
 
+  if (isLoading) return <LoadingAnimation />;
+
+  const heroTitle = content?.heroTitle;
+
   return (
     <div
       ref={heroRef}
       style={backgroundStyle}
-      className={`relative flex flex-col items-center px-6 py-10 sm:px-[100px] sm:py-20 ${
-        !isDark ? 'hero-background' : ''
-      }`}
+      className={`relative flex flex-col items-center px-6 py-10 text-gray-800/95 dark:text-darkForeground sm:px-[100px] sm:py-20 ${!isDark ? 'hero-background' : ''}`}
       role="region"
       aria-labelledby="hero-section-title">
       {heroTitle[0] && (

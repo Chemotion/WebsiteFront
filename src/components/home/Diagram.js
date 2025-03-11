@@ -1,7 +1,6 @@
 'use client';
 import { useState } from 'react';
 import Image from 'next/image';
-import { motion } from 'framer-motion';
 import useContent from '@/hooks/useContent';
 import LoadingAnimation from '@/components/ui/LoadingAnimation';
 
@@ -11,66 +10,9 @@ const Diagram = () => {
     fallbackKey: 'flowchartSection'
   });
 
-  const [cursor, setCursor] = useState({ x: 0, y: 0 });
-  const [active, setActive] = useState(false);
   const [imgLoaded, setImgLoaded] = useState(false);
 
   if (isLoading) return <LoadingAnimation />;
-
-  const handleMouseMove = (e) => {
-    const rect = e.currentTarget.getBoundingClientRect();
-    setCursor({
-      x: e.clientX - rect.left,
-      y: e.clientY - rect.top
-    });
-    if (!active) setActive(true);
-  };
-
-  const handleMouseLeave = () => {
-    setActive(false);
-  };
-
-  const handleTouchMove = (e) => {
-    const touch = e.touches[0];
-    const rect = e.currentTarget.getBoundingClientRect();
-    setCursor({
-      x: touch.clientX - rect.left,
-      y: touch.clientY - rect.top
-    });
-    if (!active) setActive(true);
-  };
-
-  const handleTouchEnd = () => {
-    setActive(false);
-  };
-
-  const handleKeyDown = (e) => {
-    const moveAmount = 10;
-    setCursor((prev) => {
-      let { x, y } = prev;
-      switch (e.key) {
-        case 'ArrowUp':
-          y = Math.max(0, y - moveAmount);
-          break;
-        case 'ArrowDown':
-          y = y + moveAmount;
-          break;
-        case 'ArrowLeft':
-          x = Math.max(0, x - moveAmount);
-          break;
-        case 'ArrowRight':
-          x = x + moveAmount;
-          break;
-        case 'Escape':
-          setActive(false);
-          break;
-        default:
-          return prev;
-      }
-      return { x, y };
-    });
-    if (!active) setActive(true);
-  };
 
   return (
     <div
@@ -79,21 +21,21 @@ const Diagram = () => {
       role="region"
       aria-labelledby="diagram-heading">
       <div
-        onMouseMove={handleMouseMove}
-        onMouseLeave={handleMouseLeave}
-        onTouchMove={handleTouchMove}
-        onTouchEnd={handleTouchEnd}
-        onKeyDown={handleKeyDown}
         tabIndex={0}
         role="button"
-        aria-label="Interactive flowchart"
-        className="relative w-full cursor-default drop-shadow-sm transition-transform duration-300 hover:-translate-y-1 hover:scale-[1.01] hover:drop-shadow-md focus:outline-none">
-        {!imgLoaded && (
-          <div className="absolute inset-0 flex items-center justify-center rounded-md bg-gray-200">
-            <span>Loading Flowchart...</span>
-          </div>
-        )}
-        <div className="mx-auto w-full max-w-[1130px]">
+        aria-label="flowchart showcasing chemotion ELN"
+        className="relative w-full cursor-default transition-transform duration-300 hover:-translate-y-1 hover:scale-[1.01] ">
+        <div
+          className={`absolute inset-0 flex items-center justify-center rounded-md bg-neutral-100 transition-all duration-700 ease-out ${
+            imgLoaded ? 'pointer-events-none opacity-0' : 'opacity-100'
+          }`}>
+          <span>Loading...</span>
+        </div>
+
+        <div
+          className={`mx-auto w-full max-w-[1130px] transition-all duration-700 ease-out ${
+            imgLoaded ? 'opacity-100' : 'opacity-0'
+          }`}>
           <Image
             src={`${process.env.NEXT_PUBLIC_STRAPI_URL}${content?.flowchartImage?.url}`}
             alt={content?.flowchartImage?.alternativeText}
@@ -104,17 +46,6 @@ const Diagram = () => {
             onLoad={() => setImgLoaded(true)}
           />
         </div>
-
-        <motion.div
-          animate={{
-            x: cursor.x,
-            y: cursor.y,
-            opacity: active ? 1 : 0,
-            scale: active ? 1.2 : 0.8
-          }}
-          transition={{ type: 'spring', stiffness: 300, damping: 30 }}
-          className="pointer-events-none absolute left-0 top-0 size-[150px] -translate-x-1/2 -translate-y-1/2 bg-[radial-gradient(circle,rgba(255,255,255,0.4)_0%,transparent_70%)]"
-        />
       </div>
     </div>
   );
