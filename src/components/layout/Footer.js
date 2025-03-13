@@ -16,7 +16,7 @@ const Footer = () => {
 
   return (
     <footer
-      className="border-t-[1.5px] border-gray-400 bg-neutral-50 py-8 text-gray-700 dark:border-t dark:border-darkForeground dark:bg-darkBackground dark:text-darkForeground"
+      className="bg-[#F5F5F5] py-8 text-gray-700 dark:border-t dark:border-darkForeground dark:bg-darkBackground dark:text-darkForeground"
       role="contentinfo">
       <div className="flex flex-col items-center justify-center">
         <div className="mb-6 flex flex-col items-start space-y-6">
