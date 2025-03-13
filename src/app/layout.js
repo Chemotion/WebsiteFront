@@ -13,7 +13,7 @@ const geistSans = localFont({
 export const metadata = {
   title: 'Chemotion',
   description: 'Chemotion ELN, Chemotion Repository, LabIMotion',
-  icons: { icon: '/images/chemotion-icon.png' }
+  icons: { icon: '/images/favicon.png' }
 };
 
 export default function RootLayout({ children }) {
