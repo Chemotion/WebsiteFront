@@ -30,21 +30,6 @@ export default function VideoCard() {
     return url;
   };
 
-  const getYoutubeThumbnail = (url) => {
-    try {
-      const urlObj = new URL(url);
-      let videoId = urlObj.searchParams.get('v');
-      if (!videoId && url.includes('youtu.be')) {
-        const parts = url.split('/');
-        videoId = parts.pop();
-      }
-      return videoId ? `https://img.youtube.com/vi/${videoId}/maxresdefault.jpg` : '';
-    } catch {
-      console.error('Invalid URL:', url);
-      return '';
-    }
-  };
-
   const handleConsent = () => {
     setConsentGiven(true);
   };
@@ -73,7 +58,7 @@ export default function VideoCard() {
           {content.videoURL && !consentGiven && (
             <div className="absolute inset-0 flex flex-col items-center justify-center p-6 text-center text-darkForeground">
               <Image
-                src={getYoutubeThumbnail(content.videoURL)}
+                src={`${process.env.NEXT_PUBLIC_STRAPI_URL}${content?.videoThumbnail?.url}`}
                 alt={content.videoTitle}
                 fill
                 priority
