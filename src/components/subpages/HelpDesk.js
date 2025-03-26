@@ -30,7 +30,6 @@ export default function HelpPage() {
     };
 
     const loadZammadScript = () => {
-      // load zammadform
       const script = document.createElement('script');
       script.id = 'zammad_form_script';
       script.src = 'https://helpdesk.nfdi4chem.de/assets/form/form.js';
@@ -71,7 +70,7 @@ export default function HelpPage() {
     const styleAndObserveForm = ($form) => {
       $form.addClass(
         'space-y-8 mt-10 p-6 lg:px-16 py-12 flex flex-col justify-between ' +
-          'bg-[#F5F5F5] border-2 border-l-4 dark:bg-darkBackground border-gray-400 dark:border-darkForeground ' +
+          'bg-[#F5F5F5] border-2 dark:bg-darkBackground border-gray-400 dark:border-darkForeground ' +
           'shadow-md rounded-md'
       );
       $form.find('.form-group').addClass('space-y-2');
@@ -89,7 +88,7 @@ export default function HelpPage() {
             'bg-[#008ab8] dark:bg-darkBackground rounded-md font-semibold border-2 border-[#008ab8] ' +
             'dark:border-darkForeground shadow-sm transition-all duration-300 ' +
             'hover:bg-gray-800 hover:border-gray-800 hover:shadow-lg ' +
-            'text-center w-36 ml-auto'
+            'w-36 ml-auto'
         );
 
       $form.on('submit', function (event) {
@@ -151,7 +150,7 @@ export default function HelpPage() {
   return (
     <main className="mx-auto mb-20 mt-8 max-w-4xl p-4">
       <RichTextRenderer content={content} />
-      <div id="feedback-form" ref={feedbackFormRef} aria-labelledby="Contact Form"></div>
+      <div id="feedback-form" ref={feedbackFormRef} aria-labelledby="Contact Form" className="min-h-[400px]"></div>
     </main>
   );
 }
