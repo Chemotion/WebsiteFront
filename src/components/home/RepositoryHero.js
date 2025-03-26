@@ -9,17 +9,5 @@ export default function RepositoryHero() {
     fallbackKey: 'repositorySection'
   });
 
-  return (
-    <SubHero
-      heroId="repository"
-      headingId="repository-hero-heading"
-      headingAriaLabel="Mission Completed. Streamlined process from Lab to Publication."
-      containerAriaLabelledby="repository-hero-heading"
-      textColorClass="text-gray-800 dark:text-darkForeground"
-      containerClassName="relative my-10 flex cursor-default scroll-mt-[110px] flex-col items-center"
-      titleClassName="text-center text-4xl"
-      content={content}
-      isLoading={isLoading}
-    />
-  );
+  return <SubHero sectionId="repository" textClass="text-gray-800" content={content} isLoading={isLoading} />;
 }

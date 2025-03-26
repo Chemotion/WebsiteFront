@@ -1,7 +1,7 @@
 import NavBar from '@/components/layout/NavBar';
 import Hero from '@/components/home/Hero';
 import Diagram from '@/components/home/Diagram';
-import CardContainer from '@/components/home/FourWayCard';
+import CardContainer from '@/components/home/FourCardContainer';
 import FeatureSection from '@/components/home/FeaturesCard';
 import ELNHero from '@/components/home/ELNHero';
 import DemoSection from '@/components/home/DemoCard';
@@ -18,7 +18,7 @@ export default function Home() {
   return (
     <div>
       <NavBar />
-      <main className="flex min-h-screen w-full flex-col items-center justify-center pt-20">
+      <main className="mb-14 flex min-h-screen w-full flex-col items-center justify-center pt-20">
         <Hero />
         <Diagram />
         <ELNHero />

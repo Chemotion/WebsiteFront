@@ -3,32 +3,28 @@ import { HeroButton } from '@/components/ui/HeroButton';
 import LoadingAnimation from '@/components/ui/LoadingAnimation';
 
 export default function SectionCard({
-  sectionId,
-  headingId,
-  headingAriaLabel,
-  buttonAriaLabel,
-  borderColorClass = 'border-[#008ab8]',
-  buttonBorderClass = 'border-[#008ab8]',
-  buttonBackgroundClass = 'bg-[#008ab8]',
-  sectionClassName = 'mb-14 w-full max-w-6xl px-4',
-  containerClassName = 'flex flex-col items-center justify-between overflow-hidden rounded-md p-6 lg:flex-row lg:items-stretch lg:p-6',
-  leftSideClassName = 'flex-col justify-between space-y-6 text-center lg:mx-4 lg:flex lg:w-[45%] lg:p-4 lg:text-left',
-  featuresContainerClassName = 'space-y-4 text-base text-gray-700',
-  featuresAriaLabel = '',
-  imageWrapperClassName = 'relative mt-8 flex aspect-[3/2] w-full justify-center overflow-hidden rounded-md px-2 lg:my-2 lg:mr-2 lg:w-1/2 lg:justify-end lg:px-0',
   content,
-  isLoading
+  isLoading,
+  sectionId,
+  headingAria,
+  buttonAria,
+  featuresAria,
+  borderClass,
+  bgClass,
+  leftSideClass
 }) {
   if (isLoading) return <LoadingAnimation />;
 
   return (
-    <section id={sectionId} className={sectionClassName} aria-labelledby={headingId}>
-      <div className={`border-2 ${borderColorClass} ${containerClassName}`}>
-        <div className={leftSideClassName}>
+    <section id={sectionId} className="mb-14 w-full max-w-6xl px-4" aria-labelledby={`${sectionId}-heading`}>
+      <div
+        className={`flex flex-col items-center justify-between overflow-hidden rounded-md border-2 p-6 dark:border-darkForeground lg:flex-row lg:items-stretch lg:p-6 ${borderClass}`}>
+        <div
+          className={`flex-col justify-between space-y-6 text-center lg:mx-4 lg:flex lg:w-[45%] lg:p-4 lg:text-left ${leftSideClass}`}>
           <h1
-            id={headingId}
+            id={`${sectionId}-heading`}
             className="text-[26px] font-bold text-gray-800 dark:text-darkForeground"
-            aria-label={headingAriaLabel}>
+            aria-label={headingAria}>
             {content?.titleImage?.url ? (
               <Image
                 src={`${process.env.NEXT_PUBLIC_STRAPI_URL}${content.titleImage.url}`}
@@ -42,8 +38,10 @@ export default function SectionCard({
               content?.title || 'No Title'
             )}
           </h1>
-
-          <div className={featuresContainerClassName} role="list" aria-label={featuresAriaLabel}>
+          <div
+            className="space-y-4 text-base text-gray-700 dark:text-darkForeground"
+            role="list"
+            aria-label={featuresAria}>
             {content.features?.map((feature, index) => (
               <div
                 key={index}
@@ -60,7 +58,6 @@ export default function SectionCard({
               </div>
             ))}
           </div>
-
           <div className="flex justify-center lg:justify-start">
             {content.buttonUrl && content.buttonText && (
               <HeroButton
@@ -68,11 +65,11 @@ export default function SectionCard({
                 href={content.buttonUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                aria-label={buttonAriaLabel}
+                aria-label={buttonAria}
                 className={[
-                  'p-6 w-52 dark:border-2 dark:border-darkForeground',
-                  buttonBorderClass,
-                  buttonBackgroundClass
+                  'p-6 w-52 dark:border-2 dark:border-darkForeground dark:bg-darkBackground',
+                  borderClass,
+                  bgClass
                 ].join(' ')}>
                 <div className="py-2 text-xl text-white"> {content?.buttonText}</div>
               </HeroButton>
@@ -80,7 +77,9 @@ export default function SectionCard({
           </div>
         </div>
 
-        <div className={[`border-2 ${borderColorClass}`, imageWrapperClassName].join(' ')} aria-hidden="true">
+        <div
+          className={`relative mt-8 flex aspect-[3/2] w-full justify-center overflow-hidden rounded-md border-2 px-2 dark:border-darkForeground lg:my-2 lg:mr-2 lg:w-1/2 lg:justify-end lg:px-0 ${borderClass}`}
+          aria-hidden="true">
           {content?.image?.url ? (
             <Image
               src={`${process.env.NEXT_PUBLIC_STRAPI_URL}${content.image.url}`}

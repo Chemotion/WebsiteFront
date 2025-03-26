@@ -2,7 +2,7 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
-import ModeToggle from '@/components/ui/DarkModeToggle';
+import ModeButton from '@/components/ui/ModeButton';
 import useContent from '@/hooks/useContent';
 import LoadingAnimation from '@/components/ui/LoadingAnimation';
 
@@ -215,7 +215,7 @@ const Footer = () => {
           <span aria-hidden="true" className="ml-2">
             |
           </span>
-          <ModeToggle />
+          <ModeButton />
         </div>
       </div>
     </footer>

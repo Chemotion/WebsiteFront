@@ -3,23 +3,13 @@
 import { motion } from 'framer-motion';
 import LoadingAnimation from '@/components/ui/LoadingAnimation';
 
-export default function SubHero({
-  heroId,
-  headingId,
-  headingAriaLabel,
-  containerAriaLabelledby,
-  textColorClass = 'text-[#008ab8]',
-  containerClassName = 'relative my-10 flex cursor-default scroll-mt-[110px] flex-col items-center',
-  titleClassName = 'text-center text-4xl',
-
-  content,
-  isLoading
-}) {
+export default function SubHero({ content, isLoading, sectionId, textClass }) {
   if (isLoading) {
     return <LoadingAnimation />;
   }
 
   const heroTitle = content?.heroTitle || [];
+  const ariaLabelText = heroTitle.map((paragraph) => paragraph.children.map((child) => child.text).join('')).join(' ');
 
   const hoverEffect = {
     y: -5,
@@ -28,12 +18,12 @@ export default function SubHero({
 
   return (
     <motion.div
-      id={heroId}
-      className={`${textColorClass} ${containerClassName}`}
+      id={sectionId}
+      className={`relative my-10 flex cursor-default scroll-mt-[110px] flex-col items-center dark:text-darkForeground ${textClass}`}
       whileHover="hover"
       role="region"
-      aria-labelledby={containerAriaLabelledby}>
-      <h1 id={headingId} className={titleClassName} aria-label={headingAriaLabel}>
+      aria-labelledby={`${sectionId}-heading`}>
+      <h1 id={`${sectionId}-heading`} className="text-center text-4xl" aria-label={ariaLabelText}>
         {heroTitle.map((paragraph, idx) => (
           <span key={idx}>
             {paragraph.children.map((child, childIdx) =>

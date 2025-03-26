@@ -3,7 +3,7 @@
 import { useTheme } from 'next-themes';
 import { useEffect, useState } from 'react';
 
-export default function ModeToggle() {
+export default function ModeButton() {
   const { theme, setTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
 
