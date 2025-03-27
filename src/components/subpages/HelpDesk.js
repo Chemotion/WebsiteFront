@@ -79,13 +79,13 @@ export default function HelpPage() {
         .find('input, textarea')
         .addClass(
           'w-full px-4 py-2 border border-gray-300 rounded-md ' +
-            'shadow-sm focus:ring-[#008ab8] focus:border-[#008ab8]'
+            'shadow-sm focus:ring-[#2495cf] focus:border-[#2495cf]'
         );
       $form
         .find('button')
         .addClass(
           'inline-block px-8 py-3 text-center text-xl text-white ' +
-            'bg-[#008ab8] dark:bg-darkBackground rounded-md font-semibold border-2 border-[#008ab8] ' +
+            'bg-[#2495cf] dark:bg-darkBackground rounded-md font-semibold border-2 border-[#2495cf] ' +
             'dark:border-darkForeground shadow-sm transition-all duration-300 ' +
             'hover:bg-gray-800 hover:border-gray-800 hover:shadow-lg ' +
             'w-36 ml-auto'

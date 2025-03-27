@@ -9,5 +9,5 @@ export default function ELNHero() {
     fallbackKey: 'elnHero'
   });
 
-  return <SubHero sectionId="eln" textClass="text-[#008ab8]" content={content} isLoading={isLoading} />;
+  return <SubHero sectionId="eln" textClass="text-[#2495cf]" content={content} isLoading={isLoading} />;
 }

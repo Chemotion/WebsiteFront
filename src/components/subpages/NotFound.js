@@ -39,7 +39,7 @@ export default function NotFoundPage() {
         as="a"
         href={buttonLink}
         aria-label="Go back to home page"
-        className="w-48 border-2 border-[#008ab8] bg-[#008ab8] font-semibold dark:border-darkForeground dark:bg-darkBackground">
+        className="w-48 border-2 border-[#2495cf] bg-[#2495cf] font-semibold dark:border-darkForeground dark:bg-darkBackground">
         <div className="py-2 text-xl text-white">{buttonText}</div>
       </HeroButton>
     </div>

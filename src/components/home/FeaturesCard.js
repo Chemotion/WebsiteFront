@@ -222,7 +222,7 @@ const FeatureSection = () => {
       role="region"
       aria-labelledby="feature-list-heading">
       <div
-        className="rounded-md border-2 border-[#008ab8] p-12 dark:border-darkForeground"
+        className="rounded-md border-2 border-[#2495cf] p-12 dark:border-darkForeground"
         role="group"
         aria-labelledby="feature-list-heading">
         <h1 id="feature-list-heading" className="mb-8 text-center text-3xl font-bold" aria-label="Full Feature List">
@@ -264,7 +264,7 @@ const FeatureSection = () => {
                 }
               : { onClick: generatePDF })}
             aria-label="Download feature list as PDF"
-            className=" w-60 border-2 border-[#008ab8] bg-[#008ab8] p-6 font-bold dark:border-darkForeground dark:bg-darkBackground">
+            className=" w-60 border-2 border-[#2495cf] bg-[#2495cf] p-6 font-bold dark:border-darkForeground dark:bg-darkBackground">
             <div className="py-2 text-xl text-white">{content?.btnText}</div>
           </HeroButton>
         </div>

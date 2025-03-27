@@ -33,7 +33,7 @@ export default function Card({
   description,
   image,
   longDescription,
-  borderColor = '#008ab8',
+  borderColor = '#2495cf',
   onClickOutsideDelay = 10000
 }) {
   const [isClicked, setIsClicked] = useState(false);
@@ -199,12 +199,12 @@ export default function Card({
         transition={{ duration: 0.3, ease: 'easeInOut' }}>
         <div className="relative size-6">
           <div
-            className={`absolute h-[4px] w-full bg-[#008ab8] transition-transform duration-300 dark:bg-darkForeground ${
+            className={`absolute h-[4px] w-full bg-[#2495cf] transition-transform duration-300 dark:bg-darkForeground ${
               isClicked ? 'rotate-45' : ''
             }`}
           />
           <div
-            className={`absolute h-[4px] w-full bg-[#008ab8] transition-transform duration-300 dark:bg-darkForeground ${
+            className={`absolute h-[4px] w-full bg-[#2495cf] transition-transform duration-300 dark:bg-darkForeground ${
               isClicked ? '-rotate-45' : 'rotate-90'
             }`}
           />

@@ -1,25 +1,25 @@
 'use client';
 
-import React, { useRef, useEffect, useMemo } from 'react';
+import React, { useRef, useEffect } from 'react';
 import Image from 'next/image';
 import { useTheme } from 'next-themes';
 import useContent from '@/hooks/useContent';
 import HeroButton from '@/components/ui/HeroButton';
 import LoadingAnimation from '@/components/ui/LoadingAnimation';
 
-const renderRichText = (nodes) => {
-  return nodes.map((node, index) => {
+const renderRichText = (nodes) =>
+  nodes.map((node, index) => {
     if (node.type === 'text') {
-      const extraClass = node.bold && node.text.trim() === 'Extended' ? 'tracking-widest' : '';
       return (
         <React.Fragment key={index}>
-          {node.text.split(' ').map((word, i) => (
-            <span
-              key={i}
-              className={`${node.bold ? 'animated-word font-bold' : ''} ${extraClass} transition-colors duration-300 ease-in-out`}>
-              {word}{' '}
-            </span>
-          ))}
+          {node.text.split(/(\s+)/).map((part, i) => {
+            const isWhitespace = /^\s+$/.test(part);
+            return (
+              <span key={i} className={`${node.bold && !isWhitespace ? 'font-bold' : ''} whitespace-pre`}>
+                {part}
+              </span>
+            );
+          })}
         </React.Fragment>
       );
     }
@@ -28,7 +28,6 @@ const renderRichText = (nodes) => {
     }
     return null;
   });
-};
 
 const Hero = () => {
   const { theme } = useTheme();
@@ -40,93 +39,54 @@ const Hero = () => {
   });
   const heroRef = useRef(null);
 
-  const backgroundStyle = useMemo(() => {
-    if (!isDark && content?.heroBackgroundSVG?.url) {
-      return {
-        '--hero-background': `url("${process.env.NEXT_PUBLIC_STRAPI_URL}${content.heroBackgroundSVG.url}")`
-      };
-    }
-    return {};
-  }, [isDark, content]);
-
   useEffect(() => {
-    const interval = setInterval(() => {
-      if (heroRef.current) {
-        const words = heroRef.current.querySelectorAll('.animated-word');
-        if (words.length > 0) {
-          const randomIndex = Math.floor(Math.random() * words.length);
-          const randomWord = words[randomIndex];
-          randomWord.classList.add('animate-hero-word');
-          randomWord.addEventListener(
-            'animationend',
-            () => {
-              randomWord.classList.remove('animate-hero-word');
-            },
-            { once: true }
-          );
-        }
-      }
-    }, 7000);
-
-    return () => clearInterval(interval);
-  }, []);
+    if (heroRef.current && !isDark && content?.heroBackgroundSVG?.url) {
+      heroRef.current.style.setProperty(
+        '--hero-background',
+        `url("${process.env.NEXT_PUBLIC_STRAPI_URL}${content.heroBackgroundSVG.url}")`
+      );
+    }
+  }, [isDark, content]);
 
   const scrollToSection = (id) => {
     const section = document.getElementById(id);
     if (section) {
-      const offset = 110;
-      const elementPosition = section.offsetTop;
-      const offsetPosition = elementPosition - offset;
-
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: 'smooth'
-      });
+      window.scrollTo({ top: section.offsetTop - 110, behavior: 'smooth' });
     }
   };
 
   if (isLoading) return <LoadingAnimation />;
 
   const heroTitle = content?.heroTitle;
+  const renderHeroTitle = (
+    <>
+      {heroTitle?.[0] && <span className="block mb-3">{renderRichText(heroTitle[0].children)}</span>}
+      {heroTitle?.[1] && <span className="block mb-8 sm:text-[40px]">{renderRichText(heroTitle[1].children)}</span>}
+      {heroTitle?.[3] && <span className="block mb-2">{renderRichText(heroTitle[3].children)}</span>}
+      {heroTitle?.[4] && <span className="block">{renderRichText(heroTitle[4].children)}</span>}
+    </>
+  );
 
   return (
     <div
       ref={heroRef}
-      style={backgroundStyle}
-      className={`relative flex flex-col items-center px-6 py-10 text-gray-800/95 dark:text-darkForeground sm:px-[100px] sm:py-20 ${!isDark ? 'hero-background' : ''}`}
+      className={`relative flex flex-col items-center px-6 py-10 text-gray-800/95 dark:text-darkForeground sm:px-[100px] sm:pb-20 sm:pt-16 ${
+        !isDark ? 'hero-background' : ''
+      }`}
       role="region"
       aria-labelledby="hero-section-title">
-      {heroTitle[0] && (
-        <div
-          id="hero-section-title"
-          className="mb-3 text-center text-4xl font-bold sm:text-5xl"
-          aria-label="Designed for chemists">
-          {renderRichText(heroTitle[0].children)}
+      <div className="text-center text-4xl max-w-4xl font-medium sm:text-5xl gradient-text-container">
+        {renderHeroTitle}
+        <div className="gradient-text-shine absolute top-0 left-0 w-full h-full flex flex-col items-center justify-center">
+          {renderHeroTitle}
         </div>
-      )}
+      </div>
 
-      {heroTitle[1] && (
-        <div
-          className="my-4 text-center text-4xl font-medium sm:mb-8 sm:mt-0 sm:text-[40px]"
-          aria-label="Extended for life sciences">
-          {renderRichText(heroTitle[1].children)}
-        </div>
-      )}
-
-      {(heroTitle[3] || heroTitle[4]) && (
-        <div
-          className="mb-8 max-w-4xl text-center text-4xl font-medium sm:text-5xl sm:tracking-tight"
-          aria-label="Support for all your laboratory data from design to publication">
-          {heroTitle[3] && <span className="mb-2 block">{renderRichText(heroTitle[3].children)}</span>}
-          {heroTitle[4] && <span className="block">{renderRichText(heroTitle[4].children)}</span>}
-        </div>
-      )}
-
-      <div className="mt-12 flex flex-wrap justify-center gap-6 text-xl custom-lg:justify-start">
+      <div className="mt-16 flex flex-wrap justify-center gap-6 text-xl custom-lg:justify-start">
         <HeroButton
           onClick={() => scrollToSection('eln')}
           aria-label="Scroll to ELN section"
-          className="w-48 border-2 border-[#008ab8] bg-[#008ab8] font-semibold dark:border-darkForeground dark:bg-darkBackground">
+          className="w-48 border-2 border-[#2495cf] bg-[#2495cf] font-semibold dark:border-darkForeground dark:bg-darkBackground">
           <div className="text-white dark:text-darkForeground">{content?.buttonText}</div>
           <Image
             src={`${process.env.NEXT_PUBLIC_STRAPI_URL}${content?.buttonSVG?.url}`}
@@ -144,7 +104,7 @@ const Hero = () => {
           target="_blank"
           rel="noopener noreferrer"
           aria-label="Open demo in new tab"
-          className="w-48 border-2 border-[#008ab8] bg-neutral-50 font-semibold dark:border-darkForeground dark:bg-darkBackground">
+          className="w-48 border-2 border-[#2495cf] bg-neutral-50 font-semibold dark:border-darkForeground dark:bg-darkBackground">
           {content?.demoButtonText}
           <Image
             src={`${process.env.NEXT_PUBLIC_STRAPI_URL}${content?.demoButtonSVG?.url}`}

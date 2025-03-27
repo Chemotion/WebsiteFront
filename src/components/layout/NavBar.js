@@ -137,7 +137,7 @@ const NavBar = () => {
                 onClick={toggleSearch}
                 aria-label="Toggle search"
                 className="ml-4 flex h-10 w-28 cursor-pointer items-center justify-center rounded-full border-2 border-neutral-50 bg-neutral-50 px-4 py-2 font-light text-gray-800 shadow-md duration-300 ease-in-out hover:text-gray-700 dark:border-darkForeground dark:bg-darkBackground dark:text-darkForeground">
-                <div className="mr-2 size-6 text-[#008ab8] dark:text-darkForeground">
+                <div className="mr-2 size-6 text-[#2495cf] dark:text-darkForeground">
                   <Image
                     src={`${process.env.NEXT_PUBLIC_STRAPI_URL}${content?.searchIcon?.url}`}
                     alt={content?.searchIcon?.alternativeText}

@@ -17,8 +17,8 @@ export default function DemoSection() {
       headingAria="ELN Demo Heading"
       buttonAria="Visit the Chemotion ELN Demo documentation page"
       featuresAria="ELN Demo description"
-      borderClass="border-[#008ab8]"
-      bgClass="bg-[#008ab8]"
+      borderClass="border-[#2495cf]"
+      bgClass="bg-[#2495cf]"
       leftSideClass="lg:py-10"
     />
   );

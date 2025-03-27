@@ -36,7 +36,7 @@ export default function CardContainer() {
                 description={card.subtitle}
                 image={imageUrl}
                 longDescription={card.features}
-                borderColor="#008ab8"
+                borderColor="#2495cf"
               />
             </section>
           );

@@ -40,7 +40,7 @@ const GetStartedSection = () => {
         {features.map((feature, index) => (
           <div
             key={index}
-            className="flex flex-1 flex-col justify-between rounded-md border-2 border-[#008ab8] p-12 text-gray-800 dark:border-darkForeground dark:text-darkForeground"
+            className="flex flex-1 flex-col justify-between rounded-md border-2 border-[#2495cf] p-12 text-gray-800 dark:border-darkForeground dark:text-darkForeground"
             role="group"
             aria-labelledby={`feature-column-${index}-title`}>
             <div>
@@ -71,7 +71,7 @@ const GetStartedSection = () => {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label={`Learn more about ${feature.columnTitle}`}
-                className="size-auto w-52 border-2 border-[#008ab8] bg-[#008ab8] p-6 font-bold dark:border-darkForeground dark:bg-darkBackground">
+                className="size-auto w-52 border-2 border-[#2495cf] bg-[#2495cf] p-6 font-bold dark:border-darkForeground dark:bg-darkBackground">
                 <div className="py-2 text-xl text-white">{feature.button.text}</div>
               </HeroButton>
             </div>

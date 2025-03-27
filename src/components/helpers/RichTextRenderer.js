@@ -93,7 +93,7 @@ const RichTextRenderer = ({ content }) => {
       }
       case 'link': {
         return (
-          <a key={index} href={node.url} className="text-[#008ab8] hover:underline">
+          <a key={index} href={node.url} className="text-[#2495cf] hover:underline">
             {node.children && node.children.map((child, i) => renderNode(child, i))}
           </a>
         );

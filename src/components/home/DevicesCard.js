@@ -17,8 +17,8 @@ export default function DeviceSection() {
       headingAria="Device Integration Heading"
       buttonAria="Visit the Chemotion ELN Device Integration documentation page"
       featuresAria="Device integration features"
-      borderClass="border-[#008ab8]"
-      bgClass="bg-[#008ab8]"
+      borderClass="border-[#2495cf]"
+      bgClass="bg-[#2495cf]"
       leftSideClass=""
     />
   );

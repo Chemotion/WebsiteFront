@@ -36,8 +36,8 @@ export default function VideoCard() {
 
   return (
     <section id="videocontent" className="mb-14 w-full max-w-6xl px-4" aria-labelledby="chemotion-video-heading">
-      <div className="flex items-center justify-center rounded-md border-2 border-[#008ab8] p-6 dark:border-darkForeground">
-        <div className="relative m-2 flex aspect-video w-full items-center justify-center overflow-hidden rounded-md border-2 border-[#008ab8] dark:border-darkForeground">
+      <div className="flex items-center justify-center rounded-md border-2 border-[#2495cf] p-6 dark:border-darkForeground">
+        <div className="relative m-2 flex aspect-video w-full items-center justify-center overflow-hidden rounded-md border-2 border-[#2495cf] dark:border-darkForeground">
           {!content.videoURL && (
             <div className="flex items-center justify-center bg-gray-200">
               <span className="text-xl font-bold text-gray-600">No Video</span>
@@ -72,7 +72,7 @@ export default function VideoCard() {
                 <HeroButton
                   onClick={handleConsent}
                   aria-label="Consent to YouTube Warning"
-                  className="w-36 border-2 border-[#008ab8] bg-[#008ab8] py-3 font-semibold dark:border-darkForeground dark:bg-darkBackground">
+                  className="w-36 border-2 border-[#2495cf] bg-[#2495cf] py-3 font-semibold dark:border-darkForeground dark:bg-darkBackground">
                   <div className="text-xl text-white">{content.buttonText}</div>
                 </HeroButton>
               </div>
