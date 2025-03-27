@@ -4,7 +4,7 @@ const MobileMenu = ({ isMobileMenuOpen, toggleMenu, primaryNavLinks, secondaryNa
   <>
     <button
       onClick={toggleMenu}
-      className="relative z-50 p-4 focus:outline-none custom-lg:hidden"
+      className="relative z-50 focus:outline-none custom-lg:hidden"
       aria-label="Toggle mobile menu"
       aria-expanded={isMobileMenuOpen}>
       <div className="space-y-1.5">

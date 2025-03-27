@@ -17,7 +17,7 @@ const Diagram = () => {
   return (
     <div
       id="diagram"
-      className="relative mb-14 mt-4 flex max-w-6xl flex-col items-center"
+      className="relative mb-14 mt-4 flex custom-lg:px-0 px-4 max-w-6xl flex-col items-center"
       role="region"
       aria-labelledby="diagram-heading">
       <div

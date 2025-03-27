@@ -21,7 +21,7 @@ export default function SubHero({ content, isLoading, sectionId, textClass }) {
       whileHover="hover"
       role="region"
       aria-labelledby={`${sectionId}-heading`}>
-      <h1 id={`${sectionId}-heading`} className="text-center text-4xl" aria-label={ariaLabelText}>
+      <h1 id={`${sectionId}-heading`} className="text-center text-3xl sm:text-4xl" aria-label={ariaLabelText}>
         {heroTitle.map((paragraph, idx) => (
           <span key={idx}>
             {paragraph.children.map((child, childIdx) =>

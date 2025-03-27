@@ -20,10 +20,10 @@ const DesktopSearch = ({
       onKeyDown={(e) => e.key === 'Enter' && !isSearchVisible && toggleSearch()}
       role="button"
       tabIndex={0}
-      className={`ml-4 flex items-center justify-between rounded-full px-4 py-2 font-light duration-300 ease-in-out custom-lg:mr-4 ${
+      className={`ml-4 flex items-center justify-between rounded-full px-4 py-2 font-light duration-300 ease-in-out ${
         isSearchVisible
           ? 'h-10 w-72 border-2 border-gray-500 bg-white text-gray-700 dark:border-darkForeground dark:bg-darkBackground dark:text-darkForeground'
-          : 'h-10 w-52 cursor-pointer border-2 border-neutral-50 bg-neutral-50 shadow-md hover:text-gray-700 dark:border-darkForeground dark:bg-darkBackground'
+          : 'h-10 w-52 border-2 border-neutral-50 bg-neutral-50 shadow-md hover:text-gray-700 dark:border-darkForeground dark:bg-darkBackground'
       }`}>
       {isSearchVisible ? (
         <>
@@ -52,7 +52,7 @@ const DesktopSearch = ({
             height={Math.round(searchIcon?.height * (24 / searchIcon?.width))}
             className="mx-2 size-6 dark:brightness-0 dark:invert"
           />
-          <div className="mr-2 text-gray-700 dark:text-darkForeground">{searchText}</div>
+          <div className="text-gray-700 dark:text-darkForeground">{searchText}</div>
         </div>
       )}
     </div>

@@ -91,15 +91,15 @@ const NavBar = () => {
   return (
     <>
       <header
-        className="fixed inset-x-0 top-0 z-50 flex h-[66px] items-center bg-[#F5F5F5] py-[3px] text-base font-medium text-gray-700 shadow-md dark:border-b dark:border-darkForeground dark:bg-darkBackground dark:text-darkForeground"
+        className="fixed inset-x-0 top-0 z-50 flex h-[66px] items-center px-4 bg-[#F5F5F5] py-4 text-base font-medium text-gray-700 shadow-md dark:border-b dark:border-darkForeground dark:bg-darkBackground dark:text-darkForeground"
         role="banner">
-        <div className="container mx-auto flex max-w-7xl items-center justify-between">
+        <div className="container mx-auto flex w-full max-w-7xl items-center justify-between">
           <div className="flex flex-1 items-center">
             <div className="transition-opacity duration-300 ease-in-out hover:opacity-80">
               <Link
                 href="/"
                 onClick={scrollToTop}
-                className="ml-4 mr-12 flex items-center text-lg font-semibold text-gray-700 dark:text-darkForeground"
+                className="flex items-center text-lg font-semibold"
                 aria-label="Navigate to Chemotion homepage">
                 <Image
                   src={`${process.env.NEXT_PUBLIC_STRAPI_URL}${content?.logo?.url}`}
@@ -113,11 +113,11 @@ const NavBar = () => {
                 {content?.logoText}
               </Link>
             </div>
-            <div className="flex-1">
+            <div className="hidden custom-lg:flex flex-1 ml-12 mr-6">
               <DesktopMenu primaryNavLinks={primaryNavLinks} secondaryNavLinks={secondaryNavLinks} />
             </div>
           </div>
-          <div className="ml-4 flex items-center space-x-4">
+          <div className="flex items-center space-x-4">
             <DesktopSearch
               isSearchVisible={isSearchVisible}
               searchTerm={searchTerm}
@@ -136,8 +136,8 @@ const NavBar = () => {
               <button
                 onClick={toggleSearch}
                 aria-label="Toggle search"
-                className="ml-4 flex h-10 w-28 cursor-pointer items-center justify-center rounded-full border-2 border-neutral-50 bg-neutral-50 px-4 py-2 font-light text-gray-800 shadow-md duration-300 ease-in-out hover:text-gray-700 dark:border-darkForeground dark:bg-darkBackground dark:text-darkForeground">
-                <div className="mr-2 size-6 text-[#2495cf] dark:text-darkForeground">
+                className="flex h-10 items-center justify-center rounded-full border-2 border-neutral-50 bg-neutral-50 px-4 py-2 mr-2 font-light text-gray-800 shadow-md duration-300 ease-in-out hover:text-gray-700 dark:border-darkForeground dark:bg-darkBackground dark:text-darkForeground">
+                <div className="text-[#2495cf] ">
                   <Image
                     src={`${process.env.NEXT_PUBLIC_STRAPI_URL}${content?.searchIcon?.url}`}
                     alt={content?.searchIcon?.alternativeText}
@@ -146,7 +146,7 @@ const NavBar = () => {
                     className="mr-2 size-6 dark:brightness-0 dark:invert"
                   />
                 </div>
-                <div className="text-gray-700 dark:text-darkForeground">{content?.searchTextMobileView}</div>
+                {content?.searchTextMobileView}
               </button>
             </div>
             <MobileMenu

@@ -15,7 +15,9 @@ const renderRichText = (nodes) =>
           {node.text.split(/(\s+)/).map((part, i) => {
             const isWhitespace = /^\s+$/.test(part);
             return (
-              <span key={i} className={`${node.bold && !isWhitespace ? 'font-bold' : ''} whitespace-pre`}>
+              <span
+                key={i}
+                className={`${node.bold && !isWhitespace ? 'font-bold' : ''} whitespace-pre-wrap break-words`}>
                 {part}
               </span>
             );
@@ -61,7 +63,9 @@ const Hero = () => {
   const renderHeroTitle = (
     <>
       {heroTitle?.[0] && <span className="block mb-3">{renderRichText(heroTitle[0].children)}</span>}
-      {heroTitle?.[1] && <span className="block mb-8 sm:text-[40px]">{renderRichText(heroTitle[1].children)}</span>}
+      {heroTitle?.[1] && (
+        <span className="block mb-3 sm:mb-8 sm:text-[40px]">{renderRichText(heroTitle[1].children)}</span>
+      )}
       {heroTitle?.[3] && <span className="block mb-2">{renderRichText(heroTitle[3].children)}</span>}
       {heroTitle?.[4] && <span className="block">{renderRichText(heroTitle[4].children)}</span>}
     </>
@@ -75,7 +79,7 @@ const Hero = () => {
       }`}
       role="region"
       aria-labelledby="hero-section-title">
-      <div className="text-center text-4xl max-w-4xl font-medium sm:text-5xl gradient-text-container">
+      <div className="text-center text-4xl w-full max-w-full font-medium sm:max-w-4xl sm:text-5xl break-words gradient-text-container">
         {renderHeroTitle}
         <div className="gradient-text-shine absolute top-0 left-0 w-full h-full flex flex-col items-center justify-center">
           {renderHeroTitle}
