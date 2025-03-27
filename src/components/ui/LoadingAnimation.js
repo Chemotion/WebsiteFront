@@ -1,5 +1,3 @@
-'use client';
-
 export default function LoadingAnimation() {
   return (
     <div className="flex h-48 items-center justify-center">

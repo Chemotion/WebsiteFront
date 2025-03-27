@@ -1,4 +1,5 @@
 'use client';
+
 import useContent from '@/hooks/useContent';
 import RichTextRenderer from '@/components/helpers/RichTextRenderer';
 import LoadingAnimation from '@/components/ui/LoadingAnimation';

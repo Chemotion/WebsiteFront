@@ -1,5 +1,3 @@
-'use client';
-
 import useSWR from 'swr';
 import fallback from '/public/fallback.json';
 

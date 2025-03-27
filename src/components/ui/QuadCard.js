@@ -1,5 +1,3 @@
-'use client';
-
 import { useState, useRef, useEffect } from 'react';
 import Image from 'next/image';
 import { useTheme } from 'next-themes';
