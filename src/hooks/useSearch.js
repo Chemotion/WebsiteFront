@@ -3,7 +3,7 @@
 import { useState, useEffect, useRef } from 'react';
 import Fuse from 'fuse.js';
 
-export function useSearch() {
+export default function useSearch() {
   const [searchTerm, setSearchTerm] = useState('');
   const [searchResults, setSearchResults] = useState([]);
   const fuseRef = useRef(null);
