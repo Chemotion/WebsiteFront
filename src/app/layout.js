@@ -1,6 +1,8 @@
 import localFont from 'next/font/local';
-import './globals.css';
 import { ThemeProvider } from 'next-themes';
+import './globals.css';
+import NavBar from '@/components/layout/NavBar';
+import Footer from '@/components/layout/Footer';
 
 const geistSans = localFont({
   src: '../../public/fonts/GeistVF.woff',
@@ -22,7 +24,9 @@ export default function RootLayout({ children }) {
       <body
         className={`overflow-x-hidden scroll-smooth bg-background font-geist text-foreground antialiased dark:bg-darkBackground dark:text-darkForeground ${geistSans.variable}`}>
         <ThemeProvider attribute="class" defaultTheme="light" enableSystem={false}>
-          {children}
+          <NavBar />
+          <main className="mb-20 flex min-h-screen w-full flex-col items-center justify-center pt-20">{children}</main>
+          <Footer />
         </ThemeProvider>
       </body>
     </html>

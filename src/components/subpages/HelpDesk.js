@@ -148,7 +148,7 @@ export default function HelpPage() {
   if (isLoading) return <LoadingAnimation />;
 
   return (
-    <main className="mx-auto mb-20 mt-8 max-w-4xl p-4">
+    <main className="mx-auto mt-8 max-w-4xl p-4">
       <RichTextRenderer content={content} />
       <div id="feedback-form" ref={feedbackFormRef} aria-labelledby="Contact Form" className="min-h-[400px]"></div>
     </main>

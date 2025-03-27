@@ -14,7 +14,7 @@ export default function WhoWeArePage() {
   if (isLoading) return <LoadingAnimation />;
 
   return (
-    <main className="mx-auto mb-20 mt-8 max-w-4xl p-4" role="main" aria-labelledby="who-we-are-title">
+    <main className="mx-auto mt-8 max-w-4xl p-4" role="main" aria-labelledby="who-we-are-title">
       <section className="mb-12">
         <RichTextRenderer content={{ pageContent: content.partOneContent }} />
       </section>

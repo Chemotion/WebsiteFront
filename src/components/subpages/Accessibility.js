@@ -13,7 +13,7 @@ export default function AccessibilityPage() {
   if (isLoading) return <LoadingAnimation />;
 
   return (
-    <main className="mx-auto mb-20 mt-8 max-w-4xl p-4 font-geist" role="main">
+    <main className="mx-auto mt-8 max-w-4xl p-4" role="main">
       <RichTextRenderer content={content} />
     </main>
   );

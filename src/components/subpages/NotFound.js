@@ -16,7 +16,7 @@ export default function NotFoundPage() {
   const { mainText, subText, buttonText, buttonLink, logo } = content;
 
   return (
-    <div className="mx-auto mb-20 mt-10 max-w-4xl p-4 text-center" role="main" aria-labelledby="not-found-title">
+    <div className="mx-auto mt-10 max-w-4xl p-4 text-center" role="main" aria-labelledby="not-found-title">
       <div className="mb-12">
         <Image
           src={`${process.env.NEXT_PUBLIC_STRAPI_URL}${logo?.url}`}
