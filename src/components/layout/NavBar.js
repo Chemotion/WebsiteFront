@@ -16,7 +16,6 @@ const NavBar = () => {
   const [isSearchVisible, setIsSearchVisible] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isDropdownHovered, setIsDropdownHovered] = useState(false);
-  const [logoLoaded, setLogoLoaded] = useState(false);
 
   const { content, isLoading } = useContent({
     apiKey: 'navigation-bar',
@@ -108,8 +107,7 @@ const NavBar = () => {
                   width={35}
                   height={Math.round(content?.logo?.height * (35 / content?.logo?.width))}
                   unoptimized
-                  onLoad={() => setLogoLoaded(true)}
-                  className={`mr-4 transition-opacity duration-500 ${logoLoaded ? 'opacity-100' : 'opacity-0'}`}
+                  className="mr-4 min-w-[35px]"
                 />
 
                 {content?.logoText}
