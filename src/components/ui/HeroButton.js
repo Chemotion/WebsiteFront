@@ -1,43 +1,40 @@
-import React, { useRef, useState, useCallback, useMemo } from 'react';
+import React, { useRef, useState, useCallback, useMemo, forwardRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
-const mergeClassNames = (...classes) => classes.filter(Boolean).join(' ');
+const classNames = (...classes) => classes.filter(Boolean).join(' ');
 
-const getRippleAnimation = (type) => ({
-  initial: { width: 0, height: 0, opacity: 0.5 },
-  animate: {
-    width: type === 'hover' ? 300 : 200,
-    height: type === 'hover' ? 300 : 200,
-    opacity: 0
-  },
-  exit: { opacity: 0, scale: 0 },
-  transition: {
-    duration: type === 'hover' ? 1 : 0.5,
-    ease: 'easeOut'
-  }
-});
+const getRippleAnimation = (type) => {
+  const isHover = type === 'hover';
+  return {
+    initial: { width: 0, height: 0, opacity: 0.5 },
+    animate: { width: isHover ? 300 : 200, height: isHover ? 300 : 200, opacity: 0 },
+    exit: { opacity: 0, scale: 0 },
+    transition: { duration: isHover ? 1 : 0.5, ease: 'easeOut' }
+  };
+};
 
-export const HeroButton = React.forwardRef(({ as, className, children, ...props }, forwardedRef) => {
+const mergeRefs =
+  (...refs) =>
+  (node) =>
+    refs.forEach((ref) => {
+      if (typeof ref === 'function') ref(node);
+      else if (ref) ref.current = node;
+    });
+
+const useRipple = () => {
   const [ripple, setRipple] = useState(null);
   const buttonRef = useRef(null);
 
-  const combinedRef = useCallback(
-    (node) => {
-      buttonRef.current = node;
-      if (forwardedRef) {
-        if (typeof forwardedRef === 'function') forwardedRef(node);
-        else forwardedRef.current = node;
-      }
-    },
-    [forwardedRef]
-  );
+  const triggerRipple = useCallback((type, x, y) => {
+    setRipple({ type, x, y });
+  }, []);
 
   const handleMouseEnter = useCallback(() => {
     if (buttonRef.current) {
       const { width, height } = buttonRef.current.getBoundingClientRect();
-      setRipple({ type: 'hover', x: width / 2, y: height / 2 });
+      triggerRipple('hover', width / 2, height / 2);
     }
-  }, []);
+  }, [triggerRipple]);
 
   const handleMouseLeave = useCallback(() => {
     setRipple((prev) => (prev?.type === 'hover' ? null : prev));
@@ -45,28 +42,40 @@ export const HeroButton = React.forwardRef(({ as, className, children, ...props 
 
   const handleClick = useCallback(
     (event) => {
-      const buttonRect = event.currentTarget.getBoundingClientRect();
-      const x = event.clientX - buttonRect.left;
-      const y = event.clientY - buttonRect.top;
-      setRipple({ type: 'click', x, y });
-
-      if (props.onClick) props.onClick(event);
+      const rect = event.currentTarget.getBoundingClientRect();
+      const x = event.clientX - rect.left;
+      const y = event.clientY - rect.top;
+      triggerRipple('click', x, y);
 
       setTimeout(() => {
         if (buttonRef.current && buttonRef.current.matches(':hover')) {
           const { width, height } = buttonRef.current.getBoundingClientRect();
-          setRipple({ type: 'hover', x: width / 2, y: height / 2 });
+          triggerRipple('hover', width / 2, height / 2);
         } else {
           setRipple(null);
         }
       }, 500);
     },
-    [props]
+    [triggerRipple]
   );
 
-  const rippleVariants = useMemo(() => ripple && getRippleAnimation(ripple.type), [ripple]);
+  const rippleVariants = useMemo(() => (ripple ? getRippleAnimation(ripple.type) : null), [ripple]);
 
+  return { ripple, rippleVariants, buttonRef, handleMouseEnter, handleMouseLeave, handleClick };
+};
+
+const HeroButtonComponent = ({ as, className, children, onClick, ...props }, ref) => {
+  const { ripple, rippleVariants, buttonRef, handleMouseEnter, handleMouseLeave, handleClick } = useRipple();
+  const combinedRef = useMemo(() => mergeRefs(buttonRef, ref), [buttonRef, ref]);
   const Component = as ? motion[as] : motion.button;
+
+  const handleClickWrapper = useCallback(
+    (event) => {
+      handleClick(event);
+      if (onClick) onClick(event);
+    },
+    [handleClick, onClick]
+  );
 
   return (
     <div className="inline-flex items-center align-middle">
@@ -76,13 +85,13 @@ export const HeroButton = React.forwardRef(({ as, className, children, ...props 
           whileHover={{ scale: 1.02 }}
           whileTap={{ scale: 0.98 }}
           transition={{ type: 'spring', stiffness: 400, damping: 10 }}
-          className={mergeClassNames(
+          className={classNames(
             'relative overflow-hidden inline-flex items-center justify-center rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 py-2 h-auto min-h-10',
             className
           )}
           onMouseEnter={handleMouseEnter}
           onMouseLeave={handleMouseLeave}
-          onClick={handleClick}
+          onClick={handleClickWrapper}
           {...props}>
           <span className="invisible opacity-0" aria-hidden="true">
             {children}
@@ -107,6 +116,7 @@ export const HeroButton = React.forwardRef(({ as, className, children, ...props 
       </div>
     </div>
   );
-});
+};
 
-HeroButton.displayName = 'HeroButton';
+const HeroButton = forwardRef(HeroButtonComponent);
+export default HeroButton;

@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import { HeroButton } from '@/components/ui/HeroButton';
+import HeroButton from '@/components/ui/HeroButton';
 import LoadingAnimation from '@/components/ui/LoadingAnimation';
 
 export default function SectionCard({

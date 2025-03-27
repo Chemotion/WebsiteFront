@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import Image from 'next/image';
 import useContent from '@/hooks/useContent';
-import { HeroButton } from '@/components/ui/HeroButton';
+import HeroButton from '@/components/ui/HeroButton';
 import LoadingAnimation from '@/components/ui/LoadingAnimation';
 
 export default function VideoCard() {

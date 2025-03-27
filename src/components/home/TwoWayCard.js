@@ -1,5 +1,5 @@
 'use client';
-import { HeroButton } from '@/components/ui/HeroButton';
+import HeroButton from '@/components/ui/HeroButton';
 import useContent from '@/hooks/useContent';
 import LoadingAnimation from '@/components/ui/LoadingAnimation';
 

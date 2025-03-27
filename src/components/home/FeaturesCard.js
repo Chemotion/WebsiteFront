@@ -2,7 +2,7 @@
 
 import jsPDF from 'jspdf';
 import useContent from '@/hooks/useContent';
-import { HeroButton } from '@/components/ui/HeroButton';
+import HeroButton from '@/components/ui/HeroButton';
 import LoadingAnimation from '@/components/ui/LoadingAnimation';
 
 const formatFeatures = (blocks) => {

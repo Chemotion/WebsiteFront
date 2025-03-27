@@ -4,7 +4,7 @@ import React, { useRef, useEffect, useMemo } from 'react';
 import Image from 'next/image';
 import { useTheme } from 'next-themes';
 import useContent from '@/hooks/useContent';
-import { HeroButton } from '@/components/ui/HeroButton';
+import HeroButton from '@/components/ui/HeroButton';
 import LoadingAnimation from '@/components/ui/LoadingAnimation';
 
 const renderRichText = (nodes) => {
