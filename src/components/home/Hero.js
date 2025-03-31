@@ -62,11 +62,11 @@ const Hero = () => {
   const heroTitle = content?.heroTitle;
   const renderHeroTitle = (
     <>
-      {heroTitle?.[0] && <span className="block mb-3">{renderRichText(heroTitle[0].children)}</span>}
+      {heroTitle?.[0] && <span className="mb-3 block">{renderRichText(heroTitle[0].children)}</span>}
       {heroTitle?.[1] && (
-        <span className="block mb-3 sm:mb-8 sm:text-[40px]">{renderRichText(heroTitle[1].children)}</span>
+        <span className="mb-3 block sm:mb-8 sm:text-[40px]">{renderRichText(heroTitle[1].children)}</span>
       )}
-      {heroTitle?.[3] && <span className="block mb-2">{renderRichText(heroTitle[3].children)}</span>}
+      {heroTitle?.[3] && <span className="mb-2 block">{renderRichText(heroTitle[3].children)}</span>}
       {heroTitle?.[4] && <span className="block">{renderRichText(heroTitle[4].children)}</span>}
     </>
   );
@@ -79,9 +79,9 @@ const Hero = () => {
       }`}
       role="region"
       aria-labelledby="hero-section-title">
-      <div className="text-center text-4xl w-full max-w-full font-medium sm:max-w-4xl sm:text-5xl break-words gradient-text-container">
+      <div className="gradient-text-container w-full max-w-full break-words text-center text-4xl font-medium sm:max-w-4xl sm:text-5xl">
         {renderHeroTitle}
-        <div className="gradient-text-shine absolute top-0 left-0 w-full h-full flex flex-col items-center justify-center">
+        <div className="gradient-text-shine absolute left-0 top-0 flex size-full flex-col items-center justify-center">
           {renderHeroTitle}
         </div>
       </div>

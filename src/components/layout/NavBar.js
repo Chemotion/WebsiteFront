@@ -91,7 +91,7 @@ const NavBar = () => {
   return (
     <>
       <header
-        className="fixed inset-x-0 top-0 z-50 flex h-[66px] items-center px-4 bg-[#F5F5F5] py-4 text-base font-medium text-gray-700 shadow-md dark:border-b dark:border-darkForeground dark:bg-darkBackground dark:text-darkForeground"
+        className="fixed inset-x-0 top-0 z-50 flex h-[66px] items-center bg-[#F5F5F5] p-4 text-base font-medium text-gray-700 shadow-md dark:border-b dark:border-darkForeground dark:bg-darkBackground dark:text-darkForeground"
         role="banner">
         <div className="container mx-auto flex w-full max-w-7xl items-center justify-between">
           <div className="flex flex-1 items-center">
@@ -104,16 +104,16 @@ const NavBar = () => {
                 <Image
                   src={`${process.env.NEXT_PUBLIC_STRAPI_URL}${content?.logo?.url}`}
                   alt={content?.logo?.alternativeText}
-                  width={35}
+                  width={30}
                   height={Math.round(content?.logo?.height * (35 / content?.logo?.width))}
                   unoptimized
-                  className="mr-4 min-w-[35px]"
+                  className="mr-4 min-w-[30px]"
                 />
 
                 {content?.logoText}
               </Link>
             </div>
-            <div className="hidden custom-lg:flex flex-1 ml-12 mr-6">
+            <div className="ml-12 mr-6 hidden flex-1 custom-lg:flex">
               <DesktopMenu primaryNavLinks={primaryNavLinks} secondaryNavLinks={secondaryNavLinks} />
             </div>
           </div>
@@ -136,7 +136,7 @@ const NavBar = () => {
               <button
                 onClick={toggleSearch}
                 aria-label="Toggle search"
-                className="flex h-10 items-center justify-center rounded-full border-2 border-neutral-50 bg-neutral-50 px-4 py-2 mr-2 font-light text-gray-800 shadow-md duration-300 ease-in-out hover:text-gray-700 dark:border-darkForeground dark:bg-darkBackground dark:text-darkForeground">
+                className="mr-2 flex h-10 items-center justify-center rounded-full border-2 border-neutral-50 bg-neutral-50 px-4 py-2 font-light text-gray-800 shadow-md duration-300 ease-in-out hover:text-gray-700 dark:border-darkForeground dark:bg-darkBackground dark:text-darkForeground">
                 <div className="text-[#2495cf] ">
                   <Image
                     src={`${process.env.NEXT_PUBLIC_STRAPI_URL}${content?.searchIcon?.url}`}
