@@ -33,7 +33,7 @@ const SearchResults = ({ results, searchTerm, onItemClick }) => {
 
         <div className="px-6 py-4 text-center">
           <a
-            href="https://docs.web123.chemotion.scc.kit.edu/search"
+            href={`https://docs.web123.chemotion.scc.kit.edu/search/?q=${encodeURIComponent(searchTerm)}`}
             target="_blank"
             rel="noopener noreferrer"
             className="font-medium hover:underline">
