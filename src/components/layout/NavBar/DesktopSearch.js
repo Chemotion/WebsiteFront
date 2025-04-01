@@ -58,7 +58,7 @@ const DesktopSearch = ({
     </div>
     {isSearchVisible && (searchResults.length > 0 || searchTerm.trim().length > 0) && (
       <div
-        className="absolute right-4 z-50 mt-3 max-h-[500px] w-[60vw] overflow-y-auto rounded-lg border border-gray-200 bg-white shadow-lg dark:border-darkForeground dark:bg-darkBackground md:w-[600px]"
+        className="absolute right-4 z-50 mt-3 w-[60vw] overflow-y-auto rounded-lg border border-gray-200 bg-white shadow-lg dark:border-darkForeground dark:bg-darkBackground md:w-[600px]"
         role="menu"
         tabIndex={0}
         onMouseEnter={onDropdownEnter}

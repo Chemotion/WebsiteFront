@@ -99,7 +99,7 @@ const NavBar = () => {
               <Link
                 href="/"
                 onClick={scrollToTop}
-                className="flex items-center text-lg font-semibold"
+                className="flex items-center font-semibold"
                 aria-label="Navigate to Chemotion homepage">
                 <Image
                   src={`${process.env.NEXT_PUBLIC_STRAPI_URL}${content?.logo?.url}`}
@@ -107,7 +107,7 @@ const NavBar = () => {
                   width={30}
                   height={Math.round(content?.logo?.height * (35 / content?.logo?.width))}
                   unoptimized
-                  className="mr-4 min-w-[30px]"
+                  className="mr-3 min-w-[30px]"
                 />
 
                 {content?.logoText}

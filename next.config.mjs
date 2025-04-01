@@ -19,6 +19,16 @@ const nextConfig = {
         hostname: 'img.youtube.com'
       }
     ]
+  },
+
+  async redirects() {
+    return [
+      {
+        source: '/docs/:path*',
+        destination: 'https://docs.web123.chemotion.scc.kit.edu/:path*',
+        permanent: true
+      }
+    ];
   }
 };
 
