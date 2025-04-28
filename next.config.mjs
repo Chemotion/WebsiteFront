@@ -25,7 +25,7 @@ const nextConfig = {
     return [
       {
         source: '/docs/:path*',
-        destination: 'https://docs.web123.chemotion.scc.kit.edu/:path*',
+        destination: 'https://docs.chemotion.net/:path*',
         permanent: true
       }
     ];
