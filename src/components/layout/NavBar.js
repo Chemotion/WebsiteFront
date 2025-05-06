@@ -108,7 +108,7 @@ const NavBar = () => {
                   src={`${process.env.NEXT_PUBLIC_STRAPI_URL}${content?.logo?.url}`}
                   alt={content?.logo?.alternativeText}
                   width={30}
-                  height={Math.round(content?.logo?.height * (35 / content?.logo?.width))}
+                  height={Math.round(content?.logo?.height * (30 / content?.logo?.width))}
                   unoptimized
                   className="mr-3 min-w-[30px]"
                 />

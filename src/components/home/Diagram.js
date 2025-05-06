@@ -1,18 +1,25 @@
 'use client';
-import { useState } from 'react';
+
+import React from 'react';
 import Image from 'next/image';
 import useContent from '@/hooks/useContent';
 import LoadingAnimation from '@/components/ui/LoadingAnimation';
 
-const Diagram = () => {
+const Diagram = React.memo(() => {
   const { content, isLoading } = useContent({
     apiKey: 'flowchart-section',
     fallbackKey: 'flowchartSection'
   });
 
-  const [imgLoaded, setImgLoaded] = useState(false);
+  if (isLoading) {
+    return <LoadingAnimation />;
+  }
 
-  if (isLoading) return <LoadingAnimation />;
+  const img = content.flowchartImage;
+  const BASE_URL = process.env.NEXT_PUBLIC_STRAPI_URL;
+  const width = 1130;
+  const height = Math.round(img.height * (width / img.width));
+  const src = `${BASE_URL}${img.url}`;
 
   return (
     <div
@@ -24,31 +31,25 @@ const Diagram = () => {
         tabIndex={0}
         role="button"
         aria-label="flowchart showcasing chemotion ELN"
-        className="relative w-full cursor-default transition-transform duration-300 hover:-translate-y-1 hover:scale-[1.01] ">
-        <div
-          className={`absolute inset-0 flex items-center justify-center rounded-md bg-neutral-100 transition-all duration-700 ease-out ${
-            imgLoaded ? 'pointer-events-none opacity-0' : 'opacity-100'
-          }`}>
-          <span>Loading...</span>
-        </div>
-
-        <div
-          className={`mx-auto w-full max-w-[1130px] transition-all duration-700 ease-out ${
-            imgLoaded ? 'opacity-100' : 'opacity-0'
-          }`}>
+        className="relative w-full cursor-default transition-transform duration-300 ease-out hover:-translate-y-1 hover:scale-[1.01]">
+        <div className="mx-auto w-full max-w-[1130px]">
           <Image
-            src={`${process.env.NEXT_PUBLIC_STRAPI_URL}${content?.flowchartImage?.url}`}
-            alt={content?.flowchartImage?.alternativeText}
-            width={1130}
-            height={Math.round(content?.flowchartImage?.height * (1130 / content?.flowchartImage?.width))}
-            unoptimized
+            src={src}
+            alt={img.alternativeText || 'Chemotion ELN flowchart'}
+            width={width}
+            height={height}
             priority
-            onLoad={() => setImgLoaded(true)}
+            loading="eager"
+            sizes="(max-width: 1130px) 100vw, 1130px"
+            placeholder={img.blurDataURL ? 'blur' : undefined}
+            blurDataURL={img.blurDataURL}
+            unoptimized
           />
         </div>
       </div>
     </div>
   );
-};
+});
 
+Diagram.displayName = 'Diagram';
 export default Diagram;
