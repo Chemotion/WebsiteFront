@@ -5,6 +5,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import useSearch from '@/hooks/useSearch';
 import useContent from '@/hooks/useContent';
+import InfoBanner from '@/components/ui/InfoBanner';
 import LoadingAnimation from '@/components/ui/LoadingAnimation';
 import DesktopMenu from './NavBar/DesktopMenu';
 import MobileMenu from './NavBar/MobileMenu';
@@ -44,7 +45,7 @@ const NavBar = () => {
     if (isRootPath && window.location.hash) {
       e.preventDefault();
       window.scrollTo({ top: 0, behavior: 'smooth' });
-      setTimeout(() => history.replaceState({}, '', '/'), 300);
+      setTimeout(() => history.replaceState({}, '', '/'), 200);
     } else if (isRootPath) {
       e.preventDefault();
       window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -90,12 +91,14 @@ const NavBar = () => {
 
   return (
     <>
+      {/* next line to be removed to stop notifying users about the new site,remove the InfoBanner compoenent if not needed */}
+      <InfoBanner />
       <header
         className="fixed inset-x-0 top-0 z-50 flex h-[66px] items-center bg-[#F5F5F5] p-4 text-base font-medium text-gray-700 shadow-md dark:border-b dark:border-darkForeground dark:bg-darkBackground dark:text-darkForeground"
         role="banner">
         <div className="container mx-auto flex w-full max-w-7xl items-center justify-between">
           <div className="flex flex-1 items-center">
-            <div className="transition-opacity duration-300 ease-in-out hover:opacity-80">
+            <div className="transition-opacity duration-200 ease-in-out hover:opacity-80">
               <Link
                 href="/"
                 onClick={scrollToTop}
@@ -136,7 +139,7 @@ const NavBar = () => {
               <button
                 onClick={toggleSearch}
                 aria-label="Toggle search"
-                className="mr-2 flex h-10 items-center justify-center rounded-full border-2 border-neutral-50 bg-neutral-50 px-4 py-2 font-light text-gray-800 shadow-md duration-300 ease-in-out hover:text-gray-700 dark:border-darkForeground dark:bg-darkBackground dark:text-darkForeground">
+                className="mr-2 flex h-10 items-center justify-center rounded-full border-2 border-neutral-50 bg-neutral-50 px-4 py-2 font-light text-gray-800 shadow-md duration-200 ease-in-out hover:text-gray-700 dark:border-darkForeground dark:bg-darkBackground dark:text-darkForeground">
                 <div className="text-[#2495cf] ">
                   <Image
                     src={`${process.env.NEXT_PUBLIC_STRAPI_URL}${content?.searchIcon?.url}`}
