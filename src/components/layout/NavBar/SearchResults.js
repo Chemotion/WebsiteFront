@@ -18,7 +18,7 @@ const SearchResults = ({ results, searchTerm, onItemClick }) => {
           {results.slice(0, MAX_RESULTS_DISPLAY).map((doc) => (
             <li key={doc.__id} className="hover:bg-neutral-100 dark:hover:bg-darkBackground">
               <Link
-                href={`${doc.u}?_highlight=${encodeURIComponent(searchTerm)}#${slug(doc.t)}`}
+                href={`docs/${doc.u}?_highlight=${encodeURIComponent(searchTerm)}#${slug(doc.t)}`}
                 onClick={onItemClick}
                 className="block px-6 py-4"
                 aria-label={`Navigate to ${doc.t}`}
