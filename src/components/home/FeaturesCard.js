@@ -229,13 +229,13 @@ const FeatureSection = () => {
           {content?.title}
         </h1>
         <div
-          className="mt-12 grid grid-cols-1 px-2 custom-lg:grid-cols-3 custom-lg:gap-14"
+          className="grid grid-cols-1 px-2 sm:mt-12 custom-lg:grid-cols-3 custom-lg:gap-14"
           role="list"
           aria-label="Feature columns">
           {frontendColumns.map((col, colIndex) => (
             <div
               key={colIndex}
-              className="mt-12 space-y-6 custom-lg:mt-0"
+              className="mb-4 mt-2 space-y-6 sm:mb-0 sm:mt-12 custom-lg:mt-0"
               role="listitem"
               aria-label={`feature column ${colIndex}`}>
               {col.map((group, groupIndex) => (
