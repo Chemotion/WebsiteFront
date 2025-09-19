@@ -1,8 +1,7 @@
 'use client';
 
-import React, { useRef, useEffect } from 'react';
+import React from 'react';
 import Image from 'next/image';
-import { useTheme } from 'next-themes';
 import useContent from '@/hooks/useContent';
 import HeroButton from '@/components/ui/HeroButton';
 import LoadingAnimation from '@/components/ui/LoadingAnimation';
@@ -32,23 +31,10 @@ const renderRichText = (nodes) =>
   });
 
 const Hero = () => {
-  const { theme } = useTheme();
-  const isDark = theme === 'dark';
-
   const { content, isLoading } = useContent({
     apiKey: 'hero-section',
     fallbackKey: 'heroSection'
   });
-  const heroRef = useRef(null);
-
-  useEffect(() => {
-    if (heroRef.current && !isDark && content?.heroBackgroundSVG?.url) {
-      heroRef.current.style.setProperty(
-        '--hero-background',
-        `url("${process.env.NEXT_PUBLIC_STRAPI_URL}${content.heroBackgroundSVG.url}")`
-      );
-    }
-  }, [isDark, content]);
 
   const scrollToSection = (id) => {
     const section = document.getElementById(id);
@@ -73,10 +59,7 @@ const Hero = () => {
 
   return (
     <div
-      ref={heroRef}
-      className={`relative flex flex-col items-center px-6 py-16 text-gray-800/95 dark:text-darkForeground sm:px-[100px] sm:py-16 ${
-        !isDark ? 'hero-background' : ''
-      }`}
+      className="relative flex flex-col items-center px-6 py-16 text-gray-800/95 dark:text-darkForeground sm:px-[100px] sm:py-16"
       role="region"
       aria-labelledby="hero-section-title">
       <div className="w-full max-w-full break-words text-center text-4xl font-medium sm:max-w-4xl sm:text-5xl">
