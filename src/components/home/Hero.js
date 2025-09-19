@@ -74,16 +74,13 @@ const Hero = () => {
   return (
     <div
       ref={heroRef}
-      className={`relative flex flex-col items-center px-6 py-10 text-gray-800/95 dark:text-darkForeground sm:px-[100px] sm:pb-20 sm:pt-16 ${
+      className={`relative flex flex-col items-center px-6 py-16 text-gray-800/95 dark:text-darkForeground sm:px-[100px] sm:py-16 ${
         !isDark ? 'hero-background' : ''
       }`}
       role="region"
       aria-labelledby="hero-section-title">
-      <div className="gradient-text-container w-full max-w-full break-words text-center text-4xl font-medium sm:max-w-4xl sm:text-5xl">
+      <div className="w-full max-w-full break-words text-center text-4xl font-medium sm:max-w-4xl sm:text-5xl">
         {renderHeroTitle}
-        <div className="gradient-text-shine absolute left-0 top-0 flex size-full flex-col items-center justify-center">
-          {renderHeroTitle}
-        </div>
       </div>
 
       <div className="mt-16 flex flex-wrap justify-center gap-6 text-xl custom-lg:justify-start">
