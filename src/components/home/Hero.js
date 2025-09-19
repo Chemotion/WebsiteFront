@@ -68,7 +68,7 @@ const Hero = () => {
 
       <div className="mt-16 flex flex-wrap justify-center gap-6 text-xl custom-lg:justify-start">
         <HeroButton
-          onClick={() => scrollToSection('eln')}
+          onClick={() => scrollToSection('feature-list')}
           aria-label="Scroll to ELN section"
           className="w-48 border-2 border-[#2495cf] bg-[#2495cf] font-semibold dark:border-darkForeground dark:bg-darkBackground">
           <div className="text-white dark:text-darkForeground">{content?.buttonText}</div>

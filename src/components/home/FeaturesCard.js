@@ -220,7 +220,8 @@ const FeatureSection = () => {
     <div
       className="mb-14 w-full max-w-6xl px-4 text-gray-800 dark:text-darkForeground"
       role="region"
-      aria-labelledby="feature-list-heading">
+      aria-labelledby="feature-list-heading"
+      id="feature-list">
       <div
         className="rounded-md border-2 border-[#2495cf] p-12 dark:border-darkForeground"
         role="group"
