@@ -16,7 +16,6 @@ export default function Home() {
   return (
     <>
       <Hero />
-      <Diagram />
       <ELNHero />
       <CardContainer />
       <VideoSection />
@@ -28,6 +27,7 @@ export default function Home() {
       <LabimotionSection />
       <RepositoryHero />
       <RepositorySection />
+      <Diagram />
     </>
   );
 }

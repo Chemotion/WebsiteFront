@@ -24,7 +24,7 @@ const Diagram = React.memo(() => {
   return (
     <div
       id="diagram"
-      className="relative mb-14 mt-4 flex max-w-6xl flex-col items-center px-4 custom-lg:px-0"
+      className="relative mt-14 flex max-w-6xl flex-col items-center px-4 custom-lg:px-0"
       role="region"
       aria-labelledby="diagram-heading">
       <div
