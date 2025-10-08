@@ -65,6 +65,24 @@ const Footer = () => {
             </div>
             <div role="listitem">
               <a
+                href={content.nfdi4chemLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="NFDI4Chem"
+                className="transition-transform duration-300 hover:shadow-lg">
+                <div className="transition-all duration-300 ease-in-out hover:scale-105">
+                  <Image
+                    src={`${process.env.NEXT_PUBLIC_STRAPI_URL}${content?.nfdi4chemLogo?.url}`}
+                    alt={content?.nfdi4chemLogo?.alternativeText}
+                    width={300}
+                    height={Math.round(content?.nfdi4chemLogo?.height * (300 / content?.nfdi4chemLogo?.width))}
+                    unoptimized
+                  />
+                </div>
+              </a>
+            </div>
+            <div role="listitem">
+              <a
                 href={content.bwLink}
                 target="_blank"
                 rel="noopener noreferrer"
