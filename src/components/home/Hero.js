@@ -59,14 +59,38 @@ const Hero = () => {
 
   return (
     <div
-      className="relative flex flex-col items-center px-6 py-16 text-gray-800/95 dark:text-darkForeground sm:px-[100px] sm:py-16"
+      className="relative flex flex-col items-center overflow-hidden px-6 py-16 text-gray-800/95 dark:text-darkForeground sm:px-[100px] sm:py-16"
       role="region"
       aria-labelledby="hero-section-title">
-      <div className="w-full max-w-full break-words text-center text-4xl font-medium sm:max-w-4xl sm:text-5xl">
+      {content?.lightModeBackground?.url && (
+        <div
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat dark:hidden"
+          style={{
+            backgroundImage: `url(${process.env.NEXT_PUBLIC_STRAPI_URL}${content.lightModeBackground.url})`,
+            maskImage: 'radial-gradient(circle, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.5) 20%, rgba(0,0,0,0) 100%)',
+            WebkitMaskImage: 'radial-gradient(circle, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.5) 20%, rgba(0,0,0,0) 100%)'
+          }}
+          aria-hidden="true"
+        />
+      )}
+
+      {content?.darkModeBackground?.url && (
+        <div
+          className="absolute inset-0 hidden bg-cover bg-center bg-no-repeat dark:block"
+          style={{
+            backgroundImage: `url(${process.env.NEXT_PUBLIC_STRAPI_URL}${content.darkModeBackground.url})`,
+            maskImage: 'radial-gradient(circle, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.5) 20%, rgba(0,0,0,0) 100%)',
+            WebkitMaskImage: 'radial-gradient(circle, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.5) 20%, rgba(0,0,0,0) 100%)'
+          }}
+          aria-hidden="true"
+        />
+      )}
+
+      <div className="relative z-10 w-full max-w-full break-words text-center text-4xl font-medium sm:max-w-4xl sm:text-5xl">
         {renderHeroTitle}
       </div>
 
-      <div className="mt-16 flex flex-wrap justify-center gap-6 text-xl custom-lg:justify-start">
+      <div className="relative z-10 mt-16 flex flex-wrap justify-center gap-6 text-xl custom-lg:justify-start">
         <HeroButton
           onClick={() => scrollToSection('feature-list')}
           aria-label="Scroll to ELN section"
