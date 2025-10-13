@@ -48,12 +48,15 @@ const Hero = () => {
   const heroTitle = content?.heroTitle;
   const renderHeroTitle = (
     <>
-      {heroTitle?.[0] && <span className="mb-4 block">{renderRichText(heroTitle[0].children)}</span>}
+      {heroTitle?.[0] && <span className="mb-4 block sm:mb-8">{renderRichText(heroTitle[0].children)}</span>}
       {heroTitle?.[1] && (
-        <span className="mx-auto mb-3 block max-w-3xl sm:mb-8">{renderRichText(heroTitle[1].children)}</span>
+        <span className="mx-auto mb-3 block max-w-2xl leading-snug sm:mb-8 ">
+          {renderRichText(heroTitle[1].children)}
+        </span>
       )}
-      {heroTitle?.[3] && <span className="mx-auto mb-2 block">{renderRichText(heroTitle[3].children)}</span>}
-      {heroTitle?.[4] && <span className="mx-auto block">{renderRichText(heroTitle[4].children)}</span>}
+
+      {heroTitle?.[2] && <span className="mx-auto mb-2 block">{renderRichText(heroTitle[2].children)}</span>}
+      {heroTitle?.[3] && <span className="mx-auto block">{renderRichText(heroTitle[3].children)}</span>}
     </>
   );
 
@@ -86,7 +89,7 @@ const Hero = () => {
         />
       )}
 
-      <div className="relative z-10 w-full max-w-full break-words text-center text-4xl font-medium sm:max-w-4xl sm:text-5xl">
+      <div className="relative z-10 w-full max-w-full break-words text-center text-4xl font-medium tracking-wide sm:max-w-4xl sm:text-5xl">
         {renderHeroTitle}
       </div>
 
