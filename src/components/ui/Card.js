@@ -31,6 +31,7 @@ export default function SectionCard({
                 alt={content?.titleImage?.alternativeText || 'Heading image'}
                 width={300}
                 height={Math.round(content.titleImage?.height * (300 / content.titleImage?.width))}
+                sizes="300px"
                 className="mx-auto mb-2 lg:mx-0"
                 unoptimized
               />

@@ -61,9 +61,10 @@ export default function VideoCard() {
                 src={`${process.env.NEXT_PUBLIC_STRAPI_URL}${content?.videoThumbnail?.url}`}
                 alt={content.videoTitle}
                 fill
-                priority
                 unoptimized
                 sizes="(max-width: 768px) 100vw, 50vw"
+                quality={75}
+                className="object-cover"
               />
               <div className="absolute inset-0 bg-black/50 backdrop-blur-sm"></div>
               <div className="relative z-10">

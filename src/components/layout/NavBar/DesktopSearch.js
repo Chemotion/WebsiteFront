@@ -51,6 +51,7 @@ const DesktopSearch = ({
             width={24}
             height={Math.round(searchIcon?.height * (24 / searchIcon?.width))}
             className="mx-2 size-6 dark:brightness-0 dark:invert"
+            unoptimized
           />
           <div className="text-gray-700 dark:text-darkForeground">{searchText}</div>
         </div>

@@ -67,26 +67,44 @@ const Hero = () => {
       aria-labelledby="hero-section-title">
       {content?.lightModeBackground?.url && (
         <div
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat dark:hidden"
+          className="absolute inset-0 dark:hidden"
           style={{
-            backgroundImage: `url(${process.env.NEXT_PUBLIC_STRAPI_URL}${content.lightModeBackground.url})`,
             maskImage: 'radial-gradient(circle, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.5) 20%, rgba(0,0,0,0) 100%)',
             WebkitMaskImage: 'radial-gradient(circle, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.5) 20%, rgba(0,0,0,0) 100%)'
           }}
-          aria-hidden="true"
-        />
+          aria-hidden="true">
+          <Image
+            src={`${process.env.NEXT_PUBLIC_STRAPI_URL}${content.lightModeBackground.url}`}
+            alt=""
+            fill
+            fetchPriority="high"
+            priority
+            sizes="(max-width: 640px) 100vw, 80vw"
+            className="object-cover object-center"
+            unoptimized
+          />
+        </div>
       )}
 
       {content?.darkModeBackground?.url && (
         <div
-          className="absolute inset-0 hidden bg-cover bg-center bg-no-repeat dark:block"
+          className="absolute inset-0 hidden dark:block"
           style={{
-            backgroundImage: `url(${process.env.NEXT_PUBLIC_STRAPI_URL}${content.darkModeBackground.url})`,
             maskImage: 'radial-gradient(circle, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.5) 20%, rgba(0,0,0,0) 100%)',
             WebkitMaskImage: 'radial-gradient(circle, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.5) 20%, rgba(0,0,0,0) 100%)'
           }}
-          aria-hidden="true"
-        />
+          aria-hidden="true">
+          <Image
+            src={`${process.env.NEXT_PUBLIC_STRAPI_URL}${content.darkModeBackground.url}`}
+            alt=""
+            fill
+            fetchPriority="high"
+            priority
+            sizes="(max-width: 640px) 100vw, 80vw"
+            className="object-cover object-center"
+            unoptimized
+          />
+        </div>
       )}
 
       <div className="relative z-10 w-full max-w-full break-words text-center text-4xl font-medium tracking-wide sm:max-w-4xl sm:text-5xl">

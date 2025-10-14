@@ -147,6 +147,7 @@ const NavBar = () => {
                     width={24}
                     height={Math.round(content?.searchIcon?.height * (24 / content?.searchIcon?.width))}
                     className="mr-2 size-6 dark:brightness-0 dark:invert"
+                    unoptimized
                   />
                 </div>
                 {content?.searchTextMobileView}

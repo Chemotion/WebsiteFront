@@ -161,6 +161,7 @@ export default function Card({
               alt={`Visual representation of ${title}`}
               width={460}
               height={230}
+              sizes="(max-width: 768px) 100vw, 460px"
               className="object-cover object-bottom"
               unoptimized
             />

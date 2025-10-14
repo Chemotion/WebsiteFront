@@ -9,7 +9,10 @@ const geistSans = localFont({
   src: '../../public/fonts/GeistVF.woff',
   variable: '--font-geist-sans',
   weight: '100 900',
-  fallback: ['system-ui', 'Helvetica', 'Arial']
+  display: 'swap',
+  fallback: ['system-ui', 'Helvetica', 'Arial'],
+  preload: true,
+  adjustFontFallback: 'Arial'
 });
 
 export const metadata = {
@@ -21,6 +24,10 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en" suppressHydrationWarning>
+      <head>
+        <link rel="preconnect" href={process.env.NEXT_PUBLIC_STRAPI_URL} crossOrigin="anonymous" />
+        <link rel="dns-prefetch" href="https://docs.chemotion.net" />
+      </head>
       <body
         className={`overflow-x-hidden scroll-smooth bg-background font-geist text-foreground antialiased dark:bg-darkBackground dark:text-darkForeground ${geistSans.variable}`}>
         <ThemeProvider attribute="class" defaultTheme="light" enableSystem={false}>
