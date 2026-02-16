@@ -12,7 +12,7 @@ const nextConfig = {
       },
       {
         protocol: 'https',
-        hostname: 'cms.web123.chemotion.scc.kit.edu'
+        hostname: 'back.website.chemdev.scc.kit.edu'
       },
       {
         protocol: 'https',
