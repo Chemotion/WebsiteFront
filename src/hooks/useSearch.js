@@ -8,7 +8,7 @@ export default function useSearch() {
 
   // fetch and initialize fuse
   useEffect(() => {
-    fetch('/api/search')
+    fetch('docs/search')
       .then((res) => res.json())
       .then((data) => {
         const blocks = Array.isArray(data) ? data : [data];

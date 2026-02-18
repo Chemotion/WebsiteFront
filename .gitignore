@@ -3,6 +3,7 @@
 /.next/
 /out/
 /build
+/public/docs
 .env
 .env.production
 .env.development
