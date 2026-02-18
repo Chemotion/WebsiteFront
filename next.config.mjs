@@ -8,11 +8,11 @@ const nextConfig = {
       },
       {
         protocol: 'https',
-        hostname: 'cms.chemotion.net'
+        hostname: 'back.chemotion.net'
       },
       {
         protocol: 'https',
-        hostname: 'cms.web123.chemotion.scc.kit.edu'
+        hostname: 'back.website.chemdev.scc.kit.edu'
       },
       {
         protocol: 'https',
@@ -28,15 +28,15 @@ const nextConfig = {
     contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;"
   },
 
-  async redirects() {
-    return [
-      {
-        source: '/docs/:path*',
-        destination: 'https://docs.chemotion.net/:path*',
-        permanent: true
-      }
-    ];
-  },
+  // async redirects() {
+  //   return [
+  //     {
+  //       source: '/docs/:path*',
+  //       destination: 'https://docs.chemotion.net/:path*',
+  //       permanent: true
+  //     }
+  //   ];
+  // },
 
   compress: true,
   reactStrictMode: true

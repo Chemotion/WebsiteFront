@@ -2,7 +2,7 @@ import { NextResponse } from 'next/server';
 
 export async function GET() {
   try {
-    const response = await fetch('https://docs.chemotion.net/search-index.json');
+    const response = await fetch('https://beta.web.chemdev.scc.kit.edu/docs/search-index.json');
 
     if (!response.ok) {
       return NextResponse.json({ error: 'Failed to fetch remote data' }, { status: response.status });
