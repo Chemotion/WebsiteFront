@@ -26,7 +26,7 @@ export default function RootLayout({ children }) {
     <html lang="en" suppressHydrationWarning>
       <head>
         <link rel="preconnect" href={process.env.NEXT_PUBLIC_STRAPI_URL} crossOrigin="anonymous" />
-        <link rel="dns-prefetch" href="https://beta.web.chemdev.scc.kit.edu/docs" />
+        <link rel="dns-prefetch" href="https://beta.website.chemdev.scc.kit.edu/docs" />
       </head>
       <body
         className={`overflow-x-hidden scroll-smooth bg-background font-geist text-foreground antialiased dark:bg-darkBackground dark:text-darkForeground ${geistSans.variable}`}>
