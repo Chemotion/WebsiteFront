@@ -1,12 +1,11 @@
-FROM node:18-alpine AS builder
+FROM node:24-slim AS build
 WORKDIR /app
 COPY package*.json ./
 RUN npm ci
 COPY . .
-COPY .env.production .env
 RUN npm run build
 
-FROM node:18-alpine
+FROM node:24-slim
 ENV NODE_ENV=production
 WORKDIR /app
 COPY --from=builder /app/package*.json ./
