@@ -1,5 +1,5 @@
 import useSWR from 'swr';
-import fallback from '/public/fallback.json';
+import fallback from '@/../public/fallback.json';
 
 export default function useContent({ apiKey, fallbackKey }) {
   const fetcher = async () => {
